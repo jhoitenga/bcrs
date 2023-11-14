@@ -1,4 +1,4 @@
-# Nodebucket
+# BCRS
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.1.6.
 
@@ -25,3 +25,8 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+# Contributors
+- [Michael Christman](https://michaelchristman1999.github.io/web-330/Personal-Portfolio/index.html)
+- [Zahava Gopin](https://zmirgopin.github.io/Personal-Portfolio/index.html)
+- [Jennifer Hoitenga](https://jhoitenga.github.io/portfolio/index.html)
