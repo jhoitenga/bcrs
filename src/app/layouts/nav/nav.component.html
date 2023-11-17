@@ -1,1 +1,69 @@
-<nav></nav>
+<!--
+ * Title: nav.component.html
+ * Author: Michael Christman, Zahava Gopin & Jennifer Hoitenga
+ * Date: 11/16/2023
+ * Sources:
+ * BCRS Starter Project: https://github.com/buwebdev/web-450/tree/master/starter-projects/bcrs
+ * Previous repositories from my personal GitHub: https://github.com/jhoitenga?tab=repositories
+ * Bootstrap: https://getbootstrap.com/docs/5.3/getting-started/introduction/
+-->
+
+<!-- Navigation bar with Bootstrap styling for responsiveness. -->
+<nav class="navbar navbar-expand-lg">
+  <!-- Brand/logo with a link to the home page. -->
+  <a class="navbar-brand" href="/">
+    <!-- Brand text for the navigation bar. -->
+    <img src="assets/logo.png" alt="BCRS Logo" width="220" height="220" />
+  </a>
+  <!--<span class="navbar-brand">BCRS</span>-->
+
+  <!-- Button to toggle navigation links for smaller screens. -->
+  <button
+    class="navbar-toggler"
+    type="button"
+    data-bs-toggle="collapse"
+    data-bs-target="#navbarResponsive"
+    aria-controls="navbarResponsive"
+    aria-expanded="false"
+    aria-label="Toggle navigation"
+  >
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <!-- Navigation Links -->
+  <div class="collapse navbar-collapse" id="navbarResponsive">
+    <ul class="navbar-nav navbar-nav">
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link" routerLink="/home">Home</a>
+      </li>
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link" routerLink="/faq">FAQ</a>
+      </li>
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link" routerLink="/register">Register</a>
+      </li>
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link" routerLink="/signin">Sign In</a>
+      </li>
+
+      <!-- Tasks link, visible only when the user is logged in
+      <li *ngIf="isLoggedIn()" class="nav-item" routerLinkActive="active">
+        <a class="nav-link" routerLink="/task-management">Tasks</a>
+      </li>-->
+
+      <!-- Sign In link, visible only when the user is not logged in
+      <li *ngIf="!isLoggedIn()" class="nav-item" routerLinkActive="active">
+        <a class="nav-link" routerLink="/security/sign-in">Sign In</a>
+      </li>-->
+
+      <!-- Sign Out button, visible only when the user is logged in
+      <button
+        class="btn btn-mod btn-border btn-circle btn-large"
+        *ngIf="isLoggedIn()"
+        (click)="signOut()"
+      >
+        Sign Out
+      </button>-->
+    </ul>
+  </div>
+</nav>

@@ -1,11 +1,47 @@
-<div class="container-fluid">
-  <div class="row">
-    <div class="col">
-      <h1>Home Component Works! <span class="material-icons">thumb_up</span></h1>
+<!--
+ * Title: home.component.html
+ * Author: Michael Christman, Zahava Gopin & Jennifer Hoitenga
+ * Date: 11/16/2023
+ * Sources:
+ * BCRS Starter Project: https://github.com/buwebdev/web-450/tree/master/starter-projects/bcrs
+ * Previous repositories from my personal GitHub: https://github.com/jhoitenga?tab=repositories
+ * Bootstrap: https://getbootstrap.com/docs/5.3/getting-started/introduction/
+-->
+
+<!-- Hero Section -->
+<section class="hero">
+  <div class="container">
+    <div class="row">
+      <!-- Left Column - Text and Sign In Button -->
+      <div class="col-md-7">
+        <div>
+          <div class="text-label">Welcome to Bob's Computer Repair Shop!</div>
+          <div class="text-hero-regular">
+            Our exclusive platform simplifies the service repair request
+            process, enabling you to focus on what you do best - delivering
+            exceptional service.
+            <br /><br />Start your hassle-free ticket submission now!
+          </div>
+          <!-- Sign In Button -->
+          <div>
+            <a
+              routerLink="/security/sign-in"
+              class="btn btn-mod btn-border btn-circle btn-large"
+            >
+              GET STARTED<i class="bi bi-box-arrow-in-right signIcon"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Column - Image -->
+      <div class="col-md-3 offset-md-1 text-center mb-5">
+        <img
+          src="assets/BobLanding.png"
+          alt="Computer being repaired"
+          class="d-none d-md-block rounded"
+        />
+      </div>
     </div>
   </div>
-
-  <a routerLink="/security">Test Security Module</a>
-</div>
-
-
+</section>

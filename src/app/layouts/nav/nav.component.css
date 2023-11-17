@@ -1,0 +1,94 @@
+/*
+ * Title: nav.component.css
+ * Author: Michael Christman, Zahava Gopin & Jennifer Hoitenga
+ * Date: 11/16/2023
+ * Sources:
+ * BCRS Starter Project: https://github.com/buwebdev/web-450/tree/master/starter-projects/bcrs
+ * Previous repositories from my personal GitHub: https://github.com/jhoitenga?tab=repositories
+ * Bootstrap: https://getbootstrap.com/docs/5.3/getting-started/introduction/
+ */
+
+.navbar-nav {
+  margin-left: auto;
+}
+
+.navbar-brand {
+  color: #2a623d;
+  font-size: 45px;
+  font-weight: 500;
+}
+
+.navbar {
+  background-color: white;
+  color: #2a623d;
+  padding: 0px 40px 10px 20px;
+  font-size: 34px;
+}
+
+.nav-link {
+  color: #2a623d;
+  font-weight: 600;
+}
+
+.nav-link:hover {
+  color: #cc9835;
+}
+
+.navbar-toggler {
+  color: #2a623d;
+}
+
+.navbar-toggler .navbar-toggler-icon {
+  cursor: pointer;
+}
+
+.active .nav-link {
+  color: #5d5d5d !important;
+}
+
+.btn-mod.btn-large {
+  height: auto;
+  padding: 2px 6px;
+  font-size: 15px;
+}
+
+.btn-mod.btn-border {
+  color: white;
+  border: 2px solid #2a623d;
+  background: #2a623d;
+  border-radius: 8px;
+}
+
+.btn-mod,
+a.btn-mod {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 4px 13px;
+  color: #fff;
+  background: #d3a625;
+  border: 2px solid transparent;
+  font-size: 11px;
+  font-weight: 400;
+  text-transform: uppercase;
+  text-decoration: none;
+  letter-spacing: 2px;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  -webkit-transition: all 0.2s cubic-bezier(0, 0, 0.58, 1);
+  -moz-transition: all 0.2s cubic-bezier(0, 0, 0.58, 1);
+  -o-transition: all 0.2s cubic-bezier(0, 0, 0.58, 1);
+  -ms-transition: all 0.2s cubic-bezier(0, 0, 0.58, 1);
+  transition: all 0.2s cubic-bezier(0, 0, 0.58, 1);
+}
+
+.btn-mod.btn-border:hover,
+.btn-mod.btn-border:focus {
+  color: #2a623d;
+  border-color: #2a623d;
+  background: #5d5d5d;
+}

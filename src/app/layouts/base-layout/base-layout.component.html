@@ -1,8 +1,22 @@
-<app-nav></app-nav> <!-- website navbar -->
+<!--
+ * Title: base-layout.component.html
+ * Author: Michael Christman, Zahava Gopin & Jennifer Hoitenga
+ * Date: 11/16/2023
+ * Sources:
+ * BCRS Starter Project: https://github.com/buwebdev/web-450/tree/master/starter-projects/bcrs
+ * Previous repositories from my personal GitHub: https://github.com/jhoitenga?tab=repositories
+ * Bootstrap: https://getbootstrap.com/docs/5.3/getting-started/introduction/
+-->
 
-<main>
-  <!-- The router outlet is where the different child components of the BaseLayout are rendered.  -->
-  <router-outlet></router-outlet>
-</main>
+<div class="app-wrapper">
+  <app-nav></app-nav>
+  <!-- website navbar -->
 
-<app-footer></app-footer> <!-- website footer -->
+  <main>
+    <!-- The router outlet is where the different child components of the BaseLayout are rendered.  -->
+    <router-outlet></router-outlet>
+  </main>
+
+  <app-footer></app-footer>
+  <!-- website footer -->
+</div>
