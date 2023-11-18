@@ -80,3 +80,8 @@ a.btn-mod {
   border-color: #2a623d;
   background: #5d5d5d;
 }
+
+img {
+  max-width: 100%;
+  height: auto;
+}
