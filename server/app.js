@@ -14,9 +14,11 @@ const createServer = require("http-errors");
 const path = require("path");
 const swaggerUi = require("swagger-ui-express");
 const swaggerJsdoc = require("swagger-jsdoc");
-const userRoute = require("./routes/user-routes");
-const sessionRoute = require("./routes/session-routes");
+const userAPI = require("./routes/user-routes");
+const sessionAPI = require("./routes/session-routes");
 const mongoose = require("mongoose");
+
+const cors = require("cors");
 
 // Connecting to MongoDB
 const CONN =
@@ -51,6 +53,9 @@ const options = {
 // Create the Express app
 const app = express();
 
+// Enable Cross-Origin Resource Sharing for the app.
+app.use(cors());
+
 // Configure the app
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -60,10 +65,8 @@ app.use("/", express.static(path.join(__dirname, "../dist/bcrs")));
 // Generate OpenAPI documentation using Swagger and serve it at "/api-docs".
 const openapiSpecification = swaggerJsdoc(options);
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(openapiSpecification));
-
-// Use the user API routes at "/api".
-app.use("/api/users", userRoute);
-app.use("/api/session", sessionRoute);
+app.use("/api", userAPI);
+app.use("/api", sessionAPI);
 
 // error handler for 404 errors
 app.use(function (req, res, next) {
