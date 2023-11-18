@@ -1,0 +1,120 @@
+<!--
+ * Title: sign-in.component.html
+ * Author: Professor Krasso
+ * Modified By: Michael Christman, Zahava Gopin & Jennifer Hoitenga
+ * Date: 11/18/2023
+ * Sources:
+ * BCRS Starter Project: https://github.com/buwebdev/web-450/tree/master/starter-projects/bcrs
+ * Previous repositories from my personal GitHub: https://github.com/jhoitenga?tab=repositories
+ * Bootstrap: https://getbootstrap.com/docs/5.3/getting-started/introduction/
+-->
+
+<!-- Container with background image for the login page. -->
+<div class="background-image">
+  <!-- Image attribution -->
+  <small class="text-gray" style="font-size: 60%">
+    <em>Image courtesy of </em>
+    <a href="https://www.Unsplash.com/" target="_blank" class="text-dark"
+      >Unsplash.com
+    </a>
+  </small>
+  <!-- Container for the login form. -->
+  <div class="login-container">
+    <!-- Card for the login form. -->
+    <div class="login-card">
+      <!-- Icon container with a user icon. -->
+      <div class="icon-container">
+        <i class="fas fa-user fa-3x"></i>
+      </div>
+      <!-- Title for the login card. -->
+      <h1 class="login-title">Sign In to BCRS</h1>
+
+      <!-- Form for user sign-in -->
+      <form
+        [formGroup]="signInForm"
+        (ngSubmit)="onSubmit(); signInForm.reset()"
+      >
+        <!-- Email Field -->
+        <div class="form-floating mb-3">
+          <input
+            type="text"
+            class="form-control"
+            id="email"
+            placeholder="Email Address"
+            formControlName="email"
+          />
+          <label for="email">Email Address</label>
+        </div>
+
+        <!-- Validation Error Messages for outside of range -->
+        <div class="alert alert-danger" *ngIf="errorMessage">
+          {{ errorMessage }}
+        </div>
+
+        <!-- Validation Error Message for empty input. -->
+        <div
+          *ngIf="form['email'].errors && form['email'].touched"
+          class="alert alert-danger"
+        >
+          <div *ngIf="form['email'].errors?.['required']">
+            Email address is required.
+          </div>
+
+          <!-- Validation Error Message for non-numeric input. -->
+          <div *ngIf="form['email'].errors?.['email']">
+            Enter a valid email address.
+          </div>
+        </div>
+
+        <!-- Password Field -->
+        <div class="form-floating mb-3">
+          <input
+            type="password"
+            class="form-control"
+            id="password"
+            placeholder="Password"
+            formControlName="password"
+          />
+          <label for="password">Password</label>
+        </div>
+
+        <!-- Validation Error Message for empty input. -->
+        <div
+          *ngIf="form['password'].errors && form['password'].touched"
+          class="alert alert-danger"
+        >
+          <div *ngIf="form['password'].errors?.['required']">
+            The password is required.
+          </div>
+
+          <!-- Validation Error Message for password pattern. -->
+          <div
+            class="error-message"
+            *ngIf="
+              signInForm.controls['password'].hasError('pattern') &&
+              signInForm.controls['password'].touched
+            "
+          >
+            Password must be at least 8 characters, contain one uppercase letter
+            and one number.
+          </div>
+        </div>
+
+        <!-- Form submission button -->
+        <button
+          class="btn btn-mod btn-border btn-circle btn-large"
+          type="submit"
+          [disabled]="!signInForm.valid"
+        >
+          Sign In
+        </button>
+        <div class="sign-up">
+          Don't have an account? <a href="#">Create One</a>
+        </div>
+        <div class="sign-up">
+          <a href="#">Forgot Your Password?</a>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

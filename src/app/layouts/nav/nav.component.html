@@ -33,37 +33,35 @@
   <!-- Navigation Links -->
   <div class="collapse navbar-collapse" id="navbarResponsive">
     <ul class="navbar-nav navbar-nav">
+      <!-- Home Link -->
       <li class="nav-item" routerLinkActive="active">
         <a class="nav-link" routerLink="/home">Home</a>
       </li>
+      <!-- FAQ Link -->
       <li class="nav-item" routerLinkActive="active">
         <a class="nav-link" routerLink="/faq">FAQ</a>
       </li>
-      <li class="nav-item" routerLinkActive="active">
+      <!-- Employee Directory Link, only visible if user is logged in -->
+      <li *ngIf="isLoggedIn()" class="nav-item" routerLinkActive="active">
+        <a class="nav-link" routerLink="/employee-directory">Directory</a>
+      </li>
+      <!-- Register Link -->
+      <li *ngIf="!isLoggedIn()" class="nav-item" routerLinkActive="active">
         <a class="nav-link" routerLink="/register">Register</a>
       </li>
-      <li class="nav-item" routerLinkActive="active">
-        <a class="nav-link" routerLink="/signin">Sign In</a>
+      <!-- Sign In link, visible only when the user is logged out-->
+      <li *ngIf="!isLoggedIn()" class="nav-item" routerLinkActive="active">
+        <a class="nav-link" routerLink="/sign-in">Sign In</a>
       </li>
 
-      <!-- Tasks link, visible only when the user is logged in
-      <li *ngIf="isLoggedIn()" class="nav-item" routerLinkActive="active">
-        <a class="nav-link" routerLink="/task-management">Tasks</a>
-      </li>-->
-
-      <!-- Sign In link, visible only when the user is not logged in
-      <li *ngIf="!isLoggedIn()" class="nav-item" routerLinkActive="active">
-        <a class="nav-link" routerLink="/security/sign-in">Sign In</a>
-      </li>-->
-
-      <!-- Sign Out button, visible only when the user is logged in
+      <!-- Sign Out button, visible only when the user is logged in-->
       <button
         class="btn btn-mod btn-border btn-circle btn-large"
         *ngIf="isLoggedIn()"
         (click)="signOut()"
       >
         Sign Out
-      </button>-->
+      </button>
     </ul>
   </div>
 </nav>

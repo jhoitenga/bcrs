@@ -1,0 +1,147 @@
+/**
+ * Title: sign-in.component.css
+ * Author: Professor Krasso
+ * Modified By: Michael Christman, Zahava Gopin & Jennifer Hoitenga
+ * Date: 11/18/2023
+ * Sources:
+ * BCRS Starter Project: https://github.com/buwebdev/web-450/tree/master/starter-projects/bcrs
+ * Previous repositories from my personal GitHub: https://github.com/jhoitenga?tab=repositories
+ * Bootstrap: https://getbootstrap.com/docs/5.3/getting-started/introduction/
+ */
+
+.background-image {
+  height: 100vh;
+  position: relative;
+}
+
+.background-image::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: -1;
+  background-image: url("../../assets/signin.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  opacity: 0.5;
+  height: 100%;
+}
+
+.login-card {
+  width: 400px;
+  margin: 80px auto 0;
+  padding: 20px;
+  border-radius: 7px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  background: #ffffff;
+  position: relative;
+}
+
+.icon-container {
+  width: 90px;
+  height: 90px;
+  background-color: #2a623d;
+  border-radius: 50%;
+  position: absolute;
+  top: -35px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-title {
+  text-align: center;
+  margin-top: 40px;
+  font-size: 24px;
+  font-weight: bold;
+  padding: 20px 0;
+  color: #2a623d;
+}
+
+.login-field {
+  padding: 15px;
+  margin-bottom: 5px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  width: 100%;
+}
+
+.fas.fa-user {
+  color: white;
+}
+
+.login-container,
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+a {
+  color: #cc9835;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+a:hover {
+  color: #5d5d5d;
+}
+
+.btn-mod.btn-large {
+  height: auto;
+  padding: 13px 52px;
+  font-size: 15px;
+}
+
+.btn-mod.btn-border {
+  color: white;
+  border: 2px solid #2a623d;
+  background: #2a623d;
+  border-radius: 8px;
+}
+
+.btn-mod,
+a.btn-mod {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 4px 13px;
+  color: #fff;
+  background: #2a623d;
+  border: 2px solid transparent;
+  font-size: 11px;
+  font-weight: 400;
+  text-transform: uppercase;
+  text-decoration: none;
+  letter-spacing: 2px;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  -webkit-transition: all 0.2s cubic-bezier(0, 0, 0.58, 1);
+  -moz-transition: all 0.2s cubic-bezier(0, 0, 0.58, 1);
+  -o-transition: all 0.2s cubic-bezier(0, 0, 0.58, 1);
+  -ms-transition: all 0.2s cubic-bezier(0, 0, 0.58, 1);
+  transition: all 0.2s cubic-bezier(0, 0, 0.58, 1);
+}
+
+.btn-mod.btn-border:hover,
+.btn-mod.btn-border:focus {
+  color: white;
+  border-color: #aaaaaa;
+  background: #5d5d5d;
+}
+
+.sign-up {
+  text-align: center;
+  padding: 20px 0 0;
+  color: black;
+  font-weight: 500;
+}
