@@ -15,7 +15,7 @@ const path = require("path");
 const swaggerUi = require("swagger-ui-express");
 const swaggerJsdoc = require("swagger-jsdoc");
 const userAPI = require("./routes/user-routes");
-const sessionAPI = require("./routes/session-routes");
+const sessionAPI = require("./routes/security-routes");
 const mongoose = require("mongoose");
 
 const cors = require("cors");
