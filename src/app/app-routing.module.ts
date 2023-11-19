@@ -16,6 +16,7 @@ import { SignInComponent } from './sign-in/sign-in.component';
 import { EmployeeDirectoryComponent } from './employee-directory/employee-directory.component';
 import { AuthGuard } from './auth.guard';
 import { RegisterComponent } from './register/register.component';
+import { ServiceComponent } from './service/service.component';
 
 // routes array with a path, component, and title for each route in the application (e.g. home, about, contact, etc.)
 const routes: Routes = [
@@ -42,6 +43,12 @@ const routes: Routes = [
         path: 'employee-directory',
         component: EmployeeDirectoryComponent,
         title: 'BCRS: Employee Directory',
+        canActivate: [AuthGuard],
+      },
+      {
+        path: 'service',
+        component: ServiceComponent,
+        title: 'BCRS: Service',
         canActivate: [AuthGuard],
       },
       {

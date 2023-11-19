@@ -42,12 +42,12 @@ export class NavComponent implements OnInit {
 
   // Function to check if a user is logged in.
   isLoggedIn(): boolean {
-    return !!this.cookieService.get('session_user');
+    return !!this.cookieService.get('sessionEmail');
   }
 
   // Function to sign out the user.
   signOut() {
-    this.showSnackBar('You have been successfully logged out.', 'Close', 5000); // Snackbar to confirm successful logout.
+    this.showSnackBar('You have been successfully logged out.', '', 5000); // Snackbar to confirm successful logout.
     this.cookieService.deleteAll(); // Delete all cookies.
     this.router.navigate(['/']); // Navigate to the home page.
   }

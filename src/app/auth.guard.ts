@@ -27,16 +27,16 @@ export class AuthGuard implements CanActivate {
   constructor(private router: Router, private cookieService: CookieService) {}
   // Guard that checks whether a session user is authenticated.
   canActivate(
-    next: ActivatedRouteSnapshot,
+    route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ):
     | Observable<boolean | UrlTree>
     | Promise<boolean | UrlTree>
     | boolean
     | UrlTree {
-    const sessionUser = this.cookieService.get('sessionUser');
+    const sessionEmail = this.cookieService.get('sessionEmail');
 
-    if (sessionUser) {
+    if (sessionEmail) {
       // User is authenticated; allow access to the route.
       return true;
     } else {

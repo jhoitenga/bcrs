@@ -18,6 +18,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { FaqComponent } from './faq/faq.component';
 import { EmployeeDirectoryComponent } from './employee-directory/employee-directory.component';
 import { RegisterComponent } from './register/register.component';
+import { ServiceComponent } from './service/service.component';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -36,6 +37,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     FaqComponent,
     EmployeeDirectoryComponent,
     RegisterComponent,
+    ServiceComponent,
   ],
   imports: [
     BrowserModule,
