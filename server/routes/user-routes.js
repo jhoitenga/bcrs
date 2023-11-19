@@ -159,7 +159,7 @@ router.get("/users/:id", async (req, res) => {
     // If no user is found with the given ID, respond with a 404 status and message.
     if (!user) {
       //console.log("User was not found");
-      return res.status(404).send({ message: "Not Found" });
+      return res.status(404).send({ message: "User Id not found" });
     }
 
     // If a user is found, log the user data and respond with a 200 status and the user object.
@@ -170,7 +170,7 @@ router.get("/users/:id", async (req, res) => {
     // Check if the error is of type "ObjectId," which typically indicates an invalid user ID.
     if (err.kind === "ObjectId") {
       // Respond with a 400 status and a message indicating an invalid user ID.
-      return res.status(400).send({ message: "Bad Request" });
+      return res.status(400).send({ message: "Invalid User Id" });
     } else {
       // If the error is not of type "ObjectId," respond with a generic 500 status and an error message.
       return res.status(500).send({ message: "Internal Server Error" });
@@ -371,21 +371,23 @@ router.put("/users/:id", async (req, res) => {
 
         // Save the updated user to the database
         const savedUser = await user.save();
-        console.log(savedUser);
+        //console.log(savedUser);
 
         // Respond with a 204 No Content status code to indicate success
         res.status(204).end();
       } else {
         // Respond with a 404 Not Found status code if the user was not found
-        res.status(404).send({ message: "Not Found" });
+        res.status(404).send({ message: "User Id not found" });
       }
     } else {
-      console.log(validator.errors);
+      //console.log(validator.errors);
       // Log validation errors and respond with a 400 Bad Request status code
-      res.status(400).send({ message: "Bad Request" });
+      res
+        .status(400)
+        .send({ message: "Bad Request - check input in request body." });
     }
   } catch (err) {
-    console.log(err);
+    //console.log(err);
     // Log any unexpected errors and respond with a 500 Internal Server Error status code
     res.status(500).send({ message: "Internal Server Error" });
   }
@@ -428,16 +430,16 @@ router.delete("/users/:id", async (req, res) => {
     // Check if the provided ID is a valid ObjectId
     if (!ObjectId.isValid(id)) {
       // Respond with a 400 Bad Request status if the ID is invalid
-      return res.status(400).send({ message: "Invalid user ID format" });
+      return res.status(400).send({ message: "Invalid user Id format" });
     }
 
     // Find a user with the provided ID in the database
     const user = await User.findOne({ _id: id });
-    console.log(user);
+    //console.log(user);
 
     if (!user) {
       // Respond with a 404 Not Found status if the user is not found
-      return res.status(404).send({ message: "Not Found" });
+      return res.status(404).send({ message: "User Id not found" });
     }
 
     // Set the 'isDisabled' flag to true and update the 'dateModified' field
@@ -452,12 +454,12 @@ router.delete("/users/:id", async (req, res) => {
       // Respond with a 204 No Content status indicating success
       res.status(204).end();
     } catch (err) {
-      console.error(err);
+      //console.error(err);
       // Respond with a 500 Internal Server Error status if there's an error while saving
       res.status(500).send({ message: "Internal Server Error" });
     }
   } catch (err) {
-    console.error(err);
+    //console.error(err);
     // Respond with a 500 Internal Server Error status for any other unexpected errors
     res.status(500).send({ message: "Internal Server Error" });
   }

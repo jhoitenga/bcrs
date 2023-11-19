@@ -87,7 +87,7 @@ router.post("/security/signin", async (req, res) => {
     // If the data is valid according to the schema:
     if (valid) {
       const user = await User.findOne({ email: req.body.email });
-      console.log("Searching for user with email:", req.body.email);
+      //console.log("Searching for user with email:", req.body.email);
 
       // If a user with the given email exists:
       if (user) {
@@ -124,7 +124,7 @@ router.post("/security/signin", async (req, res) => {
     }
   } catch (err) {
     // Log any errors that occur during the sign-in process and send a 500 response.
-    console.log("Error in signin route:", err);
+    //console.log("Error in signin route:", err);
     res.status(500).send({ message: "Internal Server Error" });
   }
 });
