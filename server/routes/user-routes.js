@@ -5,15 +5,51 @@
  * Date: 11/15/2023
  * Sources:
  * BCRS Starter Project: https://github.com/buwebdev/web-450/tree/master/starter-projects/bcrs
+ * Validating data with JSON Schema: https://tane.dev/2019/09/validating-data-with-json-schema-angular-and-typescript/
  */
 
 // Require statement for Express
 const express = require("express");
-
 // Require statement for Router
 const router = express.Router();
-
+// Import the User model
 const User = require("../models/user");
+// Import bcrypt for password hashing
+const bcrypt = require("bcryptjs");
+// Define the number of bcrypt rounds to use when hashing the password
+const saltRounds = 10;
+// Import Ajv (Another JSON Schema Validator) for data validation
+const Ajv = require("ajv");
+// Create a new instance of Ajv for JSON schema validation
+const ajv = new Ajv();
+
+// Define a JSON schema for user creation data validation.
+const createUserSchema = {
+  type: "object",
+  properties: {
+    // Define the expected properties and their data types.
+    firstName: { type: "string" },
+    lastName: { type: "string" },
+    phoneNumber: { type: "string" },
+    address: { type: "string" },
+    email: { type: "string" },
+    password: { type: "string" },
+    isDisabled: { type: "boolean" },
+    role: { type: "string" },
+  },
+  required: [
+    // Specify the required properties that must be present in the object.
+    "firstName",
+    "lastName",
+    "phoneNumber",
+    "email",
+    "password",
+    "address",
+    "isDisabled",
+    "role",
+  ],
+  additionalProperties: false,
+};
 
 /************************************************************************************** */
 /**
@@ -44,7 +80,7 @@ router.get("/users", async (req, res) => {
 
     // Check if the users array is empty and return a 404 status if true
     if (users.length === 0) {
-      return res.status(404).send({ message: "No users found" });
+      return res.status(404).send({ message: "Not Found" });
     }
 
     // If users are found, send them back with a 200 status
@@ -99,7 +135,7 @@ router.get("/users/:id", async (req, res) => {
     // If no user is found with the given ID, respond with a 404 status and message.
     if (!user) {
       //console.log("User was not found");
-      return res.status(404).send({ message: "User was not found" });
+      return res.status(404).send({ message: "Not Found" });
     }
 
     // If a user is found, log the user data and respond with a 200 status and the user object.
@@ -110,7 +146,7 @@ router.get("/users/:id", async (req, res) => {
     // Check if the error is of type "ObjectId," which typically indicates an invalid user ID.
     if (err.kind === "ObjectId") {
       // Respond with a 400 status and a message indicating an invalid user ID.
-      return res.status(400).send({ message: "Invalid User ID" });
+      return res.status(400).send({ message: "Bad Request" });
     } else {
       // If the error is not of type "ObjectId," respond with a generic 500 status and an error message.
       return res.status(500).send({ message: "Internal Server Error" });
@@ -137,20 +173,30 @@ router.get("/users/:id", async (req, res) => {
  *              required:
  *                - text
  *              properties:
- *                email:
- *                  type: string
- *                password:
- *                  type: string
  *                firstName:
  *                  type: string
+ *                  example: Bob
  *                lastName:
  *                  type: string
+ *                  example: Smith
  *                phoneNumber:
  *                  type: string
+ *                  example: 555-555-5555
  *                address:
  *                  type: string
+ *                  example: 1234 Main St. Bellevue, NE 68123
+ *                email:
+ *                  type: string
+ *                  example: Bob@bcrs.org
+ *                password:
+ *                  type: string
+ *                  example: Password1
+ *                isDisabled:
+ *                  type: boolean
+ *                  example: false
  *                role:
  *                  type: string
+ *                  example: standard
  *     responses:
  *       '201':
  *         description: Created
@@ -162,10 +208,70 @@ router.get("/users/:id", async (req, res) => {
  *         description: Internal Server Error
  */
 
-/*router.post("/users", async (req, res) => {
+router.post("/users", async (req, res) => {
   try {
-  } catch (err) {}
-});*/
+    // Extract the new user data from the request body.
+    const newUser = req.body;
+    console.log("User", newUser);
+
+    // Compile the JSON schema validator for user creation.
+    const validator = ajv.compile(createUserSchema);
+
+    // Validate the new user data against the schema.
+    const valid = validator(newUser);
+
+    // If validation fails, return a 400 Bad Request response with error details.
+    if (!valid) {
+      console.log(validator.errors);
+      return res
+        .status(400)
+        .send({ message: "Bad Request", errors: validator.errors });
+    }
+
+    // Check for a valid 'isDisabled' flag (must be true or false).
+    if (newUser.isDisabled !== true && newUser.isDisabled !== false) {
+      return res.status(404).send({ message: "Invalid value for isDisabled." });
+    }
+
+    // Hash the user's password for secure storage.
+    let hashedPassword = bcrypt.hashSync(newUser.password, saltRounds);
+
+    // Define the default role for a new user.
+    let standardRole = { text: "standard" };
+
+    // Construct the new user object for database insertion.
+    const createNewUser = {
+      firstName: newUser.firstName,
+      lastName: newUser.lastName,
+      phoneNumber: newUser.phoneNumber,
+      address: newUser.address,
+      email: newUser.email,
+      password: hashedPassword,
+      isDisabled: newUser.isDisabled,
+      role: standardRole,
+    };
+
+    // Create the new user in the database.
+    const user = await User.create(createNewUser);
+
+    // Respond with a 201 status code indicating successful creation.
+    res
+      .status(201)
+      .send(
+        user.firstName + " " + user.lastName + " was created successfully!"
+      );
+  } catch (err) {
+    console.log(err);
+
+    // Handle duplicate email error with a 400 Bad Request response.
+    if (err.code === 11000) {
+      return res.status(400).send({ message: "Email already in use" });
+    } else {
+      // For any other errors, return a 500 Internal Server Error response.
+      return res.status(500).send({ message: "Internal Server Error" });
+    }
+  }
+});
 
 /************************************************************************************** */
 // updateUser route
