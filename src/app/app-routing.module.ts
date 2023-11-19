@@ -17,6 +17,7 @@ import { AuthGuard } from './auth.guard';
 import { RegisterComponent } from './register/register.component';
 import { ServiceComponent } from './service/service.component';
 import { RoleGuard } from './role.guard';
+import { ProfileComponent } from './profile/profile.component';
 
 // routes array with a path, component, and title for each route in the application (e.g. home, about, contact, etc.)
 const routes: Routes = [
@@ -55,6 +56,12 @@ const routes: Routes = [
         path: 'register',
         component: RegisterComponent,
         title: 'BCRS: Register',
+      },
+      {
+        path: 'profile',
+        component: ProfileComponent,
+        title: 'BCRS: Profile',
+        canActivate: [AuthGuard],
       },
       {
         path: 'not-found',

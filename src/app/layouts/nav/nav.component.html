@@ -58,14 +58,22 @@
         <a class="nav-link" routerLink="/security/sign-in">Sign In</a>
       </li>
 
-      <!-- Sign Out button, visible only when the user is logged in-->
-      <button
-        class="btn btn-mod btn-border btn-circle btn-large signOut"
-        *ngIf="isLoggedIn()"
-        (click)="signOut()"
-      >
-        Sign Out
-      </button>
+      <li *ngIf="isLoggedIn()" class="nav-item dropdown">
+        <a
+          class="nav-link dropdown-toggle"
+          id="navbarDropdown"
+          role="button"
+          data-bs-toggle="dropdown"
+        >
+          <i class="bi bi-person-circle profileImage"></i>
+        </a>
+        <ul class="dropdown-menu dropdown-menu-left">
+          <li>
+            <a routerLink="/profile" class="dropdown-item">My Profile</a>
+          </li>
+          <li><a (click)="signOut()" class="dropdown-item">Log Out</a></li>
+        </ul>
+      </li>
     </ul>
   </div>
 </nav>

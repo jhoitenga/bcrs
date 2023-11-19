@@ -25,6 +25,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { CookieService } from 'ngx-cookie-service';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     EmployeeDirectoryComponent,
     RegisterComponent,
     ServiceComponent,
+    ProfileComponent,
   ],
   imports: [
     BrowserModule,

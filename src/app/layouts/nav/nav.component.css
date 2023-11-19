@@ -10,6 +10,7 @@
 
 .navbar-nav {
   margin-left: auto;
+  padding-right: 100px;
 }
 
 .navbar-brand {
@@ -98,4 +99,24 @@ a.btn-mod {
   color: white;
   border-color: #2a623d;
   background: #5d5d5d;
+}
+
+#dropdownMenu,
+.dropdown-item {
+  color: black !important;
+}
+
+.navbar .dropdown-menu {
+  left: 0;
+  right: auto;
+  z-index: inherit;
+  text-decoration: none;
+}
+
+.profileImage {
+  font-size: 1.69rem;
+}
+
+.dropdown-toggle::after {
+  display: none;
 }
