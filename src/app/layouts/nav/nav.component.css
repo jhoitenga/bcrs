@@ -92,3 +92,10 @@ a.btn-mod {
   border-color: #2a623d;
   background: #5d5d5d;
 }
+
+.btn-mod.btn-border:hover,
+.btn-mod.btn-border:focus {
+  color: white;
+  border-color: #2a623d;
+  background: #5d5d5d;
+}

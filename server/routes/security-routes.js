@@ -104,7 +104,7 @@ router.post("/security/signin", async (req, res) => {
           if (passwordIsValid) {
             console.log("Login successful");
             // Send a success response.
-            res.status(200).send({ message: "Login successful" });
+            res.status(200).send(user);
           } else {
             // Send a 404 response for invalid password.
             res.status(404).send({ message: "Password is invalid" });
