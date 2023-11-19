@@ -23,6 +23,8 @@ const Ajv = require("ajv");
 // Create a new instance of Ajv for JSON schema validation
 const ajv = new Ajv();
 
+const role = require("../models/role");
+
 // Define a JSON schema for user creation data validation.
 const createUserSchema = {
   type: "object",
@@ -46,6 +48,28 @@ const createUserSchema = {
     "password",
     "address",
     "isDisabled",
+    "role",
+  ],
+  additionalProperties: false,
+};
+
+// Define a JSON schema for user update data validation.
+const updateUserSchema = {
+  type: "object",
+  properties: {
+    firstName: { type: "string" },
+    lastName: { type: "string" },
+    phoneNumber: { type: "string" },
+    address: { type: "string" },
+    email: { type: "string" },
+    role: { type: "string" },
+  },
+  required: [
+    "firstName",
+    "lastName",
+    "phoneNumber",
+    "address",
+    "email",
     "role",
   ],
   additionalProperties: false,
@@ -274,10 +298,172 @@ router.post("/users", async (req, res) => {
 });
 
 /************************************************************************************** */
-// updateUser route
+/**
+ * updateUser
+ * @openapi
+ * /api/users/{id}:
+ *  put:
+ *      tags:
+ *          - Users
+ *      name: updateUser
+ *      description: API to update an existing user
+ *      summary: Updates a User document.
+ *      parameters:
+ *          - name: id
+ *            in: path
+ *            required: true
+ *            description: Enter a valid id
+ *            schema:
+ *              type: string
+ *      requestBody:
+ *          required: true
+ *          content:
+ *            application/json:
+ *              schema:
+ *                properties:
+ *                  firstName:
+ *                    type: string
+ *                  lastName:
+ *                    type: string
+ *                  phoneNumber:
+ *                    type: string
+ *                  address:
+ *                    type: string
+ *                  email:
+ *                    type: string
+ *                  role:
+ *                    type: string
+ *                    example: standard
+ *      responses:
+ *          '204':
+ *              description: No Content
+ *          '400':
+ *              description: Bad request
+ *          '404':
+ *              description: Not Found
+ *          '500':
+ *              description: Internal Server Error
+ *
+ */
+
+router.put("/users/:id", async (req, res) => {
+  try {
+    // Extract the updated user data from the request body
+    const updatedUser = req.body;
+    // Compile a JSON schema validator for the updated user data
+    const validator = ajv.compile(updateUserSchema);
+    // Validate the updated user data against the schema
+    const valid = validator(updatedUser);
+
+    if (valid) {
+      // Find the user by their ID in the database
+      const user = await User.findOne({ _id: req.params.id });
+      if (user) {
+        // Update the user's properties with data from the request body
+        user.set({
+          firstName: req.body.firstName,
+          lastName: req.body.lastName,
+          phoneNumber: req.body.phoneNumber,
+          address: req.body.address,
+          email: req.body.email,
+          "role.text": req.body.role,
+          dateModified: new Date(),
+        });
+
+        // Save the updated user to the database
+        const savedUser = await user.save();
+        console.log(savedUser);
+
+        // Respond with a 204 No Content status code to indicate success
+        res.status(204).end();
+      } else {
+        // Respond with a 404 Not Found status code if the user was not found
+        res.status(404).send({ message: "Not Found" });
+      }
+    } else {
+      console.log(validator.errors);
+      // Log validation errors and respond with a 400 Bad Request status code
+      res.status(400).send({ message: "Bad Request" });
+    }
+  } catch (err) {
+    console.log(err);
+    // Log any unexpected errors and respond with a 500 Internal Server Error status code
+    res.status(500).send({ message: "Internal Server Error" });
+  }
+});
 
 /************************************************************************************** */
-// deleteUser route
+/************************************************************************************** */
+/**
+ * deleteUser
+ * @openapi
+ * /api/users/{id}:
+ *  delete:
+ *      tags:
+ *          - Users
+ *      description: API for disabling a user
+ *      summary: Updates the isDisabled flag to true for a user document.
+ *      parameters:
+ *          - name: id
+ *            in: path
+ *            required: true
+ *            schema:
+ *              type: string
+ *      responses:
+ *          '204':
+ *              description: No Content
+ *          '400':
+ *              description: Bad Request
+ *          '404':
+ *              description: Not Found
+ *          '500':
+ *              description: Internal Server Error
+ */
+
+// Import the ObjectId class from Mongoose to check for a valid object ID.
+const ObjectId = require("mongoose").Types.ObjectId;
+
+router.delete("/users/:id", async (req, res) => {
+  try {
+    const id = req.params.id;
+
+    // Check if the provided ID is a valid ObjectId
+    if (!ObjectId.isValid(id)) {
+      // Respond with a 400 Bad Request status if the ID is invalid
+      return res.status(400).send({ message: "Invalid user ID format" });
+    }
+
+    // Find a user with the provided ID in the database
+    const user = await User.findOne({ _id: id });
+    console.log(user);
+
+    if (!user) {
+      // Respond with a 404 Not Found status if the user is not found
+      return res.status(404).send({ message: "Not Found" });
+    }
+
+    // Set the 'isDisabled' flag to true and update the 'dateModified' field
+    user.set({
+      isDisabled: true,
+      dateModified: new Date(),
+    });
+
+    try {
+      // Save the updated user in the database
+      await user.save();
+      // Respond with a 204 No Content status indicating success
+      res.status(204).end();
+    } catch (err) {
+      console.error(err);
+      // Respond with a 500 Internal Server Error status if there's an error while saving
+      res.status(500).send({ message: "Internal Server Error" });
+    }
+  } catch (err) {
+    console.error(err);
+    // Respond with a 500 Internal Server Error status for any other unexpected errors
+    res.status(500).send({ message: "Internal Server Error" });
+  }
+});
 
 // Export the router module for use in other parts of the application.
 module.exports = router;
