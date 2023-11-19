@@ -343,7 +343,6 @@ router.post("/users", async (req, res) => {
  *              description: Not Found
  *          '500':
  *              description: Internal Server Error
- *
  */
 
 router.put("/users/:id", async (req, res) => {
@@ -392,7 +391,6 @@ router.put("/users/:id", async (req, res) => {
   }
 });
 
-/************************************************************************************** */
 /************************************************************************************** */
 /**
  * deleteUser
