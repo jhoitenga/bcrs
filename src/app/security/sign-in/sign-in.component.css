@@ -22,7 +22,7 @@
   bottom: 0;
   left: 0;
   z-index: -1;
-  background-image: url("../../assets/signin.jpg");
+  background-image: url("../../../assets/signin.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;

@@ -12,11 +12,11 @@ import { BaseLayoutComponent } from './layouts/base-layout/base-layout.component
 import { HomeComponent } from './home/home.component';
 import { FaqComponent } from './faq/faq.component';
 import { NotFoundComponent } from './not-found/not-found.component';
-import { SignInComponent } from './sign-in/sign-in.component';
 import { EmployeeDirectoryComponent } from './employee-directory/employee-directory.component';
 import { AuthGuard } from './auth.guard';
 import { RegisterComponent } from './register/register.component';
 import { ServiceComponent } from './service/service.component';
+import { RoleGuard } from './role.guard';
 
 // routes array with a path, component, and title for each route in the application (e.g. home, about, contact, etc.)
 const routes: Routes = [
@@ -55,12 +55,6 @@ const routes: Routes = [
         path: 'register',
         component: RegisterComponent,
         title: 'BCRS: Register',
-      },
-      {
-        path: 'sign-in',
-        component: SignInComponent,
-        title: 'BCRS: SignIn',
-        canActivate: [AuthGuard],
       },
       {
         path: 'not-found',
