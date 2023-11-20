@@ -20,12 +20,15 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   styleUrls: ['./nav.component.css'],
 })
 export class NavComponent implements OnInit {
+  cookieValue: string;
   // Constructor for the component with injected services.
   constructor(
     private cookieService: CookieService,
     private router: Router,
     private snackBar: MatSnackBar
-  ) {}
+  ) {
+    this.cookieValue = this.cookieService.get('fullName');
+  }
 
   // Function to display a snackbar.
   showSnackBar(message: string, action: string, duration: number) {

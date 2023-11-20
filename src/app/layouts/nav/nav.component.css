@@ -9,7 +9,6 @@
 
 .navbar-nav {
   margin-left: auto;
-  padding-right: 100px;
 }
 
 .navbar-brand {
@@ -128,4 +127,8 @@ a.btn-mod {
   cursor: pointer;
   background-color: #cc9835 !important;
   color: black !important;
+}
+
+.profileName:hover {
+  background-color: white !important;
 }
