@@ -37,17 +37,20 @@ export class RoleGuard implements CanActivate {
     | Promise<boolean | UrlTree>
     | boolean
     | UrlTree {
-    // Checks the database to see if the user is an admin
     const userEmail = this.cookieService.get('sessionEmail');
-    return this.roleService.findUserRole(userEmail).pipe(
-      map((res) => {
-        if (res.role === 'admin') {
-          return true;
-        } else {
-          this.router.navigate(['/']);
-          return false;
-        }
-      })
-    );
+    const userRole = this.cookieService.get('sessionRole');
+
+    // Check if the user is logged in.
+    if (!userEmail) {
+      this.router.navigate(['/security/sign-in']);
+      return false;
+    }
+
+    // Check if the user is an admin.
+    if (userRole !== 'admin') {
+      return false;
+    }
+
+    return true;
   }
 }

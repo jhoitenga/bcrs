@@ -68,7 +68,7 @@ const routes: Routes = [
         path: 'admin',
         component: AdminComponent,
         title: 'BCRS: Admin',
-        canActivate: [AuthGuard],
+        canActivate: [RoleGuard],
       },
       {
         path: 'not-found',

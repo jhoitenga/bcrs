@@ -21,6 +21,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class NavComponent implements OnInit {
   cookieValue: string;
+  userRole: string;
   // Constructor for the component with injected services.
   constructor(
     private cookieService: CookieService,
@@ -28,6 +29,7 @@ export class NavComponent implements OnInit {
     private snackBar: MatSnackBar
   ) {
     this.cookieValue = this.cookieService.get('fullName');
+    this.userRole = this.cookieService.get('sessionRole');
   }
 
   // Function to display a snackbar.
@@ -45,6 +47,11 @@ export class NavComponent implements OnInit {
   // Function to check if a user is logged in.
   isLoggedIn(): boolean {
     return !!this.cookieService.get('sessionEmail');
+  }
+
+  // Function to check if a user is an admin.
+  isAdmin(): boolean {
+    return this.userRole === 'admin';
   }
 
   // Function to sign out the user.
