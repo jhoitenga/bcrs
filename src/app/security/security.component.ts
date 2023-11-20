@@ -1,6 +1,7 @@
 /**
  * Title: security.component.ts
  * Author: Professor Krasso
+ * Modified by: Michael Christman, Zahava Gopin & Jennifer Hoitenga
  * Date: 8/5/23
  */
 

@@ -15,7 +15,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { EmployeeDirectoryComponent } from './employee-directory/employee-directory.component';
 import { AuthGuard } from './auth.guard';
 import { RegisterComponent } from './security/register/register.component';
-import { ServiceComponent } from './service/service.component';
+import { ServiceComponent } from './service-request/service.component';
 import { RoleGuard } from './role.guard';
 import { ProfileComponent } from './profile/profile.component';
 import { AdminComponent } from './admin/admin.component';

@@ -1,6 +1,7 @@
 /**
  * Title: app.module.ts
  * Author: Professor Krasso
+ * Modified by: Michael Christman, Zahava Gopin & Jennifer Hoitenga
  * Date: 8/5/23
  */
 
@@ -18,7 +19,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { FaqComponent } from './faq/faq.component';
 import { EmployeeDirectoryComponent } from './employee-directory/employee-directory.component';
 import { RegisterComponent } from './security/register/register.component';
-import { ServiceComponent } from './service/service.component';
+import { ServiceComponent } from './service-request/service.component';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
