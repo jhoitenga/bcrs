@@ -131,6 +131,7 @@ a.btn-mod {
 
 .profileName:hover {
   background-color: white !important;
+  cursor: default;
 }
 
 .navbar .dropdown-menu {
