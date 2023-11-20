@@ -260,9 +260,6 @@ router.post("/users", async (req, res) => {
     // Hash the user's password for secure storage.
     let hashedPassword = bcrypt.hashSync(newUser.password, saltRounds);
 
-    // Define the default role for a new user.
-    let standardRole = { text: "standard" };
-
     // Construct the new user object for database insertion.
     const createNewUser = {
       firstName: newUser.firstName,
@@ -272,7 +269,7 @@ router.post("/users", async (req, res) => {
       email: newUser.email,
       password: hashedPassword,
       isDisabled: newUser.isDisabled,
-      role: standardRole,
+      role: { text: newUser.role },
     };
 
     // Create the new user in the database.
