@@ -17,7 +17,7 @@ import { FooterComponent } from './layouts/footer/footer.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { FaqComponent } from './faq/faq.component';
 import { EmployeeDirectoryComponent } from './employee-directory/employee-directory.component';
-import { RegisterComponent } from './register/register.component';
+import { RegisterComponent } from './security/register/register.component';
 import { ServiceComponent } from './service/service.component';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -26,6 +26,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { CookieService } from 'ngx-cookie-service';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { ProfileComponent } from './profile/profile.component';
+import { AdminComponent } from './admin/admin.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { ProfileComponent } from './profile/profile.component';
     RegisterComponent,
     ServiceComponent,
     ProfileComponent,
+    AdminComponent,
   ],
   imports: [
     BrowserModule,
