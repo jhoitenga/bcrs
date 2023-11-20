@@ -132,3 +132,10 @@ a.btn-mod {
 .profileName:hover {
   background-color: white !important;
 }
+
+.navbar .dropdown-menu {
+  position: absolute;
+  transform: translate3d(-10%, 0, 0);
+  right: 0;
+  left: auto;
+}
