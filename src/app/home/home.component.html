@@ -21,7 +21,7 @@
             exceptional service.
           </div>
           <!-- Sign In Button -->
-          <div>
+          <div *ngIf="!isLoggedIn()">
             <a
               routerLink="/security/sign-in"
               class="btn btn-mod btn-border btn-circle btn-large mb-5"
