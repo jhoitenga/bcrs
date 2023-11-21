@@ -28,6 +28,9 @@ import { CookieService } from 'ngx-cookie-service';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { ProfileComponent } from './profile/profile.component';
 import { AdminComponent } from './admin/admin.component';
+import { UserListComponent } from './admin/user-list/user-list.component';
+import { UserNewComponent } from './admin/user-new/user-new.component';
+import { UserViewComponent } from './admin/user-view/user-view.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +46,9 @@ import { AdminComponent } from './admin/admin.component';
     ServiceComponent,
     ProfileComponent,
     AdminComponent,
+    UserListComponent,
+    UserNewComponent,
+    UserViewComponent,
   ],
   imports: [
     BrowserModule,
