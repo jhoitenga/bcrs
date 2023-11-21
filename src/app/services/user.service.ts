@@ -49,6 +49,7 @@ export class UserService {
       address: user.address,
       email: user.email,
       password: user.password,
+      isDisabled: user.isDisabled,
       role: user.role?.text,
     });
   }

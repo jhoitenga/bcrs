@@ -17,5 +17,6 @@ export interface User {
   address: string;
   email: string;
   password?: string;
-  role?: Role; // From Role interface
+  isDisabled: boolean;
+  role: Role; // From Role interface
 }

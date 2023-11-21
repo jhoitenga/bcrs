@@ -11,6 +11,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserService } from '../../../services/user.service';
 import { User } from '../../../models/user.interface';
+import { Role } from '../../../models/role.interface';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Message } from 'primeng/api';
 
@@ -42,6 +43,8 @@ export class UserNewComponent implements OnInit {
   user: User;
   userId: string;
   errorMessages: Message[] = [];
+  isDisabled: boolean = false; // defaulting to enabled user
+  standardRole: Role = { text: 'standard' }; // defaulting to standard role
 
   constructor(
     private fb: FormBuilder,
@@ -63,6 +66,8 @@ export class UserNewComponent implements OnInit {
       address: this.form.controls['address'].value,
       email: this.form.controls['email'].value,
       password: this.form.controls['password'].value,
+      isDisabled: this.isDisabled,
+      role: this.standardRole,
     };
 
     this.userService.createUser(newUser).subscribe({
