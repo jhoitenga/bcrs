@@ -7,11 +7,12 @@
  * BCRS Starter Project: https://github.com/buwebdev/web-450/tree/master/starter-projects/bcrs
 -->
 
-<div class="container">
-  <h1 class="text-center">Create User Form</h1>
-  <h3 class="text-center">Fields marked with an asterisk (*) are required</h3>
+<div class="container py-5">
+  <h1 class="text-center">Create a New User</h1>
+  <h6 class="text-center">Fields marked with an asterisk (*) are required</h6>
 
   <form
+    class="formStyle mb-5"
     [formGroup]="form"
     (ngSubmit)="createUser()"
     (keydown.enter)="$event.preventDefault()"
@@ -128,7 +129,7 @@
           form.controls['email'].touched
         "
       >
-        Email is required.
+        Email address is required.
       </div>
       <div
         class="invalid-feedback"
@@ -137,7 +138,7 @@
           form.controls['email'].touched
         "
       >
-        Invalid email format.
+        Enter a valid email address.
       </div>
     </div>
 
@@ -160,7 +161,7 @@
           form.controls['password'].touched
         "
       >
-        Password is required.
+        The password is required.
       </div>
       <div
         class="invalid-feedback"
@@ -169,14 +170,18 @@
           form.controls['password'].touched
         "
       >
-        Password must be at least 8 characters, contain one letter, and one
-        number.
+        Password must be at least 8 characters, contain one uppercase letter and
+        one number.
       </div>
     </div>
 
     <!-- Submit and Cancel Buttons -->
-    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-      <button class="btn btn-primary" type="submit" [disabled]="form.invalid">
+    <div class="d-grid gap-2 d-md-flex justify-content-md-end mb-4">
+      <button
+        class="btn btn-mod btn-border btn-circle btn-large"
+        type="submit"
+        [disabled]="form.invalid"
+      >
         Create User
       </button>
       <button class="btn btn-secondary" type="button" (click)="cancel()">
