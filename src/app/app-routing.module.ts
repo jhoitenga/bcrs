@@ -19,6 +19,7 @@ import { ServiceComponent } from './service-request/service.component';
 import { RoleGuard } from './role.guard';
 import { ProfileComponent } from './profile/profile.component';
 import { AdminComponent } from './admin/admin.component';
+import { UserNewComponent } from './admin/users/user-new/user-new.component';
 
 // routes array with a path, component, and title for each route in the application (e.g. home, about, contact, etc.)
 const routes: Routes = [
@@ -68,6 +69,12 @@ const routes: Routes = [
         path: 'admin',
         component: AdminComponent,
         title: 'BCRS: Admin',
+        canActivate: [RoleGuard],
+      },
+      {
+        path: 'user-new',
+        component: UserNewComponent,
+        title: 'BCRS: UserNew',
         canActivate: [RoleGuard],
       },
       {

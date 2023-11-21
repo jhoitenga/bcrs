@@ -20,17 +20,19 @@ import { FaqComponent } from './faq/faq.component';
 import { EmployeeDirectoryComponent } from './employee-directory/employee-directory.component';
 import { RegisterComponent } from './security/register/register.component';
 import { ServiceComponent } from './service-request/service.component';
+import { ProfileComponent } from './profile/profile.component';
+import { AdminComponent } from './admin/admin.component';
+import { UserListComponent } from './admin/users/user-list/user-list.component';
+import { UserNewComponent } from './admin/users/user-new/user-new.component';
+import { UserViewComponent } from './admin/users/user-view/user-view.component';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { CookieService } from 'ngx-cookie-service';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-import { ProfileComponent } from './profile/profile.component';
-import { AdminComponent } from './admin/admin.component';
-import { UserListComponent } from './admin/user-list/user-list.component';
-import { UserNewComponent } from './admin/user-new/user-new.component';
-import { UserViewComponent } from './admin/user-view/user-view.component';
+import { MessageModule } from 'primeng/message';
+import { MessagesModule } from 'primeng/messages';
 
 @NgModule({
   declarations: [
@@ -47,8 +49,8 @@ import { UserViewComponent } from './admin/user-view/user-view.component';
     ProfileComponent,
     AdminComponent,
     UserListComponent,
-    UserNewComponent,
     UserViewComponent,
+    UserNewComponent,
   ],
   imports: [
     BrowserModule,
@@ -58,6 +60,8 @@ import { UserViewComponent } from './admin/user-view/user-view.component';
     FormsModule,
     HttpClientModule,
     MatSnackBarModule,
+    MessageModule,
+    MessagesModule,
   ],
   providers: [CookieService],
   bootstrap: [AppComponent],

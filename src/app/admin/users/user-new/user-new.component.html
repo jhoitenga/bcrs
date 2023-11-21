@@ -1,0 +1,178 @@
+<div class="container">
+  <h1 class="text-center">Create User Form</h1>
+  <h3 class="text-center">Fields marked with an asterisk (*) are required</h3>
+
+  <form
+    [formGroup]="form"
+    (ngSubmit)="createUser()"
+    (keydown.enter)="$event.preventDefault()"
+  >
+    <!-- First Name -->
+    <div class="mb-3">
+      <label for="firstName" class="form-label">First Name *</label>
+      <input
+        type="text"
+        class="form-control"
+        id="firstName"
+        formControlName="firstName"
+        [class.is-invalid]="
+          form.controls['firstName'].invalid &&
+          form.controls['firstName'].touched
+        "
+      />
+      <div
+        class="invalid-feedback"
+        *ngIf="
+          form.controls['firstName'].hasError('required') &&
+          form.controls['firstName'].touched
+        "
+      >
+        First name is required.
+      </div>
+    </div>
+
+    <!-- Last Name -->
+    <div class="mb-3">
+      <label for="lastName" class="form-label">Last Name *</label>
+      <input
+        type="text"
+        class="form-control"
+        id="lastName"
+        formControlName="lastName"
+        [class.is-invalid]="
+          form.controls['lastName'].invalid && form.controls['lastName'].touched
+        "
+      />
+      <div
+        class="invalid-feedback"
+        *ngIf="
+          form.controls['lastName'].hasError('required') &&
+          form.controls['lastName'].touched
+        "
+      >
+        Last name is required.
+      </div>
+    </div>
+
+    <!-- Phone Number -->
+    <div class="mb-3">
+      <label for="phoneNumber" class="form-label">Phone Number *</label>
+      <input
+        type="text"
+        class="form-control"
+        id="phoneNumber"
+        formControlName="phoneNumber"
+        [class.is-invalid]="
+          form.controls['phoneNumber'].invalid &&
+          form.controls['phoneNumber'].touched
+        "
+      />
+      <div
+        class="invalid-feedback"
+        *ngIf="
+          form.controls['phoneNumber'].hasError('required') &&
+          form.controls['phoneNumber'].touched
+        "
+      >
+        Phone number is required.
+      </div>
+    </div>
+
+    <!-- Address -->
+    <div class="mb-3">
+      <label for="address" class="form-label">Address *</label>
+      <textarea
+        class="form-control"
+        id="address"
+        formControlName="address"
+        [class.is-invalid]="
+          form.controls['address'].invalid && form.controls['address'].touched
+        "
+      ></textarea>
+      <div
+        class="invalid-feedback"
+        *ngIf="
+          form.controls['address'].hasError('required') &&
+          form.controls['address'].touched
+        "
+      >
+        Address is required.
+      </div>
+    </div>
+
+    <!-- Email Address -->
+    <div class="mb-3">
+      <label for="email" class="form-label">Email Address *</label>
+      <input
+        type="email"
+        class="form-control"
+        id="email"
+        formControlName="email"
+        [class.is-invalid]="
+          form.controls['email'].invalid && form.controls['email'].touched
+        "
+      />
+      <div
+        class="invalid-feedback"
+        *ngIf="
+          form.controls['email'].hasError('required') &&
+          form.controls['email'].touched
+        "
+      >
+        Email is required.
+      </div>
+      <div
+        class="invalid-feedback"
+        *ngIf="
+          form.controls['email'].hasError('email') &&
+          form.controls['email'].touched
+        "
+      >
+        Invalid email format.
+      </div>
+    </div>
+
+    <!-- Password -->
+    <div class="mb-3">
+      <label for="password" class="form-label">Password *</label>
+      <input
+        type="password"
+        class="form-control"
+        id="password"
+        formControlName="password"
+        [class.is-invalid]="
+          form.controls['password'].invalid && form.controls['password'].touched
+        "
+      />
+      <div
+        class="invalid-feedback"
+        *ngIf="
+          form.controls['password'].hasError('required') &&
+          form.controls['password'].touched
+        "
+      >
+        Password is required.
+      </div>
+      <div
+        class="invalid-feedback"
+        *ngIf="
+          form.controls['password'].hasError('pattern') &&
+          form.controls['password'].touched
+        "
+      >
+        Password must be at least 8 characters, contain one letter, and one
+        number.
+      </div>
+    </div>
+
+    <!-- Submit and Cancel Buttons -->
+    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+      <button class="btn btn-primary" type="submit" [disabled]="form.invalid">
+        Create User
+      </button>
+      <button class="btn btn-secondary" type="button" (click)="cancel()">
+        Cancel
+      </button>
+    </div>
+  </form>
+</div>
