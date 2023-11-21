@@ -1,1 +1,148 @@
-<p>user-view works!</p>
+<!--
+ * Title: user-view.component.html
+ * Modified By: Michael Christman, Zahava Gopin & Jennifer Hoitenga
+ * Author: Professor Krasso
+ * Date: 11/20/2023
+ * Sources:
+ * BCRS Starter Project: https://github.com/buwebdev/web-450/tree/master/starter-projects/bcrs
+-->
+
+<div class="container py-5">
+  <h1 class="text-center">User Update</h1>
+  <h6 class="text-center">Fields marked with an asterisk (*) are required</h6>
+
+  <p-messages [(value)]="errorMessages" [enableService]="false"></p-messages>
+
+  <!-- User update form -->
+  <form
+    class="formStyle mb-5"
+    [formGroup]="form"
+    (ngSubmit)="saveUser(); form.reset()"
+    (keydown.enter)="$event.preventDefault()"
+  >
+    <!-- First Name Field -->
+    <div class="form-group">
+      <label class="input-label">First Name</label>
+      <input type="text" formControlName="firstName" require />
+
+      <!-- Display validation error message for required field -->
+      <div
+        class="invalid-feedback"
+        *ngIf="
+          form.controls['firstName'].hasError('required') &&
+          form.controls['firstName'].touched
+        "
+      >
+        First name is required.
+      </div>
+    </div>
+
+    <!-- Last Name Field -->
+    <div class="form-group">
+      <label class="input-label">Last name</label>
+      <input type="text" formControlName="lastName" required />
+
+      <!-- Display validation error message for required field -->
+      <div
+        class="invalid-feedback"
+        *ngIf="
+          form.controls['lastName'].hasError('required') &&
+          form.controls['lastName'].touched
+        "
+      >
+        Last name is required.
+      </div>
+    </div>
+
+    <!-- Phone Number Field -->
+    <div class="form-group">
+      <label class="input-label">Phone number</label>
+      <input type="text" formControlName="phoneNumber" required />
+
+      <!-- Display validation error message for required field -->
+      <div
+        class="invalid-feedback"
+        *ngIf="
+          form.controls['phoneNumber'].hasError('required') &&
+          form.controls['phoneNumber'].touched
+        "
+      >
+        Phone number is required.
+      </div>
+    </div>
+
+    <!-- Address Field -->
+    <div class="form-group">
+      <label class="input-label">Address</label>
+      <textarea type="text" formControlName="address" required></textarea>
+
+      <div
+        class="invalid-feedback"
+        *ngIf="
+          form.controls['address'].hasError('required') &&
+          form.controls['address'].touched
+        "
+      >
+        Address is required.
+      </div>
+    </div>
+
+    <!-- Email Address Field -->
+    <div class="form-group">
+      <label class="input-label">Email address</label>
+      <input type="text" formControlName="email" required />
+
+      <!-- Display validation error message for required field -->
+      <div
+        class="invalid-feedback"
+        *ngIf="
+          form.controls['email'].hasError('required') &&
+          form.controls['email'].touched
+        "
+      >
+        Email address is required.
+      </div>
+      <!-- Display validation error message for invalid email format -->
+      <div
+        class="invalid-feedback"
+        *ngIf="
+          form.controls['email'].hasError('email') &&
+          form.controls['email'].touched
+        "
+      >
+        Enter a valid email address.
+      </div>
+    </div>
+
+    <!-- Role Selection Field -->
+    <div class="form-group">
+      <label class="input-label">Role</label>
+      <select formControlName="role" required>
+        <option value="standard">Standard</option>
+        <option value="admin">Admin</option>
+      </select>
+
+      <!-- Display validation error message for required field -->
+      <div
+        class="invalid-feedback"
+        *ngIf="
+          form.controls['role'].hasError('required') &&
+          form.controls['role'].touched
+        "
+      >
+        Role is required
+      </div>
+    </div>
+
+    <!-- Form Submission Buttons -->
+    <div class="buttons reverse split">
+      <button
+        class="btn btn-mod btn-border btn-circle btn-large"
+        [disabled]="!form.valid"
+      >
+        Submit
+      </button>
+      <button class="btn btn-secondary" (click)="cancel()">Cancel</button>
+    </div>
+  </form>
+</div>

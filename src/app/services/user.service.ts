@@ -63,6 +63,7 @@ export class UserService {
       phoneNumber: user.phoneNumber,
       address: user.address,
       email: user.email,
+      isDisabled: user.isDisabled,
       role: user.role?.text,
     });
   }

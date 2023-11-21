@@ -20,6 +20,8 @@ import { RoleGuard } from './role.guard';
 import { ProfileComponent } from './profile/profile.component';
 import { AdminComponent } from './admin/admin.component';
 import { UserNewComponent } from './admin/users/user-new/user-new.component';
+import { UserListComponent } from './admin/users/user-list/user-list.component';
+import { UserViewComponent } from './admin/users/user-view/user-view.component';
 
 // routes array with a path, component, and title for each route in the application (e.g. home, about, contact, etc.)
 const routes: Routes = [
@@ -74,7 +76,13 @@ const routes: Routes = [
       {
         path: 'user-new',
         component: UserNewComponent,
-        title: 'BCRS: UserNew',
+        title: 'BCRS: New User',
+        canActivate: [RoleGuard],
+      },
+      {
+        path: 'users/user-view/:userId',
+        component: UserViewComponent,
+        title: 'BCRS: User Update',
         canActivate: [RoleGuard],
       },
       {
