@@ -278,9 +278,10 @@ router.post("/users", async (req, res) => {
     // Respond with a 201 status code indicating successful creation.
     res
       .status(201)
-      .send(
-        user.firstName + " " + user.lastName + " was created successfully!"
-      );
+      .json({
+        message:
+          user.firstName + " " + user.lastName + " was created successfully!",
+      });
   } catch (err) {
     console.log(err);
 
