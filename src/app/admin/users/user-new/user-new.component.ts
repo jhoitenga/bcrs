@@ -1,3 +1,12 @@
+/**
+ * Title: user-new.component.ts
+ * Modified By: Michael Christman, Zahava Gopin & Jennifer Hoitenga
+ * Author: Professor Krasso
+ * Date: 11/20/2023
+ * Sources:
+ * BCRS Starter Project: https://github.com/buwebdev/web-450/tree/master/starter-projects/bcrs
+ */
+
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserService } from '../../../services/user.service';
@@ -11,7 +20,13 @@ import { Message } from 'primeng/api';
   styleUrls: ['./user-new.component.css'],
 })
 export class UserNewComponent implements OnInit {
+  // Define a FormGroup for the user registration form
   form: FormGroup = this.fb.group({
+    firstName: [null, Validators.compose([Validators.required])],
+    lastName: [null, Validators.compose([Validators.required])],
+    phoneNumber: [null, Validators.compose([Validators.required])],
+    address: [null, Validators.compose([Validators.required])],
+    email: [null, Validators.compose([Validators.required, Validators.email])],
     password: [
       null,
       Validators.compose([
@@ -21,14 +36,9 @@ export class UserNewComponent implements OnInit {
         ),
       ]),
     ],
-    firstName: [null, Validators.compose([Validators.required])],
-    lastName: [null, Validators.compose([Validators.required])],
-    phoneNumber: [null, Validators.compose([Validators.required])],
-    address: [null, Validators.compose([Validators.required])],
-    email: [null, Validators.compose([Validators.required, Validators.email])],
   });
 
-  // variables
+  // Initialize user, userId, and errorMessages variables
   user: User;
   userId: string;
   errorMessages: Message[] = [];
@@ -44,7 +54,7 @@ export class UserNewComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  // Create User function
+  // Function to create a new user
   createUser(): void {
     const newUser: User = {
       firstName: this.form.controls['firstName'].value,
@@ -57,7 +67,8 @@ export class UserNewComponent implements OnInit {
 
     this.userService.createUser(newUser).subscribe({
       next: (res) => {
-        this.router.navigate(['user-new']);
+        // Navigate back to user-new route upon successful user creation
+        this.router.navigate(['/user-new']);
       },
       error: (err) => {
         this.errorMessages = [
@@ -71,8 +82,8 @@ export class UserNewComponent implements OnInit {
     });
   }
 
-  //cancel function
+  // Function to cancel the user creation and navigate back to the admin page
   cancel(): void {
-    this.router.navigate(['admin']);
+    this.router.navigate(['/admin']);
   }
 }
