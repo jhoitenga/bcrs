@@ -22,6 +22,7 @@ import { Router } from '@angular/router';
 export class UserListComponent implements OnInit {
   users: User[];
   errorMessage: string = '';
+  successMessage: string = '';
 
   activeColor: string = 'green';
   inactiveColor: string = 'red';
@@ -40,10 +41,10 @@ export class UserListComponent implements OnInit {
     this.userService.findAllUsers().subscribe({
       next: (users: any) => {
         this.users = users;
-        console.log('User List:', this.users);
+        //console.log('User List:', this.users);
       },
       error: (err) => {
-        console.log(err);
+        //console.log(err);
         this.errorMessage = 'Failed to load user data. Please try again later.';
       },
       complete: () => {},
@@ -53,16 +54,32 @@ export class UserListComponent implements OnInit {
   ngOnInit(): void {}
 
   delete(userId: string) {
-    console.log('Delete method called with ID:', userId);
+    if (
+      !confirm(
+        'Are you sure you want to deactivate user record ' + userId + '?'
+      )
+    ) {
+      return;
+    }
+    //console.log('Delete method called with ID:', userId);
     this.userService.deleteUser(userId).subscribe({
       next: (response) => {
         if (response.status === 204) {
-          console.log('User deleted successfully');
+          //console.log('User deleted successfully');
           this.users = this.users.filter((user) => user._id != userId);
+          this.successMessage = 'User status has been updated successfully.';
+          setTimeout(() => {
+            const currentUrl = this.router.url;
+            this.router
+              .navigateByUrl('/', { skipLocationChange: true })
+              .then(() => {
+                this.router.navigate([currentUrl]);
+              });
+          }, 3000); // delay for 3 seconds
         }
       },
       error: (err) => {
-        console.log(err);
+        //console.log(err);
         this.errorMessage =
           'Failed to delete user data. Please try again later.';
       },

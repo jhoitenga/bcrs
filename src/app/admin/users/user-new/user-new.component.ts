@@ -36,6 +36,8 @@ export class UserNewComponent implements OnInit {
         ),
       ]),
     ],
+    role: [null, Validators.compose([Validators.required])],
+    isDisabled: [null, Validators.compose([Validators.required])],
   });
 
   // Initialize user, userId, and errorMessages variables
@@ -44,6 +46,7 @@ export class UserNewComponent implements OnInit {
   isDisabled: boolean = false; // defaulting to enabled user
   standardRole: Role = { text: 'standard' }; // defaulting to standard role
   errorMessage: string = '';
+  successMessage: string = '';
 
   constructor(
     private fb: FormBuilder,
@@ -65,14 +68,18 @@ export class UserNewComponent implements OnInit {
       address: this.form.controls['address'].value,
       email: this.form.controls['email'].value,
       password: this.form.controls['password'].value,
-      isDisabled: this.isDisabled,
-      role: this.standardRole,
+      isDisabled: this.form.controls['isDisabled'].value === 'true',
+      role: { text: this.form.controls['role'].value },
     };
 
     this.userService.createUser(newUser).subscribe({
       next: (res) => {
-        // Navigate back to user-new route upon successful user creation
-        this.router.navigate(['/user-list']);
+        // Redirect to the user-list page after a successful update
+        this.successMessage =
+          'User created successfully. You will now be routed back to the user management page.';
+        setTimeout(() => {
+          this.router.navigate(['/user-list']);
+        }, 3000);
       },
       error: (err) => {
         console.log('Error object:', err);

@@ -25,6 +25,7 @@ export class UserViewComponent implements OnInit {
   userId: string;
   roles: Role[];
   errorMessage: string = '';
+  successMessage: string = '';
 
   form: FormGroup = this.fb.group({
     firstName: [null, Validators.compose([Validators.required])],
@@ -91,17 +92,18 @@ export class UserViewComponent implements OnInit {
     // Update the user data using the userService
     this.userService.updateUser(this.userId, updatedUser).subscribe({
       next: (res) => {
-        console.log('Update Success Response:', res);
+        //console.log('Update Success Response:', res);
         // Redirect to the user-list page after a successful update
-        this.router.navigate(['/user-list']);
+        this.successMessage =
+          'User updated successfully. You will now be routed back to the user management page.';
+        setTimeout(() => {
+          this.router.navigate(['/user-list']);
+        }, 3000);
       },
       error: (err) => {
-        console.log(
-          `Node.js server error; httpCode: ${err.httpCode}; message:${err.message}`
-        );
+        //console.log(`Node.js server error; httpCode: ${err.httpCode}; message:${err.message}`);
         this.errorMessage = 'Failed to update user. Please try again later.';
-        console.log(err);
-        console.error('Update failed:', err);
+        //console.error('Update failed:', err);
       },
     });
   }

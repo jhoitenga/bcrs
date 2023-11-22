@@ -7,12 +7,16 @@
  * BCRS Starter Project: https://github.com/buwebdev/web-450/tree/master/starter-projects/bcrs
 -->
 
-<!-- Display error message -->
-<div *ngIf="errorMessage" class="alert alert-danger">
-  {{ errorMessage }}
-</div>
-
 <div class="container">
+  <!-- Display error message -->
+  <div *ngIf="errorMessage" class="alert alert-danger">
+    {{ errorMessage }}
+  </div>
+
+  <!-- Success Message -->
+  <div *ngIf="successMessage" class="alert alert-success">
+    {{ successMessage }}
+  </div>
   <div class="table-responsive">
     <div class="table-wrapper">
       <div class="table-title">
