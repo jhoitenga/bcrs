@@ -80,9 +80,15 @@ const routes: Routes = [
         canActivate: [RoleGuard],
       },
       {
-        path: 'users/user-view/:userId',
+        path: 'user-view/:userId',
         component: UserViewComponent,
         title: 'BCRS: User Update',
+        canActivate: [RoleGuard],
+      },
+      {
+        path: 'user-list',
+        component: UserListComponent,
+        title: 'BCRS: User Configuration',
         canActivate: [RoleGuard],
       },
       {
