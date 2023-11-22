@@ -25,7 +25,7 @@ export class UserViewComponent implements OnInit {
   user: User;
   userId: string;
   roles: Role[];
-  errorMessages: Message[] = [];
+  errorMessage: string = '';
 
   form: FormGroup = this.fb.group({
     firstName: [null, Validators.compose([Validators.required])],
@@ -47,7 +47,6 @@ export class UserViewComponent implements OnInit {
     // Get the userId from route parameters
     this.userId = this.route.snapshot.paramMap.get('userId') ?? '';
     this.user = {} as User;
-    this.errorMessages = [];
     this.roles = [];
 
     // Fetch user data by user ID from the userService
@@ -59,7 +58,8 @@ export class UserViewComponent implements OnInit {
         console.log(this.user);
       },
       error: (err) => {
-        console.log(err);
+        console.error('Error: ', err);
+        this.errorMessage = 'Failed to load user data. Please try again later.';
       },
       complete: () => {
         // Set form field values based on user data after fetching is complete
@@ -98,12 +98,10 @@ export class UserViewComponent implements OnInit {
         this.router.navigate(['/user-list']);
       },
       error: (err) => {
-        this.errorMessages = [
-          { severity: 'error', summary: 'Error', detail: err.message },
-        ];
         console.log(
           `Node.js server error; httpCode: ${err.httpCode}; message:${err.message}`
         );
+        this.errorMessage = 'Failed to update user. Please try again later.';
         console.log(err);
       },
     });

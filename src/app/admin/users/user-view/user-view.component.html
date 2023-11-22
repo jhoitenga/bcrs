@@ -8,10 +8,13 @@
 -->
 
 <div class="container py-5">
-  <h1 class="text-center">User Update</h1>
-  <h6 class="text-center">Fields marked with an asterisk (*) are required</h6>
+  <h2 class="text-center">User Update</h2>
+  <h6 class="text-center">* All fields are required</h6>
 
-  <p-messages [(value)]="errorMessages" [enableService]="false"></p-messages>
+  <!-- Display error message -->
+  <div *ngIf="errorMessage" class="alert alert-danger">
+    {{ errorMessage }}
+  </div>
 
   <!-- User update form -->
   <form
@@ -21,9 +24,18 @@
     (keydown.enter)="$event.preventDefault()"
   >
     <!-- First Name Field -->
-    <div class="form-group">
-      <label class="input-label">First Name</label>
-      <input type="text" formControlName="firstName" require />
+    <div class="mb-3">
+      <label for="firstName" class="form-label">First Name *</label>
+      <input
+        type="text"
+        class="form-control"
+        id="firstName"
+        formControlName="firstName"
+        [class.is-invalid]="
+          form.controls['firstName'].invalid &&
+          form.controls['firstName'].touched
+        "
+      />
 
       <!-- Display validation error message for required field -->
       <div
@@ -38,9 +50,17 @@
     </div>
 
     <!-- Last Name Field -->
-    <div class="form-group">
-      <label class="input-label">Last name</label>
-      <input type="text" formControlName="lastName" required />
+    <div class="mb-3">
+      <label for="lastName" class="form-label">Last Name *</label>
+      <input
+        type="text"
+        class="form-control"
+        id="lastName"
+        formControlName="lastName"
+        [class.is-invalid]="
+          form.controls['lastName'].invalid && form.controls['lastName'].touched
+        "
+      />
 
       <!-- Display validation error message for required field -->
       <div
@@ -55,9 +75,18 @@
     </div>
 
     <!-- Phone Number Field -->
-    <div class="form-group">
-      <label class="input-label">Phone number</label>
-      <input type="text" formControlName="phoneNumber" required />
+    <div class="mb-3">
+      <label for="phoneNumber" class="form-label">Phone Number *</label>
+      <input
+        type="text"
+        class="form-control"
+        id="phoneNumber"
+        formControlName="phoneNumber"
+        [class.is-invalid]="
+          form.controls['phoneNumber'].invalid &&
+          form.controls['phoneNumber'].touched
+        "
+      />
 
       <!-- Display validation error message for required field -->
       <div
@@ -72,9 +101,16 @@
     </div>
 
     <!-- Address Field -->
-    <div class="form-group">
-      <label class="input-label">Address</label>
-      <textarea type="text" formControlName="address" required></textarea>
+    <div class="mb-3">
+      <label for="address" class="form-label">Address *</label>
+      <textarea
+        class="form-control"
+        id="address"
+        formControlName="address"
+        [class.is-invalid]="
+          form.controls['address'].invalid && form.controls['address'].touched
+        "
+      ></textarea>
 
       <div
         class="invalid-feedback"
@@ -88,9 +124,17 @@
     </div>
 
     <!-- Email Address Field -->
-    <div class="form-group">
-      <label class="input-label">Email address</label>
-      <input type="text" formControlName="email" required />
+    <div class="mb-3">
+      <label for="email" class="form-label">Email Address *</label>
+      <input
+        type="email"
+        class="form-control"
+        id="email"
+        formControlName="email"
+        [class.is-invalid]="
+          form.controls['email'].invalid && form.controls['email'].touched
+        "
+      />
 
       <!-- Display validation error message for required field -->
       <div
@@ -115,45 +159,53 @@
     </div>
 
     <!-- Role Selection Field -->
-    <div class="form-group">
-      <label class="input-label">Role</label>
-      <select formControlName="role" required>
-        <option value="standard">Standard</option>
-        <option value="admin">Admin</option>
-      </select>
+    <div class="d-md-flex gap-3">
+      <div class="mb-3">
+        <label for="role" class="form-label">Role *</label>
+        <select class="form-control" id="role" formControlName="role" required>
+          <option value="standard">Standard</option>
+          <option value="admin">Admin</option>
+        </select>
 
-      <!-- Display validation error message for required field -->
-      <div
-        class="invalid-feedback"
-        *ngIf="
-          form.controls['role'].hasError('required') &&
-          form.controls['role'].touched
-        "
-      >
-        Role is required
+        <!-- Display validation error message for required field -->
+        <div
+          class="invalid-feedback"
+          *ngIf="
+            form.controls['role'].hasError('required') &&
+            form.controls['role'].touched
+          "
+        >
+          Role is required.
+        </div>
       </div>
-    </div>
 
-    <div class="form-group">
-      <label class="input-label">Status</label>
-      <select formControlName="isDisabled" required>
-        <option value="false">Active</option>
-        <option value="true">Inactive</option>
-      </select>
-      <!-- Display validation error message for required field -->
-      <div
-        class="invalid-feedback"
-        *ngIf="
-          form.controls['isDisabled'].hasError('required') &&
-          form.controls['isDisabled'].touched
-        "
-      >
-        Status is required
+      <div class="mb-3">
+        <label for="status" class="form-label">Status *</label>
+        <select
+          class="form-control"
+          id="isDisabled"
+          formControlName="isDisabled"
+          required
+        >
+          <option value="false">Active</option>
+          <option value="true">Inactive</option>
+        </select>
+
+        <!-- Display validation error message for required field -->
+        <div
+          class="invalid-feedback"
+          *ngIf="
+            form.controls['isDisabled'].hasError('required') &&
+            form.controls['isDisabled'].touched
+          "
+        >
+          Status is required.
+        </div>
       </div>
     </div>
 
     <!-- Form Submission Buttons -->
-    <div class="buttons reverse split">
+    <div class="d-grid gap-2 d-md-flex justify-content-md-end mb-4">
       <button
         type="submit"
         class="btn btn-mod btn-border btn-circle btn-large"

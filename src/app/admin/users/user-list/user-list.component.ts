@@ -1,11 +1,18 @@
+/*
+ * Title: user-list.component.ts
+ * Modified By: Michael Christman, Zahava Gopin & Jennifer Hoitenga
+ * Author: Professor Krasso
+ * Date: 11/22/2023
+ * Sources:
+ * BCRS Starter Project: https://github.com/buwebdev/web-450/tree/master/starter-projects/bcrs
+ */
+
 import { Component, OnInit } from '@angular/core';
 import { User } from '../../../models/user.interface';
 import { UserService } from '../../../services/user.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Message } from 'primeng/api';
 import { CookieService } from 'ngx-cookie-service';
 import { Router } from '@angular/router';
-import { MatPaginatorModule } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-user-list',
@@ -14,7 +21,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 })
 export class UserListComponent implements OnInit {
   users: User[];
-  errorMessages: Message[];
+  errorMessage: string = '';
 
   activeColor: string = 'green';
   inactiveColor: string = 'red';
@@ -29,7 +36,6 @@ export class UserListComponent implements OnInit {
     private router: Router
   ) {
     this.users = [];
-    this.errorMessages = [];
 
     this.userService.findAllUsers().subscribe({
       next: (users: any) => {
@@ -38,6 +44,7 @@ export class UserListComponent implements OnInit {
       },
       error: (err) => {
         console.log(err);
+        this.errorMessage = 'Failed to load user data. Please try again later.';
       },
       complete: () => {},
     });
@@ -56,6 +63,8 @@ export class UserListComponent implements OnInit {
       },
       error: (err) => {
         console.log(err);
+        this.errorMessage =
+          'Failed to delete user data. Please try again later.';
       },
     });
   }
