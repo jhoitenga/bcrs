@@ -363,6 +363,7 @@ router.put("/users/:id", async (req, res) => {
           address: req.body.address,
           email: req.body.email,
           "role.text": req.body.role,
+          isDisabled: req.body.isDisabled,
           dateModified: new Date(),
         });
 
