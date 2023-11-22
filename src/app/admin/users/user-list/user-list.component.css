@@ -9,12 +9,12 @@
 
 .btn-mod.btn-large {
   height: auto;
-  padding: 13px 52px;
-  font-size: 15px;
+  padding: 10px 20px;
+  font-size: 14px !important;
 }
 
 .btn-mod.btn-border {
-  color: #2a623d !important;
+  color: white !important;
   border: 2px solid #2a623d !important;
   border-radius: 8px !important;
 }
@@ -68,7 +68,7 @@ a.btn-mod {
 
 .table-title {
   padding-bottom: 15px;
-  background: #5d5d5d;
+  background: black;
   color: #fff;
   padding: 14px 20px;
   margin: -20px -25px 10px;
@@ -83,7 +83,6 @@ a.btn-mod {
 .table-title .btn {
   float: right;
   font-size: 13px;
-  background: #fff;
   min-width: 50px;
   margin-left: 10px;
 }

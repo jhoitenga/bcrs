@@ -68,12 +68,6 @@ const routes: Routes = [
         canActivate: [AuthGuard],
       },
       {
-        path: 'admin',
-        component: AdminComponent,
-        title: 'BCRS: Admin',
-        canActivate: [RoleGuard],
-      },
-      {
         path: 'user-new',
         component: UserNewComponent,
         title: 'BCRS: New User',
