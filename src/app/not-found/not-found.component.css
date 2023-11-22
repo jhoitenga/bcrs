@@ -9,54 +9,37 @@
 */
 
 
-  body {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            background-color: #f4f4f4;
-        }
+/*
+ * Title: not-found.component.scss
+ * Author: Jennifer Hoitenga
+ * Date: 11/6/2023
+ * Sources:
+ * Nodebucket Starter Project: https://github.com/buwebdev/web-450/tree/master/starter-projects/nodebucket
+ * Previous repositories from my personal GitHub: https://github.com/jhoitenga?tab=repositories
+ * Bootstrap: https://getbootstrap.com/docs/5.3/getting-started/introduction/
+*/
 
-        .error-container {
-            text-align: center;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            background-color: #fff;
-        }
+.info {
+  font-weight: 500;
+  color: #1a472a;
+}
 
-
-        .error-image {
-            margin-top: 20px;
-            max-width: 100%;
-            height: auto;
-        }
-
-        .additional-text {
-            margin-top: 20px;
-            color: #555;
-        }
-
-.text-hero-regular {
-  padding-top: 10px;
-  padding-bottom: 30px;
-  color: #878787;
-  font-size: 1.5rem;
-  font-weight: 600;
+.green {
+  color: #1a472a;
+  line-height: 1.5;
+  font-size: 1.25rem;
 }
 
 .btn-mod.btn-large {
   height: auto;
   padding: 13px 52px;
-  font-size: 18px;
+  font-size: 15px;
 }
 
 .btn-mod.btn-border {
   color: white;
-  border: 2px solid #2a623d;
-  background: #2a623d;
+  border: 2px solid #1a472a;
+  background: #1a472a;
   border-radius: 8px;
 }
 
@@ -67,7 +50,7 @@ a.btn-mod {
   box-sizing: border-box;
   padding: 4px 13px;
   color: #fff;
-  background: #2a623d;
+  background: #1a472a;
   border: 2px solid transparent;
   font-size: 11px;
   font-weight: 400;
@@ -89,7 +72,7 @@ a.btn-mod {
 
 .btn-mod.btn-border:hover,
 .btn-mod.btn-border:focus {
-  color: white;
-  border-color: #2a623d;
-  background: #5d5d5d;
+  color: #1a472a;
+  border-color: #1a472a;
+  background: #bebebe;
 }
