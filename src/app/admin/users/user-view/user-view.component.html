@@ -134,9 +134,28 @@
       </div>
     </div>
 
+    <div class="form-group">
+      <label class="input-label">Status</label>
+      <select formControlName="isDisabled" required>
+        <option value="false">Active</option>
+        <option value="true">Inactive</option>
+      </select>
+      <!-- Display validation error message for required field -->
+      <div
+        class="invalid-feedback"
+        *ngIf="
+          form.controls['isDisabled'].hasError('required') &&
+          form.controls['isDisabled'].touched
+        "
+      >
+        Status is required
+      </div>
+    </div>
+
     <!-- Form Submission Buttons -->
     <div class="buttons reverse split">
       <button
+        type="submit"
         class="btn btn-mod btn-border btn-circle btn-large"
         [disabled]="!form.valid"
       >

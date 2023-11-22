@@ -63,6 +63,7 @@ const updateUserSchema = {
     address: { type: "string" },
     email: { type: "string" },
     role: { type: "string" },
+    isDisabled: { type: "boolean" },
   },
   required: [
     "firstName",
@@ -276,12 +277,10 @@ router.post("/users", async (req, res) => {
     const user = await User.create(createNewUser);
 
     // Respond with a 201 status code indicating successful creation.
-    res
-      .status(201)
-      .json({
-        message:
-          user.firstName + " " + user.lastName + " was created successfully!",
-      });
+    res.status(201).json({
+      message:
+        user.firstName + " " + user.lastName + " was created successfully!",
+    });
   } catch (err) {
     console.log(err);
 

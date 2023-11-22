@@ -34,6 +34,7 @@ export class UserViewComponent implements OnInit {
     address: [null, Validators.compose([Validators.required])],
     email: [null, Validators.compose([Validators.required, Validators.email])],
     role: [null, Validators.compose([Validators.required])],
+    isDisabled: [null, Validators.compose([Validators.required])],
   });
 
   constructor(
@@ -51,9 +52,11 @@ export class UserViewComponent implements OnInit {
 
     // Fetch user data by user ID from the userService
     this.userService.findUserById(this.userId).subscribe({
-      next: (res) => {
+      next: (user: any) => {
+        console.log('Initial User Data:', user);
         // Assign the user data received from the service to the component's user property
-        this.user = res.data;
+        this.user = user;
+        console.log(this.user);
       },
       error: (err) => {
         console.log(err);
@@ -66,6 +69,7 @@ export class UserViewComponent implements OnInit {
         this.form.controls['address'].setValue(this.user.address);
         this.form.controls['email'].setValue(this.user.email);
         this.form.controls['role'].setValue(this.user.role?.text);
+        this.form.controls['isDisabled'].setValue(this.user.isDisabled);
       },
     });
   }
@@ -74,21 +78,24 @@ export class UserViewComponent implements OnInit {
 
   saveUser(): void {
     // Create an updatedUser object with values from the form fields
+    console.log('Form Values Before Submit:', this.form.value);
     const updatedUser = {
       firstName: this.form.controls['firstName'].value,
       lastName: this.form.controls['lastName'].value,
       phoneNumber: this.form.controls['phoneNumber'].value,
       address: this.form.controls['address'].value,
       email: this.form.controls['email'].value,
-      isDisabled: this.form.controls['isDisabled'].value,
+      isDisabled: this.form.controls['isDisabled'].value === 'true',
       role: { text: this.form.controls['role'].value },
     };
+    console.log('Updated User:', updatedUser);
 
     // Update the user data using the userService
     this.userService.updateUser(this.userId, updatedUser).subscribe({
       next: (res) => {
-        // Redirect to the admin page after a successful update
-        this.router.navigate(['/admin']);
+        console.log('Update Success Response:', res);
+        // Redirect to the user-list page after a successful update
+        this.router.navigate(['/user-list']);
       },
       error: (err) => {
         this.errorMessages = [
@@ -102,8 +109,8 @@ export class UserViewComponent implements OnInit {
     });
   }
 
-  // Method to cancel and navigate back to the admin page
+  // Method to cancel and navigate back to the user-list page
   cancel(): void {
-    this.router.navigate(['/admin']);
+    this.router.navigate(['/user-list']);
   }
 }
