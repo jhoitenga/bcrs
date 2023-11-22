@@ -73,7 +73,7 @@ export class UserNewComponent implements OnInit {
     this.userService.createUser(newUser).subscribe({
       next: (res) => {
         // Navigate back to user-new route upon successful user creation
-        this.router.navigate(['/user-new']);
+        this.router.navigate(['/user-list']);
       },
       error: (err) => {
         this.errorMessages = [
@@ -89,6 +89,6 @@ export class UserNewComponent implements OnInit {
 
   // Function to cancel the user creation and navigate back to the admin page
   cancel(): void {
-    this.router.navigate(['/admin']);
+    this.router.navigate(['/user-list']);
   }
 }

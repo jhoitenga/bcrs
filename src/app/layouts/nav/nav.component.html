@@ -79,7 +79,7 @@
           <li class="dropdown-item">
             <a routerLink="/profile" class="dropdown-item">My Profile</a>
           </li>
-          <li class="dropdown-item">
+          <li *ngIf="isAdmin()" class="dropdown-item">
             <a routerLink="/user-list" class="dropdown-item"
               >User Configuration</a
             >
