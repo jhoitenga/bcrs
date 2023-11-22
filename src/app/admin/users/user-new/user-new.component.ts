@@ -13,7 +13,6 @@ import { UserService } from '../../../services/user.service';
 import { User } from '../../../models/user.interface';
 import { Role } from '../../../models/role.interface';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Message } from 'primeng/api';
 
 @Component({
   selector: 'app-user-new',
@@ -42,9 +41,9 @@ export class UserNewComponent implements OnInit {
   // Initialize user, userId, and errorMessages variables
   user: User;
   userId: string;
-  errorMessages: Message[] = [];
   isDisabled: boolean = false; // defaulting to enabled user
   standardRole: Role = { text: 'standard' }; // defaulting to standard role
+  errorMessage: string = '';
 
   constructor(
     private fb: FormBuilder,
@@ -76,13 +75,19 @@ export class UserNewComponent implements OnInit {
         this.router.navigate(['/user-list']);
       },
       error: (err) => {
-        this.errorMessages = [
-          { severity: 'error', summary: 'Error', detail: err.message },
-        ];
-        console.log(
-          `Node.js server error; httpCode:${err.httpCode};message:${err.message}`
-        );
+        console.log('Error object:', err);
         console.log(err);
+
+        // Check if the error message contains a duplicate key for email
+        if (err.error && err.error.message === 'Email already in use') {
+          this.errorMessage =
+            'This email address is already in use. Please use a different email address.';
+        } else {
+          // For other errors, display a generic error message
+          this.errorMessage = 'Failed to create user. Please try again.';
+        }
+
+        console.log(this.errorMessage);
       },
     });
   }

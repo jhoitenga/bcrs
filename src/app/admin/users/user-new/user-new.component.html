@@ -8,8 +8,13 @@
 -->
 
 <div class="container py-5">
-  <h1 class="text-center">Create a New User</h1>
-  <h6 class="text-center">All fields are required</h6>
+  <h2 class="text-center">Create a New User</h2>
+  <h6 class="text-center">* All fields are required</h6>
+
+  <!-- Display error message -->
+  <div *ngIf="errorMessage" class="alert alert-danger">
+    {{ errorMessage }}
+  </div>
 
   <form
     class="formStyle mb-5"

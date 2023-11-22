@@ -14,7 +14,6 @@ import { RoleService } from '../../../services/role.service';
 import { User } from '../../../models/user.interface';
 import { Role } from '../../../models/role.interface';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Message } from 'primeng/api';
 
 @Component({
   selector: 'app-user-view',
@@ -55,7 +54,6 @@ export class UserViewComponent implements OnInit {
         console.log('Initial User Data:', user);
         // Assign the user data received from the service to the component's user property
         this.user = user;
-        console.log(this.user);
       },
       error: (err) => {
         console.error('Error: ', err);
@@ -78,7 +76,7 @@ export class UserViewComponent implements OnInit {
 
   saveUser(): void {
     // Create an updatedUser object with values from the form fields
-    console.log('Form Values Before Submit:', this.form.value);
+    //console.log('Form Values Before Submit:', this.form.value);
     const updatedUser = {
       firstName: this.form.controls['firstName'].value,
       lastName: this.form.controls['lastName'].value,
@@ -103,6 +101,7 @@ export class UserViewComponent implements OnInit {
         );
         this.errorMessage = 'Failed to update user. Please try again later.';
         console.log(err);
+        console.error('Update failed:', err);
       },
     });
   }
