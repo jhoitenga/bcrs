@@ -4,37 +4,55 @@
  * Date: 11/19/2023
  * Sources:
  * BCRS Starter Project: https://github.com/buwebdev/web-450/tree/master/starter-projects/bcrs
- * Previous repositories from my personal GitHub: https://github.com/jhoitenga?tab=repositories
  * Bootstrap: https://getbootstrap.com/docs/5.3/getting-started/introduction/
 -->
 
-    <!--First Error message-->
-  <div>
-    <div class="container mt-4 py-5 text-center">
-      <div class="info text-center">Error 404 - Page Not Found</div>
-
-      <!--Error image-->
-      <div class="row h-100 align-items-center py-4">
-        <div class="col-lg-12 d-lg-block">
-          <figure style="display:inline-block">
-            <img class="img-fluid rounded" src="./assets/404_Error.jpg" alt="Sad Robot Image"/>
-          </figure>
-        </div>
-      <!--Second Error Message-->
+<div>
+  <div class="container py-1 text-center">
+    <h3 class="info text-center">Error 404 - Page Not Found</h3>
+    <div class="row h-100 align-items-center py-4">
+      <div class="col-lg-12 d-lg-block">
+        <!-- 404 Image -->
+        <figure style="display: inline-block">
+          <img
+            src="./assets/404_Error.jpg"
+            alt="Broken down computer"
+            class="img-fluid rounded"
+          />
+          <figcaption class="text-center p-2">
+            <small class="text-muted" style="font-size: 60%">
+              <em>Image courtesy of </em>
+              <a
+                href="https://unsplash.com/photos/gray-computer-tower-case-ZO0weaaDrBs"
+                target="_blank"
+                class="text-dark"
+              >
+                Unsplash
+              </a>
+            </small>
+          </figcaption>
+        </figure>
+      </div>
       <div class="container py-2">
-        <div class="row h-100 align-items-center py-2">
-          <div class="col-lg-12 prder-2 order-lg-1">
-            <p class="lead mb-4 green">Oops! This page seems to have gone out of service. Let's get you back on
-              track!</p>
-          <div class="align-items-center">
-            <!--Return to home page button-->
-              <a class="btn btn-mod btn-border btn-circle btn-large " routerLink="/">Go to Home Page</a>
+        <div class="row h-100 align-items-center py-1">
+          <div class="col-lg-12 order-2 order-lg-1">
+            <!-- Error Message -->
+            <p class="lead mb-4 green">
+              Oops! This page seems to have gone out of service. Let's get you
+              back on track!
+            </p>
+            <div class="align-items-center">
+              <!-- Return Home Button -->
+              <a
+                routerLink="/"
+                class="btn btn-mod btn-border btn-circle btn-large"
+              >
+                Go to Home Page
+              </a>
+            </div>
           </div>
-          </div>
-          </div>
-          </div>
-          </div>
-          </div>
-          </div>
-
-
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
