@@ -1,7 +1,18 @@
+<!--
+ * Title: register.component.html
+ * Author: Professor Krasso
+ * Modified By: Michael Christman, Zahava Gopin & Jennifer Hoitenga
+ * Date: 11/25/2023
+ * Sources:
+ * BCRS Starter Project: https://github.com/buwebdev/web-450/tree/master/starter-projects/bcrs
+ * Bootstrap: https://getbootstrap.com/docs/5.3/getting-started/introduction/
+-->
+
 <div class="form-container">
   <div class="container">
     <h3 class="text-center">Register for an Account</h3>
     <h6 class="text-center">* All fields are required</h6>
+
     <!-- Display error message -->
     <div *ngIf="errorMessage" class="alert alert-danger">
       {{ errorMessage }}
@@ -13,20 +24,22 @@
     </div>
   </div>
 
-  <!-- multistep form -->
+  <!-- Multistep form -->
   <form
     id="msform"
     class="mb-5"
     [formGroup]="form"
+    (ngSubmit)="onSubmit(); form.reset()"
     (keydown.enter)="$event.preventDefault()"
   >
-    <!-- progressbar -->
+    <!-- Progress bar -->
     <ul id="progressbar">
       <li [class.active]="currentStep === 1">Personal Information</li>
       <li [class.active]="currentStep === 2">Account Information</li>
       <li [class.active]="currentStep === 3">Security Questions</li>
     </ul>
 
+    <!-- Step 1: Personal Information -->
     <fieldset *ngIf="currentStep === 1">
       <h2 class="fs-title">Personal Information</h2>
       <h3 class="fs-subtitle">Step 1</h3>
@@ -132,6 +145,7 @@
       />
     </fieldset>
 
+    <!-- Step 2: Account Information -->
     <fieldset *ngIf="currentStep === 2">
       <h2 class="fs-title">Account Information</h2>
       <h3 class="fs-subtitle">Step 2</h3>
@@ -205,7 +219,7 @@
         <input
           type="password"
           class="form-control"
-          id="password"
+          id="confirmPassword"
           placeholder="Confirm Password"
           formControlName="confirmPassword"
           [class.is-invalid]="
@@ -225,9 +239,8 @@
         <div
           class="invalid-feedback"
           *ngIf="
-            form.controls['confirmPassword'].touched &&
-            form.controls['password'].value !==
-              form.controls['confirmPassword'].value
+            form.get('confirmPassword')?.hasError('mismatch') &&
+            form.get('confirmPassword')?.touched
           "
         >
           The passwords must match.
@@ -250,9 +263,11 @@
       </div>
     </fieldset>
 
+    <!-- Step 3: Security Questions -->
     <fieldset *ngIf="currentStep === 3">
       <h2 class="fs-title">Security Questions</h2>
       <h3 class="fs-subtitle">Step 3</h3>
+      <!-- Security Question 1 Dropdown -->
       <div class="mb-3">
         <select
           class="form-control"
@@ -264,6 +279,17 @@
           "
         >
           <option value="" disabled selected hidden>Question 1 *</option>
+
+          <option
+            *ngFor="
+              let q of getFilteredQuestions([
+                form.value.securityQuestion2,
+                form.value.securityQuestion3
+              ])
+            "
+          >
+            {{ q }}
+          </option>
         </select>
         <div
           class="invalid-feedback"
@@ -272,13 +298,37 @@
             form.controls['securityQuestion1'].touched
           "
         >
-          Security question is required.
+          Security question #1 is required.
         </div>
       </div>
+      <!-- Answer Input for Question 1 -->
+      <div class="mb-3">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Your Answer"
+          formControlName="securityAnswer1"
+          [class.is-invalid]="
+            form.controls['securityAnswer1'].invalid &&
+            form.controls['securityAnswer1'].touched
+          "
+        />
+        <div
+          class="invalid-feedback"
+          *ngIf="
+            form.controls['securityAnswer1'].hasError('required') &&
+            form.controls['securityAnswer1'].touched
+          "
+        >
+          Answer is required.
+        </div>
+      </div>
+
+      <!-- Security Question 2 Dropdown -->
       <div class="mb-3">
         <select
           class="form-control"
-          id="securityQuestion1"
+          id="securityQuestion2"
           formControlName="securityQuestion2"
           [class.is-invalid]="
             form.controls['securityQuestion2'].invalid &&
@@ -286,6 +336,16 @@
           "
         >
           <option value="" disabled selected hidden>Question 2 *</option>
+          <option
+            *ngFor="
+              let q of getFilteredQuestions([
+                form.value.securityQuestion1,
+                form.value.securityQuestion3
+              ])
+            "
+          >
+            {{ q }}
+          </option>
         </select>
         <div
           class="invalid-feedback"
@@ -294,13 +354,37 @@
             form.controls['securityQuestion2'].touched
           "
         >
-          Security question is required.
+          Security question #2 is required.
         </div>
       </div>
+      <!-- Answer Input for Question 2 -->
+      <div class="mb-3">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Your Answer"
+          formControlName="securityAnswer2"
+          [class.is-invalid]="
+            form.controls['securityAnswer2'].invalid &&
+            form.controls['securityAnswer2'].touched
+          "
+        />
+        <div
+          class="invalid-feedback"
+          *ngIf="
+            form.controls['securityAnswer2'].hasError('required') &&
+            form.controls['securityAnswer2'].touched
+          "
+        >
+          Answer is required.
+        </div>
+      </div>
+
+      <!-- Security Question 3 Dropdown -->
       <div class="mb-3">
         <select
           class="form-control"
-          id="securityQuestion1"
+          id="securityQuestion3"
           formControlName="securityQuestion3"
           [class.is-invalid]="
             form.controls['securityQuestion3'].invalid &&
@@ -308,6 +392,16 @@
           "
         >
           <option value="" disabled selected hidden>Question 3 *</option>
+          <option
+            *ngFor="
+              let q of getFilteredQuestions([
+                form.value.securityQuestion1,
+                form.value.securityQuestion2
+              ])
+            "
+          >
+            {{ q }}
+          </option>
         </select>
         <div
           class="invalid-feedback"
@@ -316,14 +410,37 @@
             form.controls['securityQuestion3'].touched
           "
         >
-          Security question is required.
+          Security question #3 is required.
+        </div>
+      </div>
+      <!-- Answer Input for Question 3 -->
+      <div class="mb-3">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Your Answer"
+          formControlName="securityAnswer3"
+          [class.is-invalid]="
+            form.controls['securityAnswer3'].invalid &&
+            form.controls['securityAnswer3'].touched
+          "
+        />
+        <div
+          class="invalid-feedback"
+          *ngIf="
+            form.controls['securityAnswer3'].hasError('required') &&
+            form.controls['securityAnswer3'].touched
+          "
+        >
+          Answer is required.
         </div>
       </div>
 
       <input
-        type="button"
+        type="submit"
         class="btn btn-mod btn-border btn-circle btn-large"
         value="Create Account"
+        [disabled]="!form.valid"
       />
       <input
         type="button"

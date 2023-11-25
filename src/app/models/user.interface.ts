@@ -8,6 +8,7 @@
  */
 
 import { Role } from './role.interface';
+import { SelectedSecurityQuestion } from './selected-security-question.interface';
 
 export interface User {
   _id?: string;
@@ -19,4 +20,5 @@ export interface User {
   password?: string;
   isDisabled: boolean;
   role: Role; // From Role interface
+  selectedSecurityQuestions?: SelectedSecurityQuestion[]; // From SelectedSecurityQuestion interface
 }
