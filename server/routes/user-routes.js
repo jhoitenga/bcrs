@@ -463,5 +463,78 @@ router.delete("/users/:id", async (req, res) => {
   }
 });
 
+/************************************************************************************** */
+/**
+ * findSelectedSecurityQuestions
+ * @openapi
+ * /api/users/{email}/security-questions:
+ *   post:
+ *     tags:
+ *       - Users
+ *     name: findSelectedSecurityQuestions
+ *     description: Returns selected security questions for a user
+ *     summary: Returns selected security questions for a user
+ *     parameters:
+ *       - name: email
+ *         in: path
+ *         required: true
+ *         description: Enter a valid email address
+ *         schema:
+ *           type: string
+ *     responses:
+ *       '200':
+ *         description: Success
+ *       '400':
+ *         description: Bad Request
+ *       '404':
+ *         description: Not Found
+ *       '500':
+ *         description: Internal Server Error
+ */
+
+router.post("/users/:email/security-questions", async (req, res) => {
+  try {
+    // Extract the email from the route parameter
+    const email = req.params.email;
+    // Check if the email is not provided or is not valid
+    if (!email || !isValidEmail(email)) {
+      // Respond with a 400 Bad Request status and an error message
+      res.status(400).send({ message: "Invalid email format" });
+    }
+
+    // Find a user with the specified email in the database
+    const user = await User.findOne({ email: req.params.email });
+    console.log(user);
+    // If the user is not found in the database, respond with a 404 Not Found status
+    if (user === null) {
+      res.status(404).send({ message: "User not found." });
+    } else {
+      // Map the selected security questions of the user to extract question text only
+      const questions = user.selectedSecurityQuestions.map((q) => ({
+        questionText: q.questionText,
+      }));
+      // Respond with a JSON object containing user information and selected security questions
+      res.json({
+        message: "User found!",
+        firstName: user.firstName,
+        lastName: user.lastName,
+        email: user.email,
+        selectedSecurityQuestions: questions,
+      });
+    }
+  } catch (err) {
+    console.log(err);
+    // Handle any unexpected errors and respond with a 500 Internal Server Error status
+    console.log(err);
+    res.status(500).send({ message: "Internal Server Error" });
+  }
+});
+
+// Function to validate an email address using a regular expression
+function isValidEmail(email) {
+  const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return regex.test(email);
+}
+
 // Export the router module for use in other parts of the application.
 module.exports = router;

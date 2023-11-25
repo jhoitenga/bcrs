@@ -1,1 +1,336 @@
-<p>register works!</p>
+<div class="form-container">
+  <div class="container">
+    <h3 class="text-center">Register for an Account</h3>
+    <h6 class="text-center">* All fields are required</h6>
+    <!-- Display error message -->
+    <div *ngIf="errorMessage" class="alert alert-danger">
+      {{ errorMessage }}
+    </div>
+
+    <!-- Success Message -->
+    <div *ngIf="successMessage" class="alert alert-success">
+      {{ successMessage }}
+    </div>
+  </div>
+
+  <!-- multistep form -->
+  <form
+    id="msform"
+    class="mb-5"
+    [formGroup]="form"
+    (keydown.enter)="$event.preventDefault()"
+  >
+    <!-- progressbar -->
+    <ul id="progressbar">
+      <li [class.active]="currentStep === 1">Personal Information</li>
+      <li [class.active]="currentStep === 2">Account Information</li>
+      <li [class.active]="currentStep === 3">Security Questions</li>
+    </ul>
+
+    <fieldset *ngIf="currentStep === 1">
+      <h2 class="fs-title">Personal Information</h2>
+      <h3 class="fs-subtitle">Step 1</h3>
+
+      <!-- First Name -->
+      <div class="mb-3">
+        <input
+          type="text"
+          placeholder="First Name"
+          class="form-control"
+          id="firstName"
+          formControlName="firstName"
+          [class.is-invalid]="
+            form.controls['firstName'].invalid &&
+            form.controls['firstName'].touched
+          "
+        />
+        <div
+          class="invalid-feedback"
+          *ngIf="
+            form.controls['firstName'].hasError('required') &&
+            form.controls['firstName'].touched
+          "
+        >
+          First name is required.
+        </div>
+      </div>
+
+      <!-- Last Name -->
+      <div class="mb-3">
+        <input
+          type="text"
+          placeholder="Last Name"
+          class="form-control"
+          id="lastName"
+          formControlName="lastName"
+          [class.is-invalid]="
+            form.controls['lastName'].invalid &&
+            form.controls['lastName'].touched
+          "
+        />
+        <div
+          class="invalid-feedback"
+          *ngIf="
+            form.controls['lastName'].hasError('required') &&
+            form.controls['lastName'].touched
+          "
+        >
+          Last name is required.
+        </div>
+      </div>
+
+      <!-- Phone Number -->
+      <div class="mb-3">
+        <input
+          type="text"
+          placeholder="Phone Number"
+          class="form-control"
+          id="phoneNumber"
+          formControlName="phoneNumber"
+          [class.is-invalid]="
+            form.controls['phoneNumber'].invalid &&
+            form.controls['phoneNumber'].touched
+          "
+        />
+        <div
+          class="invalid-feedback"
+          *ngIf="
+            form.controls['phoneNumber'].hasError('required') &&
+            form.controls['phoneNumber'].touched
+          "
+        >
+          Phone number is required.
+        </div>
+      </div>
+
+      <!-- Address -->
+      <div class="mb-3">
+        <textarea
+          class="form-control"
+          id="address"
+          placeholder="Address"
+          formControlName="address"
+          [class.is-invalid]="
+            form.controls['address'].invalid && form.controls['address'].touched
+          "
+        ></textarea>
+        <div
+          class="invalid-feedback"
+          *ngIf="
+            form.controls['address'].hasError('required') &&
+            form.controls['address'].touched
+          "
+        >
+          Address is required.
+        </div>
+      </div>
+      <input
+        type="button"
+        (click)="goToNextStep()"
+        class="btn btn-mod btn-border btn-circle btn-large"
+        value="Next Step"
+      />
+    </fieldset>
+
+    <fieldset *ngIf="currentStep === 2">
+      <h2 class="fs-title">Account Information</h2>
+      <h3 class="fs-subtitle">Step 2</h3>
+      <!-- Email Address -->
+      <div class="mb-3">
+        <input
+          type="email"
+          class="form-control"
+          id="email"
+          placeholder="Email"
+          formControlName="email"
+          [class.is-invalid]="
+            form.controls['email'].invalid && form.controls['email'].touched
+          "
+        />
+        <div
+          class="invalid-feedback"
+          *ngIf="
+            form.controls['email'].hasError('required') &&
+            form.controls['email'].touched
+          "
+        >
+          Email address is required.
+        </div>
+        <div
+          class="invalid-feedback"
+          *ngIf="
+            form.controls['email'].hasError('email') &&
+            form.controls['email'].touched
+          "
+        >
+          Enter a valid email address.
+        </div>
+      </div>
+
+      <!-- Password -->
+      <div class="mb-3">
+        <input
+          type="password"
+          class="form-control"
+          id="password"
+          placeholder="Password"
+          formControlName="password"
+          [class.is-invalid]="
+            form.controls['password'].invalid &&
+            form.controls['password'].touched
+          "
+        />
+        <div
+          class="invalid-feedback"
+          *ngIf="
+            form.controls['password'].hasError('required') &&
+            form.controls['password'].touched
+          "
+        >
+          The password is required.
+        </div>
+        <div
+          class="invalid-feedback"
+          *ngIf="
+            form.controls['password'].hasError('pattern') &&
+            form.controls['password'].touched
+          "
+        >
+          Password must be at least 8 characters, contain one uppercase letter
+          and one number.
+        </div>
+      </div>
+      <!-- Password -->
+      <div class="mb-3">
+        <input
+          type="password"
+          class="form-control"
+          id="password"
+          placeholder="Confirm Password"
+          formControlName="confirmPassword"
+          [class.is-invalid]="
+            form.controls['confirmPassword'].invalid &&
+            form.controls['confirmPassword'].touched
+          "
+        />
+        <div
+          class="invalid-feedback"
+          *ngIf="
+            form.controls['confirmPassword'].hasError('required') &&
+            form.controls['confirmPassword'].touched
+          "
+        >
+          Please confirm your password.
+        </div>
+        <div
+          class="invalid-feedback"
+          *ngIf="
+            form.controls['confirmPassword'].touched &&
+            form.controls['password'].value !==
+              form.controls['confirmPassword'].value
+          "
+        >
+          The passwords must match.
+        </div>
+      </div>
+      <div class="btn-box">
+        <input
+          type="button"
+          (click)="goToNextStep()"
+          class="btn btn-mod btn-border btn-circle btn-large"
+          value="Next Step"
+        />
+
+        <input
+          type="button"
+          (click)="goToPreviousStep()"
+          class="btn btn-mod btn-border btn-circle btn-large"
+          value="Previous Step"
+        />
+      </div>
+    </fieldset>
+
+    <fieldset *ngIf="currentStep === 3">
+      <h2 class="fs-title">Security Questions</h2>
+      <h3 class="fs-subtitle">Step 3</h3>
+      <div class="mb-3">
+        <select
+          class="form-control"
+          id="securityQuestion1"
+          formControlName="securityQuestion1"
+          [class.is-invalid]="
+            form.controls['securityQuestion1'].invalid &&
+            form.controls['securityQuestion1'].touched
+          "
+        >
+          <option value="" disabled selected hidden>Question 1 *</option>
+        </select>
+        <div
+          class="invalid-feedback"
+          *ngIf="
+            form.controls['securityQuestion1'].hasError('required') &&
+            form.controls['securityQuestion1'].touched
+          "
+        >
+          Security question is required.
+        </div>
+      </div>
+      <div class="mb-3">
+        <select
+          class="form-control"
+          id="securityQuestion1"
+          formControlName="securityQuestion2"
+          [class.is-invalid]="
+            form.controls['securityQuestion2'].invalid &&
+            form.controls['securityQuestion2'].touched
+          "
+        >
+          <option value="" disabled selected hidden>Question 2 *</option>
+        </select>
+        <div
+          class="invalid-feedback"
+          *ngIf="
+            form.controls['securityQuestion2'].hasError('required') &&
+            form.controls['securityQuestion2'].touched
+          "
+        >
+          Security question is required.
+        </div>
+      </div>
+      <div class="mb-3">
+        <select
+          class="form-control"
+          id="securityQuestion1"
+          formControlName="securityQuestion3"
+          [class.is-invalid]="
+            form.controls['securityQuestion3'].invalid &&
+            form.controls['securityQuestion3'].touched
+          "
+        >
+          <option value="" disabled selected hidden>Question 3 *</option>
+        </select>
+        <div
+          class="invalid-feedback"
+          *ngIf="
+            form.controls['securityQuestion3'].hasError('required') &&
+            form.controls['securityQuestion3'].touched
+          "
+        >
+          Security question is required.
+        </div>
+      </div>
+
+      <input
+        type="button"
+        class="btn btn-mod btn-border btn-circle btn-large"
+        value="Create Account"
+      />
+      <input
+        type="button"
+        (click)="goToPreviousStep()"
+        class="btn btn-mod btn-border btn-circle btn-large"
+        value="Previous Step"
+      />
+    </fieldset>
+  </form>
+</div>
