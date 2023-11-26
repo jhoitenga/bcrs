@@ -31,8 +31,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { CookieService } from 'ngx-cookie-service';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatDialogModule } from '@angular/material/dialog';
 import { MessageModule } from 'primeng/message';
 import { MessagesModule } from 'primeng/messages';
+import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-dialog.component';
 
 @NgModule({
   declarations: [
@@ -51,6 +53,7 @@ import { MessagesModule } from 'primeng/messages';
     UserListComponent,
     UserViewComponent,
     UserNewComponent,
+    ConfirmationDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -60,6 +63,7 @@ import { MessagesModule } from 'primeng/messages';
     FormsModule,
     HttpClientModule,
     MatSnackBarModule,
+    MatDialogModule,
     MessageModule,
     MessagesModule,
   ],

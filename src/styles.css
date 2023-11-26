@@ -30,3 +30,22 @@ a.social:hover {
     text-align: center;
   }
 }
+
+.mdc-dialog__title {
+  color: #2a623d !important;
+  font-weight: 600 !important;
+}
+
+.mdc-dialog__content {
+  color: black !important;
+}
+
+.deleteButton {
+  background-color: #2a623d !important;
+  color: white;
+}
+
+.cancelButton {
+  background-color: #aaaaaa !important;
+  color: black;
+}

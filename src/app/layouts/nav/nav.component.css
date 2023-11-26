@@ -123,14 +123,14 @@ a.btn-mod {
   color: black !important;
 }
 
-.dropdown-item:hover {
+.menuItem:hover {
   cursor: pointer;
-  background-color: #cc9835 !important;
-  color: black !important;
+  color: #cc9835 !important;
 }
 
 .profileName:hover {
   background-color: white !important;
+  color: black !important;
   cursor: default;
 }
 

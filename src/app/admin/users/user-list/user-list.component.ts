@@ -13,6 +13,8 @@ import { UserService } from '../../../services/user.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CookieService } from 'ngx-cookie-service';
 import { Router } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
+import { ConfirmationDialogComponent } from 'src/app/confirmation-dialog/confirmation-dialog.component';
 
 @Component({
   selector: 'app-user-list',
@@ -34,7 +36,8 @@ export class UserListComponent implements OnInit {
     private userService: UserService,
     private fb: FormBuilder,
     private cookieService: CookieService,
-    private router: Router
+    private router: Router,
+    private dialog: MatDialog
   ) {
     this.users = [];
 
@@ -54,35 +57,35 @@ export class UserListComponent implements OnInit {
   ngOnInit(): void {}
 
   delete(userId: string) {
-    if (
-      !confirm(
-        'Are you sure you want to deactivate user record ' + userId + '?'
-      )
-    ) {
-      return;
-    }
     //console.log('Delete method called with ID:', userId);
-    this.userService.deleteUser(userId).subscribe({
-      next: (response) => {
-        if (response.status === 204) {
-          //console.log('User deleted successfully');
-          this.users = this.users.filter((user) => user._id != userId);
-          this.successMessage = 'User status has been updated successfully.';
-          setTimeout(() => {
-            const currentUrl = this.router.url;
-            this.router
-              .navigateByUrl('/', { skipLocationChange: true })
-              .then(() => {
-                this.router.navigate([currentUrl]);
-              });
-          }, 3000); // delay for 3 seconds
-        }
-      },
-      error: (err) => {
-        //console.log(err);
-        this.errorMessage =
-          'Failed to delete user data. Please try again later.';
-      },
+    const dialogRef = this.dialog.open(ConfirmationDialogComponent);
+
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result === true) {
+        this.userService.deleteUser(userId).subscribe({
+          next: (response) => {
+            if (response.status === 204) {
+              //console.log('User deleted successfully');
+              this.users = this.users.filter((user) => user._id != userId);
+              this.successMessage =
+                'User status has been updated successfully.';
+              setTimeout(() => {
+                const currentUrl = this.router.url;
+                this.router
+                  .navigateByUrl('/', { skipLocationChange: true })
+                  .then(() => {
+                    this.router.navigate([currentUrl]);
+                  });
+              }, 3000); // delay for 3 seconds
+            }
+          },
+          error: (err) => {
+            //console.log(err);
+            this.errorMessage =
+              'Failed to delete user data. Please try again later.';
+          },
+        });
+      }
     });
   }
 }

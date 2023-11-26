@@ -1,0 +1,22 @@
+<!--
+ * Title: confirmation-dialog.component.html
+ * Modified By: Michael Christman, Zahava Gopin & Jennifer Hoitenga
+ * Author: Professor Krasso
+ * Date: 11/26/2023
+ * Sources:
+ * BCRS Starter Project: https://github.com/buwebdev/web-450/tree/master/starter-projects/bcrs
+-->
+
+<!-- Dialog box for confirmation of deleting user. -->
+<h2 mat-dialog-title>Please Confirm</h2>
+<mat-dialog-content
+  >Are you sure you want to deactivate the user?</mat-dialog-content
+>
+<mat-dialog-actions align="end">
+  <button mat-button [mat-dialog-close]="false" class="m-3 p-1 cancelButton">
+    Cancel
+  </button>
+  <button mat-button [mat-dialog-close]="true" class="deleteButton p-1">
+    Delete
+  </button>
+</mat-dialog-actions>

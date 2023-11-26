@@ -63,16 +63,17 @@ a.btn-mod {
   padding: 20px 25px;
   border-radius: 3px;
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
-  border: 1px solid #ddd;
+  border: 3px solid #2a623d;
 }
 
 .table-title {
   padding-bottom: 15px;
-  background: black;
-  color: #fff;
+  background: #aaaaaa;
+  color: black;
   padding: 14px 20px;
   margin: -20px -25px 10px;
-  border-radius: 7px;
+  border-radius: 3px;
+  border-bottom: 3px solid #2a623d;
 }
 
 .table-title h2 {
