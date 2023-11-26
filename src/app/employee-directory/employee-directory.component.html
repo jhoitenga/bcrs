@@ -1,1 +1,75 @@
-<p>employee-directory works!</p>
+<!--
+ * Title: employee-directory.component.html
+ * Modified By: Michael Christman, Zahava Gopin & Jennifer Hoitenga
+ * Author: Professor Krasso
+ * Date: 11/26/2023
+ * Sources:
+ * BCRS Starter Project: https://github.com/buwebdev/web-450/tree/master/starter-projects/bcrs
+ * Generate Random Images from Unsplash: https://awik.io/generate-random-images-unsplash-without-using-api/
+-->
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-12 my-2">
+      <div class="text-center mb-4">
+        <h3>Employee Directory</h3>
+
+        <!-- Display error message -->
+        <div *ngIf="errorMessage" class="alert alert-danger">
+          {{ errorMessage }}
+        </div>
+      </div>
+    </div>
+    <!-- Employee Cards -->
+    <div class="row">
+      <div
+        class="col-12 col-sm-6 col-lg-4 mb-4"
+        *ngFor="let user of users; let i = index"
+      >
+        <div class="card">
+          <!-- Random image from unsplash -->
+          <img
+            [src]="
+              'https://source.unsplash.com/random/380x480?people&sig={{getRandomNumber()}}' +
+              (i + 1)
+            "
+            class="card-img-top"
+            alt="{{ user.firstName }}"
+            #imageElement
+            (load)="onImageLoad()"
+          />
+
+          <!-- Loading Spinner -->
+          <ng-container *ngIf="!isImageLoaded">
+            <div class="d-flex justify-content-center">
+              <div
+                class="spinner-border m-5"
+                style="width: 3rem; height: 3rem"
+                role="status"
+              >
+                <span class="sr-only spinner">Loading...</span>
+              </div>
+            </div>
+          </ng-container>
+
+          <div class="card-body">
+            <h5 class="card-title">{{ user.firstName }} {{ user.lastName }}</h5>
+            <p class="card-text">{{ capitalizeFirstLetter(user.role.text) }}</p>
+
+            <ul>
+              <li>
+                <b><i class="bi bi-telephone-fill"></i></b>
+                {{ user.phoneNumber }}
+              </li>
+              <li>
+                <b><i class="bi bi-envelope-fill"></i></b> {{ user.email }}
+              </li>
+              <li>
+                <b><i class="bi bi-translate"></i></b> English
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

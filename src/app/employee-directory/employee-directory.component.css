@@ -1,0 +1,43 @@
+/*
+ * Title: employee-directory.component.css
+ * Modified By: Michael Christman, Zahava Gopin & Jennifer Hoitenga
+ * Author: Professor Krasso
+ * Date: 11/26/2023
+ * Sources:
+ * BCRS Starter Project: https://github.com/buwebdev/web-450/tree/master/starter-projects/bcrs
+*/
+
+.card-img-top {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  margin: 0 auto;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  border: 3px solid #2a623d;
+}
+
+.card {
+  padding: 1.5em 0.5em 0.5em;
+  text-align: center;
+  border-radius: 2em;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  border: 3px solid #2a623d;
+  transition: 0.3s;
+}
+
+.card-title {
+  font-weight: bold;
+  font-size: 1.3em;
+}
+
+ul {
+  text-align: left;
+  list-style: none;
+}
+
+.spinner {
+  border-radius: 50%;
+  margin: 0 auto;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
