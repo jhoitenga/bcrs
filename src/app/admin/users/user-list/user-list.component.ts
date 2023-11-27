@@ -56,6 +56,11 @@ export class UserListComponent implements OnInit {
 
   ngOnInit(): void {}
 
+  // Format role
+  capitalizeFirstLetter(text: string): string {
+    return text.charAt(0).toUpperCase() + text.slice(1).toLowerCase();
+  }
+
   delete(userId: string) {
     //console.log('Delete method called with ID:', userId);
     const dialogRef = this.dialog.open(ConfirmationDialogComponent);
