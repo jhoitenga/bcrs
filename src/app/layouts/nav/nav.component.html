@@ -67,6 +67,9 @@
         </a>
         <ul class="dropdown-menu dropdown-menu-end">
           <li class="dropdown-item profileName">{{ cookieValue }}</li>
+          <li class="dropdown-item role">
+            {{ capitalizeFirstLetter(userRole) }}
+          </li>
           <hr />
           <li class="dropdown-item">
             <a routerLink="/profile" class="dropdown-item menuItem"

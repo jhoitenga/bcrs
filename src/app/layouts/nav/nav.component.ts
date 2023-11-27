@@ -60,4 +60,9 @@ export class NavComponent implements OnInit {
     this.cookieService.deleteAll(); // Delete all cookies.
     this.router.navigate(['/']); // Navigate to the home page.
   }
+
+  // Format role
+  capitalizeFirstLetter(text: string): string {
+    return text.charAt(0).toUpperCase() + text.slice(1).toLowerCase();
+  }
 }

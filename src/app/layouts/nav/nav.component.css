@@ -102,6 +102,7 @@ a.btn-mod {
 #dropdownMenu,
 .dropdown-item {
   color: black !important;
+  font-weight: 500;
 }
 
 .navbar .dropdown-menu {
@@ -121,6 +122,7 @@ a.btn-mod {
 
 .dropdown-item:hover {
   color: black !important;
+  background-color: white !important;
 }
 
 .menuItem:hover {
@@ -128,10 +130,21 @@ a.btn-mod {
   color: #cc9835 !important;
 }
 
+.profileName {
+  text-align: center;
+  color: black !important;
+}
+
 .profileName:hover {
   background-color: white !important;
   color: black !important;
   cursor: default;
+}
+
+.role {
+  text-align: center;
+  color: black;
+  font-weight: 400;
 }
 
 .navbar .dropdown-menu {
