@@ -299,7 +299,7 @@ router.post("/security/register", async (req, res) => {
  * verifyUser
  * @openapi
  * /api/security/verify/users/{email}:
- *   get:
+ *   post:
  *     tags:
  *       - Security
  *     description: API for verifying a user exists
@@ -322,7 +322,7 @@ router.post("/security/register", async (req, res) => {
  *         description: Internal Server Error
  */
 
-router.get("/security/verify/users/:email", async (req, res) => {
+router.post("/security/verify/users/:email", async (req, res) => {
   try {
     // Extract the email from the route parameter
     const email = req.params.email;

@@ -46,6 +46,11 @@ const options = {
       version: "1.0.0",
       description: "BCRS OpenAPI Documentation",
     },
+    paths: {
+      // Added this to control the order of the APIs in the documentation.
+      "/api/users": {},
+      "/api/security": {},
+    },
   },
   apis: ["./server/routes/*"], // Specify the API routes to document.
 };

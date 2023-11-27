@@ -405,6 +405,7 @@ router.put("/users/:id", async (req, res) => {
  *          - name: id
  *            in: path
  *            required: true
+ *            description: Enter a valid id
  *            schema:
  *              type: string
  *      responses:
@@ -478,7 +479,7 @@ router.delete("/users/:id", async (req, res) => {
  *       - name: email
  *         in: path
  *         required: true
- *         description: Enter a valid email address
+ *         description: Enter the email address for the user
  *         schema:
  *           type: string
  *     responses:
