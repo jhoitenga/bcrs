@@ -24,7 +24,7 @@ export class UserService {
   private handleError(error: HttpErrorResponse): Observable<never> {
     const errorMsg =
       error.message || 'Something bad happened; please try again later.';
-    console.error('Error from handleError:', errorMsg);
+    //console.error('Error from handleError:', errorMsg);
     return throwError(errorMsg);
   }
 
@@ -35,13 +35,13 @@ export class UserService {
 
   // Find user by ID
   findUserById(userId: string): Observable<any> {
-    console.log('Finding user with ID:', userId);
+    //console.log('Finding user with ID:', userId);
     return this.http.get(`/api/users/${userId}`);
   }
 
   // Create user
   createUser(user: User): Observable<any> {
-    console.log('Creating user:', user);
+    //console.log('Creating user:', user);
     return this.http.post('/api/users', {
       firstName: user.firstName,
       lastName: user.lastName,
@@ -56,7 +56,7 @@ export class UserService {
 
   // Update user
   updateUser(userId: string, user: User): Observable<any> {
-    console.log(`Updating user with ID ${userId}:`, user);
+    //console.log(`Updating user with ID ${userId}:`, user);
     return this.http.put(`/api/users/${userId}`, {
       firstName: user.firstName,
       lastName: user.lastName,
@@ -70,7 +70,7 @@ export class UserService {
 
   // Delete user
   deleteUser(userId: string): Observable<any> {
-    console.log('Deleting user with ID:', userId);
+    //console.log('Deleting user with ID:', userId);
     return this.http.delete(`/api/users/${userId}`, { observe: 'response' });
   }
 }

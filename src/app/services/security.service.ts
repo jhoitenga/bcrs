@@ -37,7 +37,7 @@ export class SecurityService {
   }
 
   register(user: User): Observable<any> {
-    console.log('Register service called with:', user);
+    //console.log('Register service called with:', user);
     return this.http.post('/api/security/register', {
       email: user.email,
       password: user.password,

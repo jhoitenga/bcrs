@@ -17,17 +17,12 @@ import {
 } from '@angular/router';
 import { map, Observable } from 'rxjs';
 import { CookieService } from 'ngx-cookie-service';
-import { RoleService } from './services/role.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class RoleGuard implements CanActivate {
-  constructor(
-    private router: Router,
-    private cookieService: CookieService,
-    private roleService: RoleService
-  ) {}
+  constructor(private router: Router, private cookieService: CookieService) {}
 
   canActivate(
     route: ActivatedRouteSnapshot,
