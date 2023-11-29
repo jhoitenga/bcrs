@@ -73,4 +73,10 @@ export class UserService {
     //console.log('Deleting user with ID:', userId);
     return this.http.delete(`/api/users/${userId}`, { observe: 'response' });
   }
+
+  // find selected security questions
+  findSelectedSecurityQuestions(email: string): Observable<any> {
+    //console.log('Finding selected security questions for user with email:', email);
+    return this.http.post(`/api/users/${email}/security-questions`, {});
+  }
 }

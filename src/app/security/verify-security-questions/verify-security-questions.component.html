@@ -1,1 +1,99 @@
-<p>verify-security-questions works!</p>
+<div class="form-container">
+  <div class="container">
+    <h3 class="text-center">Forgot Password</h3>
+
+    <!-- Display error message -->
+    <div *ngIf="errorMessage" class="alert alert-danger">
+      {{ errorMessage }}
+    </div>
+
+    <!-- Success Message -->
+    <div *ngIf="successMessage" class="alert alert-success">
+      {{ successMessage }}
+    </div>
+  </div>
+
+  <form
+    id="msform"
+    class="mb-5"
+    [formGroup]="form"
+    (keydown.enter)="$event.preventDefault()"
+    (ngSubmit)="verifySecurityQuestions()"
+  >
+    <!-- Step 1: Verify Email Address -->
+    <fieldset>
+      <h2 class="fs-title">Verify Security Questions</h2>
+      <h3 class="fs-subtitle">Step 2</h3>
+
+      <div class="mb-3">
+        <input
+          type="text"
+          [placeholder]="verifySecurityQuestionsModel.questionText1"
+          class="form-control"
+          formControlName="answerText1"
+          [class.is-invalid]="
+            form.controls['answerText1'].invalid &&
+            form.controls['answerText1'].touched
+          "
+        />
+        <div
+          class="invalid-feedback"
+          *ngIf="
+            form.controls['answerText1'].hasError('required') &&
+            form.controls['answerText1'].touched
+          "
+        >
+          Answer is required.
+        </div>
+      </div>
+      <div class="mb-3">
+        <input
+          type="text"
+          [placeholder]="verifySecurityQuestionsModel.questionText2"
+          class="form-control"
+          formControlName="answerText2"
+          [class.is-invalid]="
+            form.controls['answerText2'].invalid &&
+            form.controls['answerText2'].touched
+          "
+        />
+        <div
+          class="invalid-feedback"
+          *ngIf="
+            form.controls['answerText2'].hasError('required') &&
+            form.controls['answerText2'].touched
+          "
+        >
+          Answer is required.
+        </div>
+      </div>
+      <div class="mb-3">
+        <input
+          type="text"
+          [placeholder]="verifySecurityQuestionsModel.questionText3"
+          class="form-control"
+          formControlName="answerText3"
+          [class.is-invalid]="
+            form.controls['answerText3'].invalid &&
+            form.controls['answerText3'].touched
+          "
+        />
+        <div
+          class="invalid-feedback"
+          *ngIf="
+            form.controls['answerText3'].hasError('required') &&
+            form.controls['answerText3'].touched
+          "
+        >
+          Answer is required.
+        </div>
+      </div>
+      <input
+        type="submit"
+        [disabled]="!form.valid"
+        class="btn btn-mod btn-border btn-circle btn-large"
+        value="Next Step"
+      />
+    </fieldset>
+  </form>
+</div>

@@ -449,6 +449,12 @@ router.post(
             (q3) => q3.questionText === req.body.questionText3
           );
 
+        //console.log("Stored answer 1:", selectedSecurityQuestionOne.answerText);
+        //console.log("Received answer 1:", req.body.answerText1);
+        //console.log("Stored answer 2:", selectedSecurityQuestionTwo.answerText);
+        //console.log("Received answer 2:", req.body.answerText2);
+        //console.log("Stored answer 3:",selectedSecurityQuestionThree.answerText);
+        //console.log("Received answer 3:", req.body.answerText3);
         // Check if the provided answers match the answers associated with the selected security questions
         const isValidAnswerOne =
           selectedSecurityQuestionOne.answerText === req.body.answerText1;
@@ -459,10 +465,13 @@ router.post(
 
         // If all answers are correct, respond with success, otherwise respond with an error message
         if (isValidAnswerOne && isValidAnswerTwo && isValidAnswerThree) {
+          const response = {
+            selectedSecurityQuestions: user.selectedSecurityQuestions,
+          };
           console.log(
             `User ${user.email} answered all security questions correctly`
           );
-          res.json({ message: "success" });
+          res.json(response);
         } else {
           console.log(
             `User ${user.email} answered one or more security questions incorrectly`

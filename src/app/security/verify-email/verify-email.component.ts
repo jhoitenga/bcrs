@@ -35,19 +35,19 @@ export class VerifyEmailComponent {
 
   verifyUser() {
     const email = this.form.controls['email'].value;
-    console.log(email);
+    //console.log(email);
     this.securityService.verifyUser(email).subscribe({
       next: (res: any) => {
-        console.log(res);
+        //console.log(res);
 
-        this.router.navigate(['verify-security-questions'], {
-          queryParams: { email: email },
+        this.router.navigate(['/security/verify-security-questions'], {
+          queryParams: { email },
           skipLocationChange: true,
         });
       },
       error: (err: any) => {
         if (err.status === 404) this.errorMessage = 'Email not found';
-        console.log(err);
+        //console.log(err);
 
         this.errorMessage =
           'Email cannot be found. Please try again or contact support.';

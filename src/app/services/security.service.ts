@@ -13,6 +13,7 @@ import { Observable } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
 import { throwError } from 'rxjs';
 import { User } from '../models/user.interface';
+import { VerifySecurityQuestionModel } from '../models/verify-security-question.interface';
 import { SelectedSecurityQuestion } from '../models/selected-security-question.interface';
 
 @Injectable({
@@ -54,20 +55,12 @@ export class SecurityService {
   }
 
   verifySecurityQuestions(
-    email: String,
-    securityQuestions: SelectedSecurityQuestion[]
+    email: string,
+    request: VerifySecurityQuestionModel
   ): Observable<any> {
-    const requestBody = {
-      questionText1: securityQuestions[0]?.questionText,
-      answerText1: securityQuestions[0]?.answerText,
-      questionText2: securityQuestions[1]?.questionText,
-      answerText2: securityQuestions[1]?.answerText,
-      questionText3: securityQuestions[2]?.questionText,
-      answerText3: securityQuestions[2]?.answerText,
-    };
     return this.http.post(
       `/api/security/verify/users/${email}/security-questions`,
-      requestBody
+      request
     );
   }
 
