@@ -1,6 +1,16 @@
+<!--
+ * Title: verify-security-questions.component.html
+ * Author: Professor Krasso
+ * Modified By: Michael Christman, Zahava Gopin & Jennifer Hoitenga
+ * Date: 11/29/2023
+ * Sources:
+ * BCRS Starter Project: https://github.com/buwebdev/web-450/tree/master/starter-projects/bcrs
+ * Bootstrap: https://getbootstrap.com/docs/5.3/getting-started/introduction/
+-->
+
 <div class="form-container">
   <div class="container">
-    <h3 class="text-center">Forgot Password</h3>
+    <h3 class="text-center">Reset Password</h3>
 
     <!-- Display error message -->
     <div *ngIf="errorMessage" class="alert alert-danger">
@@ -20,11 +30,12 @@
     (keydown.enter)="$event.preventDefault()"
     (ngSubmit)="verifySecurityQuestions()"
   >
-    <!-- Step 1: Verify Email Address -->
+    <!-- Step 2: Verify Email Address -->
     <fieldset>
       <h2 class="fs-title">Verify Security Questions</h2>
       <h3 class="fs-subtitle">Step 2</h3>
 
+      <!-- Security Question 1 -->
       <div class="mb-3">
         <input
           type="text"
@@ -36,6 +47,8 @@
             form.controls['answerText1'].touched
           "
         />
+
+        <!-- Display error message for required field -->
         <div
           class="invalid-feedback"
           *ngIf="
@@ -46,6 +59,7 @@
           Answer is required.
         </div>
       </div>
+      <!-- Security Question 2 -->
       <div class="mb-3">
         <input
           type="text"
@@ -57,6 +71,7 @@
             form.controls['answerText2'].touched
           "
         />
+        <!-- Display error message for required field -->
         <div
           class="invalid-feedback"
           *ngIf="
@@ -67,6 +82,7 @@
           Answer is required.
         </div>
       </div>
+      <!-- Security Question 3 -->
       <div class="mb-3">
         <input
           type="text"
@@ -78,6 +94,7 @@
             form.controls['answerText3'].touched
           "
         />
+        <!-- Display error message for required field -->
         <div
           class="invalid-feedback"
           *ngIf="
@@ -88,6 +105,7 @@
           Answer is required.
         </div>
       </div>
+      <!-- Submit button for the form -->
       <input
         type="submit"
         [disabled]="!form.valid"

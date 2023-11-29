@@ -23,8 +23,6 @@ const Ajv = require("ajv");
 // Create a new instance of Ajv for JSON schema validation
 const ajv = new Ajv();
 
-const role = require("../models/role");
-
 // Define a JSON schema for user creation data validation.
 const createUserSchema = {
   type: "object",

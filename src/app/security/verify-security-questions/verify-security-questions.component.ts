@@ -1,3 +1,13 @@
+/*
+ * Title: verify-security-questions.component.ts
+ * Author: Professor Krasso
+ * Modified By: Michael Christman, Zahava Gopin & Jennifer Hoitenga
+ * Date: 11/29/2023
+ * Sources:
+ * BCRS Starter Project: https://github.com/buwebdev/web-450/tree/master/starter-projects/bcrs
+ * Bootstrap: https://getbootstrap.com/docs/5.3/getting-started/introduction/
+ */
+
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import {
@@ -40,10 +50,12 @@ export class VerifySecurityQuestionsComponent {
     this.email = this.route.snapshot.queryParamMap.get('email') ?? '';
     //console.log(this.email);
     this.verifySecurityQuestionsModel = {} as VerifySecurityQuestionModel;
+
     this.selectedSecurityQuestions = [];
   }
 
   ngOnInit(): void {
+    // Fetch selected security questions for the user
     this.userService.findSelectedSecurityQuestions(this.email).subscribe({
       next: (res) => {
         if (res && res.selectedSecurityQuestions) {
@@ -65,6 +77,7 @@ export class VerifySecurityQuestionsComponent {
     });
   }
 
+  // Assign security question texts to the model
   assignQuestionsToModel() {
     this.verifySecurityQuestionsModel.questionText1 =
       this.selectedSecurityQuestions[0]?.questionText || '';
@@ -74,6 +87,7 @@ export class VerifySecurityQuestionsComponent {
       this.selectedSecurityQuestions[2]?.questionText || '';
   }
 
+  // Function to verify the security questions and answers
   verifySecurityQuestions() {
     const requestBody = {
       questionText1: this.verifySecurityQuestionsModel.questionText1,
@@ -84,6 +98,7 @@ export class VerifySecurityQuestionsComponent {
       answerText3: this.form.controls['answerText3'].value,
     };
 
+    // Verify the answers with the security service
     //console.log('Request body', requestBody);
     // Verify the answers
     this.securityService
@@ -96,7 +111,8 @@ export class VerifySecurityQuestionsComponent {
             res.selectedSecurityQuestions.length > 0
           ) {
             //console.log('Answers verified successfully');
-            this.router.navigate(['/'], {
+            // Answers verified successfully, navigate to reset password
+            this.router.navigate(['/security/reset-password'], {
               queryParams: { isAuthenticated: 'true', email: this.email },
               skipLocationChange: true,
             });

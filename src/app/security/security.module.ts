@@ -15,9 +15,10 @@ import { SecurityRoutingModule } from './security-routing.module';
 import { SecurityComponent } from './security.component';
 import { VerifyEmailComponent } from './verify-email/verify-email.component';
 import { VerifySecurityQuestionsComponent } from './verify-security-questions/verify-security-questions.component';
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
 
 @NgModule({
-  declarations: [SecurityComponent, SignInComponent, VerifyEmailComponent, VerifySecurityQuestionsComponent],
+  declarations: [SecurityComponent, SignInComponent, VerifyEmailComponent, VerifySecurityQuestionsComponent, ResetPasswordComponent],
   imports: [
     CommonModule,
     SecurityRoutingModule,

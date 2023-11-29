@@ -1,5 +1,5 @@
 /*
- * Title: verify-email.component.spec.ts
+ * Title: reset-password.component.spec.ts
  * Author: Professor Krasso
  * Modified By: Michael Christman, Zahava Gopin & Jennifer Hoitenga
  * Date: 11/29/2023
@@ -10,17 +10,17 @@
 
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { VerifyEmailComponent } from './verify-email.component';
+import { ResetPasswordComponent } from './reset-password.component';
 
-describe('VerifyEmailComponent', () => {
-  let component: VerifyEmailComponent;
-  let fixture: ComponentFixture<VerifyEmailComponent>;
+describe('ResetPasswordComponent', () => {
+  let component: ResetPasswordComponent;
+  let fixture: ComponentFixture<ResetPasswordComponent>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [VerifyEmailComponent],
+      declarations: [ResetPasswordComponent],
     });
-    fixture = TestBed.createComponent(VerifyEmailComponent);
+    fixture = TestBed.createComponent(ResetPasswordComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

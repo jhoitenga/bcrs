@@ -84,7 +84,7 @@ export class SignInComponent implements OnInit {
   onSubmit() {
     const email = this.signInForm.controls['email'].value;
     const password = this.signInForm.controls['password'].value;
-    console.log('Signing in with', email, password);
+    //console.log('Signing in with', email, password);
 
     // Call the sign in function from the sign-in service.
     this.signInService.signIn(email, password).subscribe({

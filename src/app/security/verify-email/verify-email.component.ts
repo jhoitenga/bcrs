@@ -1,3 +1,13 @@
+/*
+ * Title: verify-email.component.ts
+ * Author: Professor Krasso
+ * Modified By: Michael Christman, Zahava Gopin & Jennifer Hoitenga
+ * Date: 11/29/2023
+ * Sources:
+ * BCRS Starter Project: https://github.com/buwebdev/web-450/tree/master/starter-projects/bcrs
+ * Bootstrap: https://getbootstrap.com/docs/5.3/getting-started/introduction/
+ */
+
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import {
@@ -33,22 +43,25 @@ export class VerifyEmailComponent {
     this.errorMessage = '';
   }
 
+  // Function to verify user based on email
   verifyUser() {
+    // Get the email from the form
     const email = this.form.controls['email'].value;
     //console.log(email);
+    // Call the security service to verify the user's email
     this.securityService.verifyUser(email).subscribe({
       next: (res: any) => {
         //console.log(res);
-
+        // User email verification successful
         this.router.navigate(['/security/verify-security-questions'], {
           queryParams: { email },
           skipLocationChange: true,
         });
       },
       error: (err: any) => {
+        // User email verification failed
         if (err.status === 404) this.errorMessage = 'Email not found';
         //console.log(err);
-
         this.errorMessage =
           'Email cannot be found. Please try again or contact support.';
       },
