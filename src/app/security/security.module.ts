@@ -13,9 +13,11 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { SignInComponent } from './sign-in/sign-in.component';
 import { SecurityRoutingModule } from './security-routing.module';
 import { SecurityComponent } from './security.component';
+import { VerifyEmailComponent } from './verify-email/verify-email.component';
+import { VerifySecurityQuestionsComponent } from './verify-security-questions/verify-security-questions.component';
 
 @NgModule({
-  declarations: [SecurityComponent, SignInComponent],
+  declarations: [SecurityComponent, SignInComponent, VerifyEmailComponent, VerifySecurityQuestionsComponent],
   imports: [
     CommonModule,
     SecurityRoutingModule,

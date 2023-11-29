@@ -14,11 +14,9 @@ import { FaqComponent } from './faq/faq.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { EmployeeDirectoryComponent } from './employee-directory/employee-directory.component';
 import { AuthGuard } from './auth.guard';
-import { RegisterComponent } from './security/register/register.component';
 import { ServiceComponent } from './service-request/service.component';
 import { RoleGuard } from './role.guard';
 import { ProfileComponent } from './profile/profile.component';
-import { AdminComponent } from './admin/admin.component';
 import { UserNewComponent } from './admin/users/user-new/user-new.component';
 import { UserListComponent } from './admin/users/user-list/user-list.component';
 import { UserViewComponent } from './admin/users/user-view/user-view.component';
@@ -56,11 +54,7 @@ const routes: Routes = [
         title: 'BCRS: Service',
         canActivate: [AuthGuard],
       },
-      {
-        path: 'register',
-        component: RegisterComponent,
-        title: 'BCRS: Register',
-      },
+
       {
         path: 'profile',
         component: ProfileComponent,

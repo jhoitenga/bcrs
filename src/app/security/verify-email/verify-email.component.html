@@ -1,0 +1,67 @@
+<div class="form-container">
+  <div class="container">
+    <h3 class="text-center">Forgot Password</h3>
+
+    <!-- Display error message -->
+    <div *ngIf="errorMessage" class="alert alert-danger">
+      {{ errorMessage }}
+    </div>
+
+    <!-- Success Message -->
+    <div *ngIf="successMessage" class="alert alert-success">
+      {{ successMessage }}
+    </div>
+  </div>
+
+  <form
+    id="msform"
+    class="mb-5"
+    [formGroup]="form"
+    (ngSubmit)="verifyUser()"
+    (keydown.enter)="$event.preventDefault()"
+  >
+    <!-- Step 1: Verify Email Address -->
+    <fieldset *ngIf="currentStep === 1">
+      <h2 class="fs-title">Verify Email Address</h2>
+      <h3 class="fs-subtitle">Step 1</h3>
+
+      <!-- Email Address -->
+      <div class="mb-3">
+        <input
+          type="email"
+          class="form-control"
+          id="email"
+          placeholder="Email Address"
+          formControlName="email"
+          [class.is-invalid]="
+            form.controls['email'].invalid && form.controls['email'].touched
+          "
+        />
+        <div
+          class="invalid-feedback"
+          *ngIf="
+            form.controls['email'].hasError('required') &&
+            form.controls['email'].touched
+          "
+        >
+          Email address is required.
+        </div>
+        <div
+          class="invalid-feedback"
+          *ngIf="
+            form.controls['email'].hasError('email') &&
+            form.controls['email'].touched
+          "
+        >
+          Enter a valid email address.
+        </div>
+      </div>
+      <input
+        type="submit"
+        [disabled]="!form.valid"
+        class="btn btn-mod btn-border btn-circle btn-large"
+        value="Next Step"
+      />
+    </fieldset>
+  </form>
+</div>

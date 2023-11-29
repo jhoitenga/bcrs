@@ -50,7 +50,7 @@ export class SecurityService {
   }
 
   verifyUser(email: string): Observable<any> {
-    return this.http.get(`/api/security/verify/users/${email}`);
+    return this.http.post(`/api/security/verify/users/${email}`, {});
   }
 
   verifySecurityQuestions(
