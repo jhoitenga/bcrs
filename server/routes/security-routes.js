@@ -477,7 +477,8 @@ router.post(
             `User ${user.email} answered one or more security questions incorrectly`
           );
 
-          res.json({ message: "error" });
+          res.status(400).send({ message: "One or more answers are invalid" });
+          //res.json({ message: "error" });
         }
       }
     } catch (err) {
