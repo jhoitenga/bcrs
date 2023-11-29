@@ -9,6 +9,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { SecurityComponent } from './security.component';
+import { AuthLayoutComponent } from '../layouts/auth-layout/auth-layout.component';
 import { SignInComponent } from './sign-in/sign-in.component';
 import { RegisterComponent } from './register/register.component';
 import { VerifyEmailComponent } from './verify-email/verify-email.component';
@@ -16,12 +17,13 @@ import { VerifySecurityQuestionsComponent } from './verify-security-questions/ve
 
 const routes: Routes = [
   {
-    path: '', // The default path for the Security component.
-    component: SecurityComponent,
+    path: '',
+    component: AuthLayoutComponent, // Use AuthLayout for child routes
     children: [
       {
         path: 'sign-in', // Child route for the sign-in page.
         component: SignInComponent,
+        data: { hideNavbar: true }, // Hide the navbar for the sign-in page.
         title: 'BCRS: Sign In',
       },
       {
@@ -40,6 +42,11 @@ const routes: Routes = [
         title: 'BCRS: Forgot Password',
       },
     ],
+  },
+  {
+    path: '', // The default path for the Security component.
+    component: SecurityComponent,
+    children: [],
   },
 ];
 

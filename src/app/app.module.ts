@@ -35,6 +35,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MessageModule } from 'primeng/message';
 import { MessagesModule } from 'primeng/messages';
 import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-dialog.component';
+import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component';
 
 @NgModule({
   declarations: [
@@ -54,6 +55,7 @@ import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-
     UserViewComponent,
     UserNewComponent,
     ConfirmationDialogComponent,
+    AuthLayoutComponent,
   ],
   imports: [
     BrowserModule,

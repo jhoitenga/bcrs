@@ -1,0 +1,23 @@
+<!--
+ * Title: auth-layout.component.html
+ * Author: Michael Christman, Zahava Gopin & Jennifer Hoitenga
+ * Date: 11/28/2023
+ * Sources:
+ * BCRS Starter Project: https://github.com/buwebdev/web-450/tree/master/starter-projects/bcrs
+ * Bootstrap: https://getbootstrap.com/docs/5.3/getting-started/introduction/
+-->
+
+<div class="app-wrapper">
+  <!-- Conditional Rendering of Navigation Bar -->
+  <app-nav *ngIf="showNavbar"></app-nav>
+
+  <!-- website navbar -->
+
+  <main>
+    <!-- The router outlet is where the different child components of the AuthLayout are rendered.  -->
+    <router-outlet></router-outlet>
+  </main>
+
+  <app-footer></app-footer>
+  <!-- website footer -->
+</div>
