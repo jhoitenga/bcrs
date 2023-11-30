@@ -11,22 +11,12 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { User } from '../models/user.interface';
-import { HttpErrorResponse } from '@angular/common/http';
-import { throwError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class UserService {
   constructor(private http: HttpClient) {}
-
-  // Define a private method to handle HTTP errors and return an Observable with an error message.
-  private handleError(error: HttpErrorResponse): Observable<never> {
-    const errorMsg =
-      error.message || 'Something bad happened; please try again later.';
-    //console.error('Error from handleError:', errorMsg);
-    return throwError(errorMsg);
-  }
 
   // Get all users
   findAllUsers(): Observable<any> {

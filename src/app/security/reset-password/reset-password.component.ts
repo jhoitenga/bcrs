@@ -10,14 +10,7 @@
 
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import {
-  FormBuilder,
-  FormGroup,
-  Validators,
-  ValidationErrors,
-} from '@angular/forms';
-import { User } from '../../models/user.interface';
-import { CookieService } from 'ngx-cookie-service';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { SecurityService } from 'src/app/services/security.service';
 
 @Component({
@@ -47,7 +40,6 @@ export class ResetPasswordComponent {
     private route: ActivatedRoute,
     private router: Router,
     private fb: FormBuilder,
-    private cookieService: CookieService,
     private securityService: SecurityService
   ) {
     this.isAuthenticated =

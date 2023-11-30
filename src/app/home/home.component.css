@@ -20,6 +20,10 @@
   margin: 14px 0;
 }
 
+.hero-attribution {
+  text-align: right;
+}
+
 .text-label {
   color: black;
   font-size: 3rem;

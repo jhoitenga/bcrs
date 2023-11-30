@@ -10,13 +10,7 @@
 
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import {
-  FormBuilder,
-  FormGroup,
-  Validators,
-  ValidationErrors,
-} from '@angular/forms';
-import { User } from '../../models/user.interface';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { SecurityService } from '../../services/security.service';
 
 @Component({
@@ -60,7 +54,9 @@ export class VerifyEmailComponent {
       },
       error: (err: any) => {
         // User email verification failed
-        if (err.status === 404) this.errorMessage = 'Email not found';
+        if (err.status === 404)
+          this.errorMessage =
+            'Email cannot be found. Please try again or contact support.';
         //console.log(err);
         this.errorMessage =
           'Email cannot be found. Please try again or contact support.';

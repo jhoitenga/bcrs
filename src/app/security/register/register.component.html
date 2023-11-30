@@ -7,7 +7,6 @@
  * BCRS Starter Project: https://github.com/buwebdev/web-450/tree/master/starter-projects/bcrs
  * Bootstrap: https://getbootstrap.com/docs/5.3/getting-started/introduction/
 -->
-
 <div class="form-container">
   <div class="container">
     <h3 class="text-center">Register for an Account</h3>
@@ -141,7 +140,7 @@
         type="button"
         (click)="goToNextStep()"
         class="btn btn-mod btn-border btn-circle btn-large"
-        value="Next Step"
+        value="Next Step >>"
       />
     </fieldset>
 
@@ -251,14 +250,14 @@
           type="button"
           (click)="goToNextStep()"
           class="btn btn-mod btn-border btn-circle btn-large"
-          value="Next Step"
+          value="Next Step >>"
         />
 
         <input
           type="button"
           (click)="goToPreviousStep()"
-          class="btn btn-mod btn-border btn-circle btn-large"
-          value="Previous Step"
+          class="btn btn-mod btn-border btn-circle btn-large previousBtn"
+          value="<< Previous Step"
         />
       </div>
     </fieldset>
@@ -445,8 +444,8 @@
       <input
         type="button"
         (click)="goToPreviousStep()"
-        class="btn btn-mod btn-border btn-circle btn-large"
-        value="Previous Step"
+        class="btn btn-mod btn-circle btn-large previousBtn"
+        value="<< Previous Step"
       />
     </fieldset>
   </form>

@@ -11,7 +11,6 @@ import { Component, OnInit } from '@angular/core';
 import { User } from '../../../models/user.interface';
 import { UserService } from '../../../services/user.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { CookieService } from 'ngx-cookie-service';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmationDialogComponent } from 'src/app/confirmation-dialog/confirmation-dialog.component';
@@ -35,7 +34,6 @@ export class UserListComponent implements OnInit {
   constructor(
     private userService: UserService,
     private fb: FormBuilder,
-    private cookieService: CookieService,
     private router: Router,
     private dialog: MatDialog
   ) {
