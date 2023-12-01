@@ -1,46 +1,166 @@
 <div class="container py-1 text-center">
-
-  <div class="col-lg-9 mx-auto py-5  text-label">Frequently Asked Questions</div>
+  <h3 class="col-lg-9 mx-auto pt-2 pb-5">Frequently Asked Questions</h3>
 
   <div class="row">
-    <div class="col-lg-9 mx-auto">
+    <div class="col-lg-9 mx-auto pb-5">
+      <!-- Accordion -->
       <div id="accordionExample" class="accordion shadow">
-
         <!--User Configuration-->
         <div class="card">
-          <div id="headingZero" class="card-header bg-white shadow-sm border-0">
+          <div id="headingOne" class="card-header bg-white shadow-sm border-0">
             <h2 class="mb-0">
               <button
                 type="button"
                 data-bs-toggle="collapse"
-                data-bs-target="#collapseZero"
+                data-bs-target="#collapseOne"
                 aria-expanded="false"
-                aria-controls="collapseZero"
-                class="btn text-dark font-weight-bold text-uppercase collapsible-link"
+                aria-controls="collapseOne"
+                class="btn text-dark font-weight-bold collapsible-link"
               >
-                How do I manage Users?
+                How do I manage users?
               </button>
             </h2>
           </div>
-        </div>
-
-        <div
-            id="collapseZero"
-            aria-labelledby="headingZero"
+          <div
+            id="collapseOne"
+            aria-labelledby="headingOne"
             data-parent="#accordionExample"
-            class="collapse show"
+            class="collapse"
           >
-          <!--First card body-->
+            <!--First card body-->
+            <div class="card-body p-5">
+              <div class="row">
+                <div class="col-md-6">
+                  <p class="font-weight-light m-0">
+                    To add a new user please navigate to the USER CONFIGURATION
+                    page and follow these simple steps.
+                  </p>
+                </div>
+                <div class="col-md-6">
+                  <img
+                    src="../../assets/faq/faq_user_config_nav.jpg"
+                    alt="User Navigation"
+                    class="img-fluid"
+                  />
+                </div>
+              </div>
+            </div>
+            <hr />
+            <!--Second card body-->
+            <div class="card-body p-5">
+              <div class="row">
+                <div class="col-md-6">
+                  <p class="font-weight-light m-0">
+                    <b>Step 1:</b>
+                    Click the ADD NEW Button on the top right of the USER
+                    CONFIGURATION page.
+                  </p>
+                </div>
+                <div class="col-md-6">
+                  <img
+                    src="../../assets/faq/faq_user_config_add_new.jpg"
+                    alt="User Navigation"
+                    class="img-fluid"
+                  />
+                </div>
+              </div>
+            </div>
+            <!--Third card body-->
+            <div class="card-body p-5">
+              <div class="row">
+                <div class="col-md-6">
+                  <p class="font-weight-light m-0">
+                    <b>Step 2:</b>
+                    Complete the form and select CREATE USER. The site will
+                    redirect you to the USER CONFIGURATION page, and you should
+                    see your new user listed.
+                  </p>
+                </div>
+                <div class="col-md-6">
+                  <img
+                    src="../../assets/faq/faq_user_config_add_new_form.jpg"
+                    alt="User Navigation"
+                    class="img-fluid"
+                  />
+                </div>
+              </div>
+            </div>
+            <!--Fourth card body-->
+            <div class="card-body p-5">
+              <div class="row">
+                <div class="col-md-6">
+                  <p class="font-weight-light m-0">
+                    To edit a user, just click on the pencil icon to the right
+                    of the user and edit the information in the form.
+                  </p>
+                </div>
+                <div class="col-md-6">
+                  <img
+                    src="../../assets/faq/faq_user_config_edit.jpg"
+                    alt="Edit Navigation"
+                    class="img-fluid"
+                  />
+                </div>
+              </div>
+            </div>
+            <!--Fifth card body-->
+            <div class="card-body p-5">
+              <div class="row">
+                <div class="col-md-6">
+                  <p class="font-weight-light m-0">
+                    To deactivate user click on the garbage can icon to the
+                    right of the user name. A dialogue box will appear to
+                    confirm the decision to deactivate the user.
+                  </p>
+                </div>
+                <div class="col-md-6">
+                  <img
+                    src="../../assets/faq/faq_user_config_deactivate.jpg"
+                    alt="Deactivate"
+                    class="img-fluid"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- End -->
+      <!-- Accordion item 2 -->
+      <div class="card">
+        <div id="headingTwo" class="card-header bg-white shadow-sm border-0">
+          <h2 class="mb-0">
+            <button
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#collapseTwo"
+              aria-expanded="false"
+              aria-controls="collapseTwo"
+              class="btn text-dark font-weight-bold collapsible-link"
+            >
+              How do I register for an account?
+            </button>
+          </h2>
+        </div>
+        <div
+          id="collapseTwo"
+          aria-labelledby="headingTwo"
+          data-parent="#accordionExample"
+          class="collapse"
+        >
+          <!-- First Card Body -->
           <div class="card-body p-5">
             <div class="row">
               <div class="col-md-6">
                 <p class="font-weight-light m-0">
-                  To add a new user please navigate to the USER CONFIGURATION page and follow these simple steps.
+                  To register with us, please select "Register" from the home
+                  menu and complete three easy steps.
                 </p>
               </div>
               <div class="col-md-6">
                 <img
-                  src="../../assets/faq/faq_user_config_nav.jpg"
+                  src="../../assets/faq/faq_register.jpg"
                   alt="Register Navigation"
                   class="img-fluid"
                 />
@@ -54,12 +174,13 @@
               <div class="col-md-6">
                 <p class="font-weight-light m-0">
                   <b>Step 1:</b>
-                  Click the ADD NEW Button on the top right of the USER CONFIGURATION page.
+                  Enter your first name, last name, phone number, address and
+                  click Next Step.
                 </p>
               </div>
               <div class="col-md-6">
                 <img
-                  src="../../assets/faq/faq_user_config_add_new.jpg"
+                  src="../../assets/faq/faq_register_pg1.jpg"
                   alt="User Configuration"
                   class="img-fluid"
                 />
@@ -67,144 +188,123 @@
             </div>
           </div>
           <hr />
-          <!--Third Card Body-->
+          <!-- Third Card Body -->
+          <div class="card-body p-5">
+            <div class="row">
+              <div class="col-md-6">
+                <p class="font-weight-light m-0">
+                  <b>Step 2:</b> Enter your email address, password, confirm
+                  your password and click Next Step.
+                </p>
+              </div>
+              <div class="col-md-6">
+                <img
+                  src="../../assets/faq/faq_register_pg2.jpg"
+                  alt="User Configuration"
+                  class="img-fluid"
+                />
+              </div>
+            </div>
+          </div>
+          <hr />
+          <!-- Fourth Card Body -->
+          <div class="card-body p-5">
+            <div class="row">
+              <div class="col-md-6">
+                <p class="font-weight-light m-0">
+                  <b>Step 3:</b> Select your preferred security questions and
+                  enter your answers. Click Create Account.
+                </p>
+              </div>
+              <div class="col-md-6">
+                <img
+                  src="../../assets/faq/faq_register_pg3.jpg"
+                  alt="User Configuration"
+                  class="img-fluid"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- End -->
+      <!-- Accordion item 3 -->
+      <div class="card">
+        <div id="headingThree" class="card-header bg-white shadow-sm border-0">
+          <h2 class="mb-0">
+            <button
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#collapseThree"
+              aria-expanded="false"
+              aria-controls="collapseThree"
+              class="btn text-dark font-weight-bold collapsible-link"
+            >
+              How do I reset my password?
+            </button>
+          </h2>
+        </div>
+        <div
+          id="collapseThree"
+          aria-labelledby="headingThree"
+          data-parent="#accordionExample"
+          class="collapse"
+        >
+          <!-- First Card Body -->
+          <div class="card-body p-5">
+            <div class="row">
+              <div class="col-md-6">
+                <p class="font-weight-light m-0">
+                  To reset your password, select "Sign In" from the home menu.
+                  Click "Forgot Your Password" to begin the password reset
+                  process.
+                </p>
+              </div>
+              <div class="col-md-6">
+                <img
+                  src="../../assets/faq/faq_sign-in.jpg"
+                  alt="User Configuration"
+                  class="img-fluid"
+                />
+              </div>
+            </div>
+          </div>
+          <hr />
+          <!-- Second Card Body -->
+          <div class="card-body p-5">
+            <div class="row">
+              <div class="col-md-6">
+                <p class="font-weight-light m-0">
+                  <b>Step 1:</b>
+                  Enter your email address and click Next Step.
+                </p>
+              </div>
+              <div class="col-md-6">
+                <img
+                  src="../../assets/faq/faq_reset_password_step_1.jpg"
+                  alt="User Configuration"
+                  class="img-fluid"
+                />
+              </div>
+            </div>
+          </div>
+          <hr />
+          <!-- Third Card Body -->
           <div class="card-body p-5">
             <div class="row">
               <div class="col-md-6">
                 <p class="font-weight-light m-0">
                   <b>Step 2:</b>
-                  Complete the form and select CREATE USER. The site will redirect you to the USER CONFIGURATION page, and you should see your new user listed.
+                  Your security questions will appear. Answer the questions and
+                  click Next Page.
                 </p>
               </div>
               <div class="col-md-6">
                 <img
-                  src="../../assets/faq/faq_user_config_add_new_form.jpg"
+                  src="../../assets/faq/faq_reset_password_step_2.jpg"
                   alt="User Configuration"
                   class="img-fluid"
                 />
-              </div>
-            </div>
-          </div>
-          <hr />
-          <!--Fourth Card Body-->
-          <div class="card-body p-5">
-            <div class="row">
-              <div class="col-md-6">
-                <div class="font-weight-light m-0">
-                  To edit a user, just click on the pencil icon to the right of the user and edit the information in the form.
-
-              </div>
-              <div class="col-md-6">
-                <img
-                  src="../../assets/faq/faq_user_config_edit.jpg"
-                  alt="Register Navigation"
-                  class="img-fluid"
-                />
-              </div>
-            </div>
-          </div>
-          <hr />
-          <!--Fifth card body-->
-          <div class="card-body p-5">
-            <div class="row">
-              <div class="col-md-6">
-                <p class="font-weight-light m-0">
-                  To deactivate user click on the garbage can icon to the right of the user name. A dialogue box will appear to confirm the decision to deactivate the user.
-                </p>
-              </div>
-              <div class="col-md-6">
-                <img
-                  src="../../assets/faq/faq_user_config_deactivate.jpg"
-                  alt="Register Navigation"
-                  class="img-fluid"
-                />
-              </div>    <div class="col-md-6">
-                <img
-                  src="../../assets/faq/faq_user_config_deactivate_confirm.jpg"
-                  alt="Register Navigation"
-                  class="img-fluid"
-                />
-              </div>
-            </div>
-          </div>
-          <hr />
-        <!-- Accordion item 1 -->
-        <div class="card">
-          <div id="headingOne" class="card-header bg-white shadow-sm border-0">
-            <h2 class="mb-0">
-              <button
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#collapseOne"
-                aria-expanded="false"
-                aria-controls="collapseOne"
-                class="btn text-dark font-weight-bold text-uppercase collapsible-link"
-              >
-                How do I register for an account?
-              </button>
-            </h2>
-          </div>
-          <div
-            id="collapseOne"
-            aria-labelledby="headingOne"
-            data-parent="#accordionExample"
-            class="collapse show"
-          >
-            <!-- First Card Body -->
-            <div class="card-body p-5">
-              <div class="row">
-                <div class="col-md-6">
-                  <p class="font-weight-light m-0">
-                    To register with us, please select "Register" from the home
-                    menu and complete three easy steps.
-                  </p>
-                </div>
-                <div class="col-md-6">
-                  <img
-                    src="../../assets/faq/faq_register.jpg"
-                    alt="Register Navigation"
-                    class="img-fluid"
-                  />
-                </div>
-              </div>
-            </div>
-            <hr />
-            <!-- Second Card Body -->
-            <div class="card-body p-5">
-              <div class="row">
-                <div class="col-md-6">
-                  <p class="font-weight-light m-0">
-                    <b>Step 1:</b>
-                    Enter your first name, last name, phone number, address and
-                    click Next Step.
-                  </p>
-                </div>
-                <div class="col-md-6">
-                  <img
-                    src="../../assets/faq/faq_register_pg1.jpg"
-                    alt="User Configuration"
-                    class="img-fluid"
-                  />
-                </div>
-              </div>
-            </div>
-            <hr />
-            <!-- Third Card Body -->
-            <div class="card-body p-5">
-              <div class="row">
-                <div class="col-md-6">
-                  <p class="font-weight-light m-0">
-                    <b>Step 2:</b> Enter your email address, password, confirm
-                    your password and click Next Step.
-                  </p>
-                </div>
-                <div class="col-md-6">
-                  <img
-                    src="../../assets/faq/faq_register_pg2.jpg"
-                    alt="User Configuration"
-                    class="img-fluid"
-                  />
-                </div>
               </div>
             </div>
             <hr />
@@ -213,13 +313,13 @@
               <div class="row">
                 <div class="col-md-6">
                   <p class="font-weight-light m-0">
-                    <b>Step 3:</b> Select your preferred security questions and
-                    enter your answers. Click Create Account.
+                    <b>Step 3:</b>
+                    Enter a new password and click Reset Password.
                   </p>
                 </div>
                 <div class="col-md-6">
                   <img
-                    src="../../assets/faq/faq_register_pg3.jpg"
+                    src="../../assets/faq/faq_reset_password_step_3.jpg"
                     alt="User Configuration"
                     class="img-fluid"
                   />
@@ -228,218 +328,114 @@
             </div>
           </div>
         </div>
-        <!-- End of Accordion item 1 -->
-        <!-- Accordion item 2 -->
+        <!-- End -->
+        <!-- Accordion item 4 -->
         <div class="card">
-          <div
-            id="headingThree"
-            class="card-header bg-white shadow-sm border-0"
-          >
+          <div id="headingFour" class="card-header bg-white shadow-sm border-0">
             <h2 class="mb-0">
               <button
                 type="button"
                 data-bs-toggle="collapse"
-                data-bs-target="#collapseThree"
+                data-bs-target="#collapseFour"
                 aria-expanded="false"
-                aria-controls="collapseThree"
-                class="btn text-dark font-weight-bold text-uppercase collapsible-link"
+                aria-controls="collapseFour"
+                class="btn text-dark font-weight-bold collapsible-link"
               >
-                How do I reset my password?
+                SERVICE REPAIR REQUEST
               </button>
             </h2>
           </div>
           <div
-            id="collapseThree"
-            aria-labelledby="headingThree"
+            id="collapseFour"
+            aria-labelledby="headingFour"
             data-parent="#accordionExample"
             class="collapse"
           >
             <div class="card-body p-5">
-              <div class="row">
-                <div class="col-md-6">
-                  <p class="font-weight-light m-0">
-                    To reset your password, select "Sign In" from the home menu.
-                    Click "Forgot Your Password" to begin the password reset
-                    process.
-                  </p>
-                </div>
-                <div class="col-md-6">
-                  <img
-                    src="../../assets/faq/faq_sign-in.jpg"
-                    alt="User Configuration"
-                    class="img-fluid"
-                  />
-                </div>
-              </div>
+              <p class="font-weight-light m-0">
+                Anim pariatur cliche reprehenderit, enim eiusmod high life
+                accusamus terry richardson ad squid. 3 wolf moon officia aute,
+                non cupidatat skateboard dolor brunch. Food truck quinoa
+                nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua
+                put a bird on it squid single-origin coffee nulla assumenda
+                shoreditch et.
+              </p>
             </div>
-            <hr />
-            <!-- Second Card Body -->
+          </div>
+        </div>
+        <!-- End -->
+        <!-- Accordion item 5 -->
+        <div class="card">
+          <div id="headingFive" class="card-header bg-white shadow-sm border-0">
+            <h2 class="mb-0">
+              <button
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#collapseFive"
+                aria-expanded="false"
+                aria-controls="collapseFive"
+                class="btn text-dark font-weight-bold collapsible-link"
+              >
+                INVOICE SUMMARY
+              </button>
+            </h2>
+          </div>
+          <div
+            id="collapseFive"
+            aria-labelledby="headingFive"
+            data-parent="#accordionExample"
+            class="collapse"
+          >
             <div class="card-body p-5">
-              <div class="row">
-                <div class="col-md-6">
-                  <p class="font-weight-light m-0">
-                    <b>Step 1:</b>
-                    Enter your email address and click Next Step.
-                  </p>
-                </div>
-                <div class="col-md-6">
-                  <img
-                    src="../../assets/faq/faq_reset_password_step_1.jpg"
-                    alt="User Configuration"
-                    class="img-fluid"
-                  />
-                </div>
-              </div>
+              <p class="font-weight-light m-0">
+                Anim pariatur cliche reprehenderit, enim eiusmod high life
+                accusamus terry richardson ad squid. 3 wolf moon officia aute,
+                non cupidatat skateboard dolor brunch. Food truck quinoa
+                nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua
+                put a bird on it squid single-origin coffee nulla assumenda
+                shoreditch et.
+              </p>
             </div>
-            <hr />
-            <!-- Third Card Body -->
+          </div>
+        </div>
+        <!-- End -->
+        <!-- Accordion item 6 -->
+        <div class="card">
+          <div id="headingSix" class="card-header bg-white shadow-sm border-0">
+            <h2 class="mb-0">
+              <button
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#collapseSix"
+                aria-expanded="false"
+                aria-controls="collapseSix"
+                class="btn text-dark font-weight-bold collapsible-link"
+              >
+                PURCHASE BY SERVICE
+              </button>
+            </h2>
+          </div>
+          <div
+            id="collapseSix"
+            aria-labelledby="headingSix"
+            data-parent="#accordionExample"
+            class="collapse"
+          >
             <div class="card-body p-5">
-              <div class="row">
-                <div class="col-md-6">
-                  <p class="font-weight-light m-0">
-                    <b>Step 2:</b>
-                    Your security questions will appear. Answer the questions
-                    and click Next Page.
-                  </p>
-                </div>
-                <div class="col-md-6">
-                  <img
-                    src="../../assets/faq/faq_reset_password_step_2.jpg"
-                    alt="User Configuration"
-                    class="img-fluid"
-                  />
-                </div>
-              </div>
-              <hr />
-              <!-- Second Card Body -->
-              <div class="card-body p-5">
-                <div class="row">
-                  <div class="col-md-6">
-                    <p class="font-weight-light m-0">
-                      <b>Step 3:</b>
-                      Enter a new password and click Reset Password.
-                    </p>
-                  </div>
-                  <div class="col-md-6">
-                    <img
-                      src="../../assets/faq/faq_reset_password_step_3.jpg"
-                      alt="User Configuration"
-                      class="img-fluid"
-                    />
-                  </div>
-                </div>
-              </div>
+              <p class="font-weight-light m-0">
+                Anim pariatur cliche reprehenderit, enim eiusmod high life
+                accusamus terry richardson ad squid. 3 wolf moon officia aute,
+                non cupidatat skateboard dolor brunch. Food truck quinoa
+                nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua
+                put a bird on it squid single-origin coffee nulla assumenda
+                shoreditch et.
+              </p>
             </div>
           </div>
-          <!-- End -->
-
-          <!-- Accordion item 4 -->
-          <div class="card">
-            <div id="headingFour" class="card-header bg-white shadow-sm border-0">
-              <h2 class="mb-0">
-                <button
-                  type="button"
-                  data-bs-toggle="collapse"
-                  data-bs-target="#collapseFour"
-                  aria-expanded="false"
-                  aria-controls="collapseFour"
-                  class="btn text-dark font-weight-bold text-uppercase collapsible-link"
-                >
-                  SERVICE REPAIR REQUEST
-                </button>
-              </h2>
-            </div>
-            <div
-              id="collapseFour"
-              aria-labelledby="headingFour"
-              data-parent="#accordionExample"
-              class="collapse"
-            >
-              <div class="card-body p-5">
-                <p class="font-weight-light m-0">
-                  Anim pariatur cliche reprehenderit, enim eiusmod high life
-                  accusamus terry richardson ad squid. 3 wolf moon officia aute,
-                  non cupidatat skateboard dolor brunch. Food truck quinoa
-                  nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua
-                  put a bird on it squid single-origin coffee nulla assumenda
-                  shoreditch et.
-                </p>
-              </div>
-            </div>
-          </div>
-          <!-- End -->
-          <!-- Accordion item 5 -->
-          <div class="card">
-            <div id="headingFive" class="card-header bg-white shadow-sm border-0">
-              <h2 class="mb-0">
-                <button
-                  type="button"
-                  data-bs-toggle="collapse"
-                  data-bs-target="#collapseFive"
-                  aria-expanded="false"
-                  aria-controls="collapseFive"
-                  class="btn text-dark font-weight-bold text-uppercase collapsible-link"
-                >
-                  INVOICE SUMMARY
-                </button>
-              </h2>
-            </div>
-            <div
-              id="collapseFive"
-              aria-labelledby="headingFive"
-              data-parent="#accordionExample"
-              class="collapse"
-            >
-              <div class="card-body p-5">
-                <p class="font-weight-light m-0">
-                  Anim pariatur cliche reprehenderit, enim eiusmod high life
-                  accusamus terry richardson ad squid. 3 wolf moon officia aute,
-                  non cupidatat skateboard dolor brunch. Food truck quinoa
-                  nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua
-                  put a bird on it squid single-origin coffee nulla assumenda
-                  shoreditch et.
-                </p>
-              </div>
-            </div>
-          </div>
-          <!-- End -->
-          <!-- Accordion item 6 -->
-          <div class="card">
-            <div id="headingSix" class="card-header bg-white shadow-sm border-0">
-              <h2 class="mb-0">
-                <button
-                  type="button"
-                  data-bs-toggle="collapse"
-                  data-bs-target="#collapseSix"
-                  aria-expanded="false"
-                  aria-controls="collapseSix"
-                  class="btn text-dark font-weight-bold text-uppercase collapsible-link"
-                >
-                  PURCHASE BY SERVICE
-                </button>
-              </h2>
-            </div>
-            <div
-              id="collapseSix"
-              aria-labelledby="headingSix"
-              data-parent="#accordionExample"
-              class="collapse"
-            >
-              <div class="card-body p-5">
-                <p class="font-weight-light m-0">
-                  Anim pariatur cliche reprehenderit, enim eiusmod high life
-                  accusamus terry richardson ad squid. 3 wolf moon officia aute,
-                  non cupidatat skateboard dolor brunch. Food truck quinoa
-                  nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua
-                  put a bird on it squid single-origin coffee nulla assumenda
-                  shoreditch et.
-                </p>
-              </div>
-            </div>
-          </div>
-          <!-- End -->
         </div>
         <!-- End -->
       </div>
+      <!-- End -->
     </div>
   </div>
+</div>
