@@ -1,4 +1,3 @@
-
 .collapsible-link {
   width: 100%;
   position: relative;
@@ -18,6 +17,12 @@
 
 .collapsible-link[aria-expanded="true"]::before {
   content: "\f106";
+  color: white;
+}
+
+.collapsible-link[aria-expanded="true"] {
+  background-color: #2a623d;
+  color: white !important;
 }
 
 .text-label {
