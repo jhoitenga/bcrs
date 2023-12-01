@@ -134,11 +134,25 @@ a.btn-mod {
 .btn-mod.btn-border:hover,
 .btn-mod.btn-border:focus {
   color: white;
-  border-color: #aaaaaa;
-  background: #5d5d5d;
+  border-color: #1a472a;
+  background: #1a472a;
 }
 
 .sign-up {
+  text-align: center;
+  padding: 20px 0 0;
+  color: black;
+  font-weight: 500;
+}
+
+.forgot {
+  text-align: right;
+  padding: 5px;
+  color: black;
+  font-weight: 500;
+}
+
+.rtnHome {
   text-align: center;
   padding: 20px 0 0;
   color: black;

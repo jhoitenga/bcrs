@@ -135,9 +135,7 @@
 }
 
 .previousBtn:hover {
-  background: white !important;
-  border: 2px solid #5d5d5d !important;
-  color: #5d5d5d !important;
+  background: #404040 !important;
 }
 
 .btn-mod.btn-large {
@@ -184,5 +182,5 @@ a.btn-mod {
 .btn-mod.btn-border:focus {
   color: white;
   border-color: #aaaaaa;
-  background: #5d5d5d;
+  background: #1a472a;
 }
