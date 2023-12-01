@@ -165,6 +165,8 @@ router.post("/security/signin", async (req, res) => {
 
           // If the password is valid:
           if (passwordIsValid) {
+            user.lastSignIn = new Date();
+            user.save();
             console.log("Login successful");
             // Send a success response.
             res.status(200).send(user);

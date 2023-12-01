@@ -30,6 +30,7 @@ let UserSchema = new Schema({
   selectedSecurityQuestions: [SelectedSecurityQuestionsSchema],
   dateCreated: { type: Date, default: new Date() },
   dateModified: { type: Date },
+  lastSignIn: { type: Date },
 });
 
 // Create and export a Mongoose model named "User" using the defined schema.
