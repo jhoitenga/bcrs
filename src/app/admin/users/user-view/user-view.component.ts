@@ -33,7 +33,7 @@ export class UserViewComponent implements OnInit {
     address: [null, Validators.compose([Validators.required])],
     email: [null, Validators.compose([Validators.required, Validators.email])],
     role: [null, Validators.compose([Validators.required])],
-    isDisabled: [null, Validators.compose([Validators.required])],
+    isDisabled: [false, Validators.compose([Validators.required])],
   });
 
   constructor(
@@ -66,7 +66,9 @@ export class UserViewComponent implements OnInit {
         this.form.controls['address'].setValue(this.user.address);
         this.form.controls['email'].setValue(this.user.email);
         this.form.controls['role'].setValue(this.user.role?.text);
-        this.form.controls['isDisabled'].setValue(this.user.isDisabled);
+        this.form.controls['isDisabled'].setValue(
+          this.user.isDisabled === true
+        );
       },
     });
   }
@@ -82,7 +84,7 @@ export class UserViewComponent implements OnInit {
       phoneNumber: this.form.controls['phoneNumber'].value,
       address: this.form.controls['address'].value,
       email: this.form.controls['email'].value,
-      isDisabled: this.form.controls['isDisabled'].value === 'true',
+      isDisabled: this.form.controls['isDisabled'].value,
       role: { text: this.form.controls['role'].value },
     };
     //console.log('Updated User:', updatedUser);

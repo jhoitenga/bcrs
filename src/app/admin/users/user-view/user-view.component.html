@@ -191,8 +191,8 @@
           formControlName="isDisabled"
           required
         >
-          <option value="false">Active</option>
-          <option value="true">Inactive</option>
+          <option [ngValue]="false">Active</option>
+          <option [ngValue]="true">Inactive</option>
         </select>
 
         <!-- Display validation error message for required field -->
