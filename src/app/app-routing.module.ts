@@ -20,6 +20,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { UserNewComponent } from './admin/users/user-new/user-new.component';
 import { UserListComponent } from './admin/users/user-list/user-list.component';
 import { UserViewComponent } from './admin/users/user-view/user-view.component';
+import { PurchasesByServiceComponent } from './admin/purchases-by-service/purchases-by-service.component';
 
 // routes array with a path, component, and title for each route in the application (e.g. home, about, contact, etc.)
 const routes: Routes = [
@@ -77,6 +78,12 @@ const routes: Routes = [
         path: 'user-list',
         component: UserListComponent,
         title: 'BCRS: User Configuration',
+        canActivate: [RoleGuard],
+      },
+      {
+        path: 'purchase-graph',
+        component: PurchasesByServiceComponent,
+        title: 'BCRS: Purchases By Service',
         canActivate: [RoleGuard],
       },
       {

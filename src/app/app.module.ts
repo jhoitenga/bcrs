@@ -25,6 +25,8 @@ import { AdminComponent } from './admin/admin.component';
 import { UserListComponent } from './admin/users/user-list/user-list.component';
 import { UserNewComponent } from './admin/users/user-new/user-new.component';
 import { UserViewComponent } from './admin/users/user-view/user-view.component';
+import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component';
+import { PurchasesByServiceComponent } from './admin/purchases-by-service/purchases-by-service.component';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -35,7 +37,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MessageModule } from 'primeng/message';
 import { MessagesModule } from 'primeng/messages';
 import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-dialog.component';
-import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component';
+import { ChartModule } from 'primeng/chart';
 
 @NgModule({
   declarations: [
@@ -56,6 +58,7 @@ import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component
     UserNewComponent,
     ConfirmationDialogComponent,
     AuthLayoutComponent,
+    PurchasesByServiceComponent,
   ],
   imports: [
     BrowserModule,
@@ -68,6 +71,7 @@ import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component
     MatDialogModule,
     MessageModule,
     MessagesModule,
+    ChartModule,
   ],
   providers: [CookieService],
   bootstrap: [AppComponent],

@@ -1,0 +1,16 @@
+/*
+ * Title: purchases-by-service.component.css
+ * Modified By: Michael Christman, Zahava Gopin & Jennifer Hoitenga
+ * Author: Professor Krasso
+ * Date: 12/3/2023
+ * Sources:
+ * BCRS Starter Project: https://github.com/buwebdev/web-450/tree/master/starter-projects/bcrs
+ * PrimeNG: https://primeng.org/chart
+*/
+
+.pie {
+  width: 50%;
+  height: 50%;
+  margin: 0 auto;
+  margin-bottom: 15%;
+}
