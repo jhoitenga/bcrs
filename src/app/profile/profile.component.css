@@ -1,0 +1,91 @@
+/*
+ * Title: profile.component.css
+ * Author: Michael Christman, Zahava Gopin & Jennifer Hoitenga
+ * Date: 12/03/2023
+ * Sources:
+ * BCRS Starter Project: https://github.com/buwebdev/web-450/tree/master/starter-projects/bcrs
+ * Bootstrap: https://getbootstrap.com/docs/5.3/getting-started/introduction/
+ */
+
+.card-img-top {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  margin: 0 auto;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  border: 3px solid #2a623d;
+}
+
+.card {
+  padding: 1.5em 0.5em 0.5em;
+  text-align: center;
+  border-radius: 2em;
+  box-shadow: none;
+  border: none;
+  transition: 0.3s;
+}
+
+.card-title {
+  font-weight: bold;
+  font-size: 1.3em;
+}
+
+ul {
+  text-align: left;
+  list-style: none;
+}
+
+.systemSettings {
+  text-align: left;
+}
+
+.btn-mod.btn-large {
+  height: auto;
+  padding: 10px 22px;
+  font-size: 12px;
+}
+
+.btn-mod.btn-border {
+  color: white;
+  border: 2px solid #2a623d;
+  background: #2a623d;
+  border-radius: 8px;
+}
+
+.btn-mod,
+a.btn-mod {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 4px 13px;
+  color: #fff;
+  background: #2a623d;
+  border: 2px solid transparent;
+  font-size: 11px;
+  font-weight: 400;
+  text-transform: uppercase;
+  text-decoration: none;
+  letter-spacing: 2px;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  -webkit-transition: all 0.2s cubic-bezier(0, 0, 0.58, 1);
+  -moz-transition: all 0.2s cubic-bezier(0, 0, 0.58, 1);
+  -o-transition: all 0.2s cubic-bezier(0, 0, 0.58, 1);
+  -ms-transition: all 0.2s cubic-bezier(0, 0, 0.58, 1);
+  transition: all 0.2s cubic-bezier(0, 0, 0.58, 1);
+}
+
+.btn-mod.btn-border:hover,
+.btn-mod.btn-border:focus {
+  color: white;
+  border-color: #aaaaaa;
+  background: #1a472a;
+}
+
+.editFields {
+  text-align: left;
+}

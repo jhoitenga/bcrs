@@ -21,4 +21,5 @@ export interface User {
   isDisabled: boolean;
   role: Role; // From Role interface
   selectedSecurityQuestions?: SelectedSecurityQuestion[]; // From SelectedSecurityQuestion interface
+  lastSignIn?: string;
 }

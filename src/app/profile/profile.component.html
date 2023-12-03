@@ -1,1 +1,156 @@
-<p>profile works!</p>
+<!--
+ * Title: profile.component.html
+ * Author: Michael Christman, Zahava Gopin & Jennifer Hoitenga
+ * Date: 12/03/2023
+ * Sources:
+ * BCRS Starter Project: https://github.com/buwebdev/web-450/tree/master/starter-projects/bcrs
+ * Bootstrap: https://getbootstrap.com/docs/5.3/getting-started/introduction/
+-->
+
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-12 my-2">
+      <div class="text-center">
+        <h3>Personal Profile</h3>
+        <div *ngIf="errorMessage" class="alert alert-danger">
+          {{ errorMessage }}
+        </div>
+        <div *ngIf="successMessage" class="alert alert-success">
+          {{ successMessage }}
+        </div>
+
+        <div class="row">
+          <div class="col col-md-4">
+            <div class="card">
+              <!-- Profile Card-->
+              <div class="card-body">
+                <!-- Random image from unsplash -->
+                <img
+                  [src]="
+                    'https://source.unsplash.com/random/280x380?people&sig'
+                  "
+                  class="card-img-top"
+                  alt="{{ user.firstName }}"
+                  #imageElement
+                />
+              </div>
+            </div>
+          </div>
+          <!-- End -->
+
+          <!-- Profile Info -->
+          <div *ngIf="!isEditMode" class="col col-md-8 mt-5">
+            <ul>
+              <li><b>Name:</b> {{ user.firstName }} {{ user.lastName }}</li>
+              <li><b>Email:</b> {{ user.email }}</li>
+              <li><b>Phone:</b> {{ user.phoneNumber }}</li>
+              <li><b>Address:</b> {{ user.address }}</li>
+            </ul>
+
+            <div class="col col-md-3 mb-5">
+              <!-- Edit Profile button -->
+              <button
+                class="btn btn-mod btn-border btn-large"
+                (click)="toggleEditMode()"
+              >
+                Edit Profile
+              </button>
+            </div>
+
+            <ul>
+              <li>
+                <b><h4>System Settings</h4></b>
+              </li>
+              <li><b>Last Signed In:</b> {{ user.lastSignIn }}</li>
+              <li><b>Language:</b> English</li>
+              <li *ngIf="user && user.role">
+                <b>Privacy Settings:</b>
+                {{ capitalizeFirstLetter(user.role.text) }}
+              </li>
+            </ul>
+          </div>
+          <!-- End -->
+
+          <!-- Edit Profile-->
+          <div *ngIf="isEditMode" class="col col-md-8 mt-5 editFields">
+            <form [formGroup]="profileForm" (ngSubmit)="saveChanges()">
+              <fieldset class="form-group">
+                <!-- Phone Number field -->
+                <div class="mb-3">
+                  <label for="txtPhone"><b>Phone:</b></label>
+                  <input
+                    type="text"
+                    id="txtPhone"
+                    class="form-control"
+                    [class.is-invalid]="
+                      profileForm.controls['phoneNumber'].invalid &&
+                      profileForm.controls['phoneNumber'].touched
+                    "
+                    formControlName="phoneNumber"
+                  />
+                  <!-- Display validation error message for required field -->
+                  <div
+                    class="invalid-feedback"
+                    *ngIf="
+                      profileForm.controls['phoneNumber'].hasError(
+                        'required'
+                      ) && profileForm.controls['phoneNumber'].touched
+                    "
+                  >
+                    Phone number is required.
+                  </div>
+                </div>
+
+                <!-- Address field -->
+                <div class="mb-3">
+                  <label for="txtAddress"><b>Address:</b></label>
+                  <input
+                    type="text"
+                    id="txtAddress"
+                    class="form-control"
+                    [class.is-invalid]="
+                      profileForm.controls['address'].invalid &&
+                      profileForm.controls['address'].touched
+                    "
+                    formControlName="address"
+                  />
+                  <div
+                    class="invalid-feedback"
+                    *ngIf="
+                      profileForm.controls['address'].hasError('required') &&
+                      profileForm.controls['address'].touched
+                    "
+                  >
+                    Address is required.
+                  </div>
+                </div>
+
+                <br />
+
+                <!-- Submit Edits -->
+                <div>
+                  <div class="button-group-container">
+                    <input
+                      type="submit"
+                      id="submit"
+                      value="Save Changes"
+                      [disabled]="!isFormDirty()"
+                      class="btn btn-mod btn-border btn-large mr-5"
+                    />
+
+                    <button
+                      class="ml-5 btn btn-mod btn-border btn-large"
+                      (click)="toggleEditMode()"
+                    >
+                      Cancel
+                    </button>
+                  </div>
+                </div>
+              </fieldset>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

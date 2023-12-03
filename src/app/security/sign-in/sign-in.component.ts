@@ -97,6 +97,7 @@ export class SignInComponent implements OnInit {
         );
         this.cookieService.set('sessionEmail', res.email, 1);
         this.cookieService.set('sessionRole', res.role.text, 1);
+        this.cookieService.set('sessionUserId', res._id, 1);
         this.router.navigate(['/service']);
       },
       error: (err) => {
