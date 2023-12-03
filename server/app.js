@@ -16,6 +16,7 @@ const swaggerUi = require("swagger-ui-express");
 const swaggerJsdoc = require("swagger-jsdoc");
 const userAPI = require("./routes/user-routes");
 const sessionAPI = require("./routes/security-routes");
+const invoiceAPI = require("./routes/invoice-routes");
 const mongoose = require("mongoose");
 
 const cors = require("cors");
@@ -50,6 +51,7 @@ const options = {
       // Added this to control the order of the APIs in the documentation.
       "/api/users": {},
       "/api/security": {},
+      "/api/invoices": {},
     },
   },
   apis: ["./server/routes/*"], // Specify the API routes to document.
@@ -72,6 +74,7 @@ const openapiSpecification = swaggerJsdoc(options);
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(openapiSpecification));
 app.use("/api", userAPI);
 app.use("/api", sessionAPI);
+app.use("/api", invoiceAPI);
 
 // error handler for 404 errors
 app.use(function (req, res, next) {
