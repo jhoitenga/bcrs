@@ -24,7 +24,7 @@
         <!-- Service request form -->
         <form [formGroup]="invoiceForm" (ngSubmit)="onSubmit()">
           <div class="row m-4">
-            <div class="col-md-2">
+            <div class="col-md-2 align-left">
               <div class="mb-3 fw-bold">
                 <!-- Input field for order date -->
                 <label for="txtOrderDate" class="form-label fw-bold"
@@ -41,20 +41,20 @@
               </div>
             </div>
 
-            <div class="col-md-5 fw-bold">
+            <div class="col-md-5 fw-bold align-left">
               <!-- Input field for customer full name -->
               <label for="txtCustomerFullName" class="form-label fw-bold"
-                >Customer Full Name:</label
+                >Customer's Full Name:</label
               >
               <input
                 type="text"
                 id="txtCustomerFullName"
                 class="form-control"
                 formControlName="customerFullName"
-                placeholder="Customer Full Name"
+                placeholder="Customer's Full Name"
               />
             </div>
-            <div class="col-md-5 fw-bold">
+            <div class="col-md-5 fw-bold align-left">
               <!-- Input field for customer email -->
               <label for="txtCustomerEmail" class="form-label fw-bold"
                 >Customer's Email Address:
@@ -64,7 +64,7 @@
                 id="txtCustomerEmail"
                 class="form-control"
                 formControlName="customerEmail"
-                placeholder="Customer Email"
+                placeholder="Customer's Email Address"
               />
             </div>
           </div>
@@ -72,7 +72,7 @@
           <!-- Checkbox options for services -->
           <div>
             <div class="col-md-12">
-              <table class="table table-bordered">
+              <table class="table table-bordered table-hover">
                 <thead>
                   <tr>
                     <th>Service Name</th>
@@ -84,7 +84,7 @@
                   <!-- Loop through services and display in a table -->
                   <tr *ngFor="let service of services">
                     <td>{{ service.name }}</td>
-                    <td>{{ service.price }}</td>
+                    <td>{{ service.price | currency }}</td>
                     <td>
                       <!-- Checkbox for selecting services -->
                       <input
@@ -99,71 +99,83 @@
               </table>
             </div>
           </div>
-          <div class="row mt-4">
-            <div class="col-md-2">
-              <div class="mb-3 fw-bold">
-                <!-- Input field for parts amount -->
-                <label for="txtPartsAmount" class="form-label fw-bold"
-                  >Parts Amount:
-                </label>
-                <input
-                  type="number"
-                  id="txtPartsAmount"
-                  class="form-control"
-                  formControlName="partsAmount"
-                  placeholder="0"
-                  min="0"
-                  (click)="updateTotal()"
-                />
+          <div class="row mt-5">
+            <div class="col-md-3 align-left">
+              <div class="d-flex">
+                <div class="d-md-block">
+                  <!-- Input field for parts amount -->
+                  <label for="txtPartsAmount" class="form-label fw-bold"
+                    >Parts Amount:
+                  </label>
+                  <input
+                    type="number"
+                    id="txtPartsAmount"
+                    class="form-control"
+                    formControlName="partsAmount"
+                    placeholder="0"
+                    min="0"
+                    (click)="updateTotal()"
+                  />
+                </div>
               </div>
             </div>
-            <div class="col-md-2">
-              <div class="mb-3 fw-bold">
-                <!-- Input field for labor amount -->
-                <label for="txtPartsAmount" class="form-label fw-bold"
-                  >Labor Amount ($50/hr):
-                </label>
-                <input
-                  type="number"
-                  id="txtLaborAmount"
-                  class="form-control"
-                  formControlName="laborAmount"
-                  placeholder="0"
-                  min="0"
-                  (click)="updateTotal()"
-                />
+            <div class="col-md-3 align-left">
+              <div class="d-flex">
+                <div class="mb-3 fw-bold">
+                  <!-- Input field for labor amount -->
+                  <label for="txtPartsAmount" class="form-label fw-bold"
+                    >Labor Amount ($50/hr):
+                  </label>
+                  <input
+                    type="number"
+                    id="txtLaborAmount"
+                    class="form-control"
+                    formControlName="laborAmount"
+                    placeholder="0"
+                    min="0"
+                    (click)="updateTotal()"
+                  />
+                </div>
               </div>
             </div>
-            <div class="col-md-2">
-              <div class="mb-3 fw-bold">
-                <!-- Input field for line item total -->
-                <label for="txtPartsAmount" class="form-label fw-bold"
-                  >Line Item Total:
-                </label>
-                <input
-                  type="number"
-                  id="txtLineItemTotal"
-                  class="form-control"
-                  formControlName="lineItemTotal"
-                  placeholder="0"
-                  min="0"
-                  (click)="updateTotal()"
-                />
+
+            <div class="col-md-6">
+              <div class="d-flex justify-content-end">
+                <!-- Display the calculated total price -->
+                <div class="d-md-block">
+                  <label for="txtLineItemTotal" class="form-label fw-bold">
+                    Line Item Total:
+                  </label>
+
+                  <span id="txtLineItemTotal">
+                    {{ servicesTotal.toFixed(2) | currency }}</span
+                  >
+                </div>
               </div>
             </div>
           </div>
-          <div class="row mt-4">
-            <div class="mb-3 fw-bold float-end">
-              <!-- Display the calculated total price -->
-              <label for="txtInvoiceTotal" class="form-label fw-bold"
-                >Invoice Total:
-              </label>
-              <span id="txtInvoiceTotal"> {{ totalPrice.toFixed(2) }}</span>
+
+          <div class="row">
+            <div class="col-md-12">
+              <div class="d-flex justify-content-end">
+                <!-- Display the calculated total price -->
+                <div class="d-md-block">
+                  <label for="txtInvoiceTotal" class="form-label fw-bold">
+                    Invoice Total:
+                  </label>
+
+                  <span id="txtInvoiceTotal">
+                    {{ totalPrice.toFixed(2) | currency }}</span
+                  >
+                </div>
+              </div>
             </div>
           </div>
 
           <!-- Submit button for creating the invoice -->
-          <button type="submit">Create Invoice</button>
+          <button class="btn btn-mod btn-border btn-large mt-2" type="submit">
+            Create Invoice
+          </button>
         </form>
       </div>
     </div>

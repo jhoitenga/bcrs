@@ -47,6 +47,7 @@ export class ServiceComponent {
   ];
 
   totalPrice: number = 0;
+  servicesTotal: number = 0;
 
   constructor(
     private fb: FormBuilder,
@@ -69,14 +70,14 @@ export class ServiceComponent {
   // Update the total price based on selected services and user inputs
   updateTotal() {
     // Calculate the total price of selected services
-    const servicesTotal = this.services.reduce((total, service) => {
+    this.servicesTotal = this.services.reduce((total, service) => {
       if (service.selected.value) {
         return total + service.price;
       }
       return total;
     }, 0);
 
-    this.invoiceForm.get('lineItemTotal')?.setValue(servicesTotal);
+    this.invoiceForm.get('lineItemTotal')?.setValue(this.servicesTotal);
     // Get user input values for parts and labor
     const partsAmount =
       parseFloat(this.invoiceForm.get('partsAmount')?.value) || 0;
@@ -87,7 +88,7 @@ export class ServiceComponent {
     const laborCost = laborAmount * 50;
 
     // Calculate the total invoice price
-    let totalPrice = servicesTotal + partsAmount + laborCost;
+    let totalPrice = this.servicesTotal + partsAmount + laborCost;
 
     // Adjust total price if any input is NaN (not a number)
     if (isNaN(partsAmount)) {
