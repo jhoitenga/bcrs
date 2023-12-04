@@ -1,7 +1,19 @@
+/*
+ * Title: service.component.css
+ * Author: Michael Christman, Zahava Gopin & Jennifer Hoitenga
+ * Date: 12/03/2023
+ * Sources:
+ * BCRS Starter Project: https://github.com/buwebdev/web-450/tree/master/starter-projects/bcrs
+ * Bootstrap: https://getbootstrap.com/docs/5.3/getting-started/introduction/
+ */
+
 .btn-mod.btn-large {
   height: auto;
   padding: 13px 52px;
   font-size: 15px;
+  width: 40%;
+  margin-left: auto;
+  margin-right: 0;
 }
 
 .btn-mod.btn-border {
@@ -52,8 +64,4 @@ th {
 
 .align-left {
   text-align: left !important;
-}
-
-.invoiceTotal {
-  margin-top: -30px;
 }

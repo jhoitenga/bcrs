@@ -59,7 +59,10 @@ export class ServiceComponent {
     this.invoiceForm = this.fb.group({
       orderDate: ['', Validators.required],
       customerFullName: ['', Validators.required],
-      customerEmail: ['', Validators.required],
+      customerEmail: [
+        '',
+        Validators.compose([Validators.required, Validators.email]),
+      ],
       partsAmount: [0, Validators.required],
       laborAmount: [0, Validators.required],
       lineItemTotal: ['', Validators.required],

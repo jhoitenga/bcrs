@@ -22,7 +22,10 @@
         </div>
 
         <!-- Service request form -->
-        <form [formGroup]="invoiceForm" (ngSubmit)="onSubmit()">
+        <form
+          [formGroup]="invoiceForm"
+          (ngSubmit)="onSubmit(); invoiceForm.reset()"
+        >
           <div class="row m-4">
             <div class="col-md-2 align-left">
               <div class="mb-3 fw-bold">
@@ -31,13 +34,35 @@
                   >Order Date:
                 </label>
                 <input
-                  type="text"
+                  type="date"
                   id="txtOrderDate"
                   class="form-control"
                   formControlName="orderDate"
+                  [class.is-invalid]="
+                    invoiceForm.controls['orderDate'].invalid &&
+                    invoiceForm.controls['orderDate'].touched
+                  "
                   placeholder="Order Date"
                   required
                 />
+                <div
+                  class="invalid-feedback"
+                  *ngIf="
+                    invoiceForm.controls['orderDate'].hasError('required') &&
+                    invoiceForm.controls['orderDate'].touched
+                  "
+                >
+                  Order date is required.
+                </div>
+                <div
+                  class="invalid-feedback"
+                  *ngIf="
+                    invoiceForm.controls['orderDate'].hasError('pattern') &&
+                    invoiceForm.controls['orderDate'].touched
+                  "
+                >
+                  Enter
+                </div>
               </div>
             </div>
 
@@ -51,8 +76,23 @@
                 id="txtCustomerFullName"
                 class="form-control"
                 formControlName="customerFullName"
+                [class.is-invalid]="
+                  invoiceForm.controls['customerFullName'].invalid &&
+                  invoiceForm.controls['customerFullName'].touched
+                "
                 placeholder="Customer's Full Name"
               />
+
+              <div
+                class="invalid-feedback"
+                *ngIf="
+                  invoiceForm.controls['customerFullName'].hasError(
+                    'required'
+                  ) && invoiceForm.controls['customerFullName'].touched
+                "
+              >
+                Customer's full name is required.
+              </div>
             </div>
             <div class="col-md-5 fw-bold align-left">
               <!-- Input field for customer email -->
@@ -60,12 +100,35 @@
                 >Customer's Email Address:
               </label>
               <input
-                type="text"
+                type="email"
                 id="txtCustomerEmail"
                 class="form-control"
                 formControlName="customerEmail"
+                [class.is-invalid]="
+                  invoiceForm.controls['customerEmail'].invalid &&
+                  invoiceForm.controls['customerEmail'].touched
+                "
                 placeholder="Customer's Email Address"
               />
+
+              <div
+                class="invalid-feedback"
+                *ngIf="
+                  invoiceForm.controls['customerEmail'].hasError('required') &&
+                  invoiceForm.controls['customerEmail'].touched
+                "
+              >
+                Customer's email address is required.
+              </div>
+              <div
+                class="invalid-feedback"
+                *ngIf="
+                  invoiceForm.controls['customerEmail'].hasError('email') &&
+                  invoiceForm.controls['customerEmail'].touched
+                "
+              >
+                Please enter a valid email address.
+              </div>
             </div>
           </div>
 
@@ -100,7 +163,7 @@
             </div>
           </div>
           <div class="row mt-5">
-            <div class="col-md-3 align-left">
+            <div class="col-md-2 align-left">
               <div class="d-flex">
                 <div class="d-md-block">
                   <!-- Input field for parts amount -->
@@ -119,12 +182,12 @@
                 </div>
               </div>
             </div>
-            <div class="col-md-3 align-left">
+            <div class="col-md-2 align-left">
               <div class="d-flex">
                 <div class="mb-3 fw-bold">
                   <!-- Input field for labor amount -->
                   <label for="txtPartsAmount" class="form-label fw-bold"
-                    >Labor Amount ($50/hr):
+                    >Labor Amount: <span>($50/hr)</span>
                   </label>
                   <input
                     type="number"
@@ -139,7 +202,7 @@
               </div>
             </div>
 
-            <div class="col-md-6">
+            <div class="col-md-8">
               <div class="d-flex justify-content-end">
                 <!-- Display the calculated total price -->
                 <div class="d-md-block">
@@ -152,30 +215,34 @@
                   >
                 </div>
               </div>
-            </div>
-          </div>
 
-          <div class="row">
-            <div class="col-md-12">
-              <div class="d-flex justify-content-end">
-                <!-- Display the calculated total price -->
-                <div class="d-md-block">
-                  <label for="txtInvoiceTotal" class="form-label fw-bold">
-                    Invoice Total:
-                  </label>
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="d-flex justify-content-end">
+                    <!-- Display the calculated total price -->
+                    <div class="d-md-block">
+                      <label for="txtInvoiceTotal" class="form-label fw-bold">
+                        Invoice Total:
+                      </label>
 
-                  <span id="txtInvoiceTotal">
-                    {{ totalPrice.toFixed(2) | currency }}</span
-                  >
+                      <span id="txtInvoiceTotal">
+                        {{ totalPrice.toFixed(2) | currency }}</span
+                      >
+                    </div>
+                  </div>
                 </div>
+                <!-- Submit button for creating the invoice -->
+
+                <button
+                  class="btn btn-mod btn-border btn-large mt-2"
+                  type="submit"
+                  [disabled]="!invoiceForm.valid"
+                >
+                  Create Invoice
+                </button>
               </div>
             </div>
           </div>
-
-          <!-- Submit button for creating the invoice -->
-          <button class="btn btn-mod btn-border btn-large mt-2" type="submit">
-            Create Invoice
-          </button>
         </form>
       </div>
     </div>
