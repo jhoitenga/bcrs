@@ -5,6 +5,7 @@
  * Sources:
  * BCRS Starter Project: https://github.com/buwebdev/web-450/tree/master/starter-projects/bcrs
  * Bootstrap: https://getbootstrap.com/docs/5.3/getting-started/introduction/
+ * DayJs: https://www.freecodecamp.org/news/javascript-date-time-dayjs/
  */
 
 import { Component } from '@angular/core';
@@ -17,6 +18,8 @@ import {
 import { InvoiceService } from '../services/invoice.service';
 import { CookieService } from 'ngx-cookie-service';
 import { Router } from '@angular/router';
+import { InvoiceDataService } from '../services/invoice-data.service';
+import dayjs from 'dayjs';
 
 @Component({
   selector: 'app-service',
@@ -53,7 +56,8 @@ export class ServiceComponent {
     private fb: FormBuilder,
     private cookieService: CookieService,
     private invoiceService: InvoiceService,
-    private router: Router
+    private router: Router,
+    private invoiceDataService: InvoiceDataService
   ) {
     // Initialize the main form group with default values and validators
     this.invoiceForm = this.fb.group({
@@ -112,6 +116,9 @@ export class ServiceComponent {
     if (this.invoiceForm.valid) {
       // Prepare form data for submission
       const formData = this.invoiceForm.value;
+      formData.orderDate = dayjs(formData.orderDate).format('M-D-YYYY');
+      console.log('Formatted Form Data:', formData);
+
       formData.partsAmount = formData.partsAmount
         ? parseFloat(formData.partsAmount)
         : 0;
@@ -132,17 +139,14 @@ export class ServiceComponent {
       this.invoiceService.createInvoice(userId, formData).subscribe(
         (res) => {
           console.log('Invoice created successfully:', res);
-          this.successMessage = 'Invoice created successfully';
+          this.invoiceDataService.setInvoiceData(res);
+          this.successMessage =
+            'Invoice created successfully. You will be routed to the invoice summary page.';
           // Reload the current route to reset the form
-          setTimeout(() => {
-            const currentUrl = this.router.url;
-            this.router
-              .navigateByUrl('/', { skipLocationChange: true })
-              .then(() => {
-                this.router.navigate([currentUrl]);
-              });
-          }, 3000);
+
+          this.router.navigate(['/invoice']);
         },
+
         (err) => {
           console.error('Error creating invoice:', err);
           this.errorMessage = 'Error creating invoice. Please try again later.';

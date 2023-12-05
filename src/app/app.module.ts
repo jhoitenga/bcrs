@@ -38,6 +38,7 @@ import { MessageModule } from 'primeng/message';
 import { MessagesModule } from 'primeng/messages';
 import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-dialog.component';
 import { ChartModule } from 'primeng/chart';
+import { InvoiceComponent } from './invoice/invoice.component';
 
 @NgModule({
   declarations: [
@@ -59,6 +60,7 @@ import { ChartModule } from 'primeng/chart';
     ConfirmationDialogComponent,
     AuthLayoutComponent,
     PurchasesByServiceComponent,
+    InvoiceComponent,
   ],
   imports: [
     BrowserModule,

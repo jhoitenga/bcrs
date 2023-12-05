@@ -49,3 +49,9 @@ a.social:hover {
   background-color: #aaaaaa !important;
   color: black;
 }
+
+@media print {
+  .no-print {
+    display: none !important;
+  }
+}

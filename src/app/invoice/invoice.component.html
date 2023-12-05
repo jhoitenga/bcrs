@@ -1,0 +1,126 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <div *ngIf="invoiceDetails; else loading">
+      <div class="card">
+        <div class="card-body">
+          <div class="container mb-5 mt-3">
+            <div class="row d-flex align-items-baseline d-print-grid"></div>
+            <div class="container">
+              <div class="col-md-12">
+                <div class="text-center">
+                  <img src="../../assets/logo2.png" alt="logo" width="80px" />
+                  <h5 class="pt-2 fw-bold">Bob's Computer Repair Shop</h5>
+                  <h5>Invoice</h5>
+                </div>
+              </div>
+
+              <div class="row fw-bold d-print-flex">Customer Information:</div>
+              <div class="row">
+                <div class="col-xl-8">
+                  <ul class="list-unstyled">
+                    <li>
+                      <b>Name: </b>
+                      {{ invoiceDetails.customerFullName }}
+                    </li>
+                    <li>
+                      <b>Email: </b>
+                      {{ invoiceDetails.customerEmail }}
+                    </li>
+                  </ul>
+                </div>
+                <div class="col-xl-4">
+                  <ul class="list-unstyled">
+                    <li class="text">
+                      <span class="fw-bold"> Date: </span
+                      >{{ invoiceDetails?.orderDate }}
+                    </li>
+                    <li class="fw-bold">
+                      <span class="me-1 fw-bold"> Status:</span
+                      ><span class="badge bg-warning text-black fw-bold">
+                        Unpaid</span
+                      >
+                    </li>
+                  </ul>
+                  <button
+                    class="d-flex py-2 border-info d-print-none"
+                    style="
+                      border: 1px solid #2a623d !important;
+                      border-radius: 8px;
+                    "
+                    (click)="printInvoice()"
+                  >
+                    <i class="bi bi-printer-fill"></i>
+                    &nbsp;Print Invoice
+                  </button>
+                </div>
+              </div>
+              <hr />
+
+              <div class="row ms-3 mt-2">
+                <!-- Address and Payable Info -->
+                <div class="col-xl-8">
+                  <address>
+                    Please make all checks payable to:<br />
+                    <strong>Bob's Computer Repair Shop</strong><br />
+                    1000 Galvin Rd S<br />
+                    Bellevue, NE 68005<br />
+                  </address>
+                  <br />
+                  <h6>Thank you for your business!</h6>
+                </div>
+
+                <!-- Service Request Line Items and Details -->
+                <div class="col-xl-4">
+                  <span class="text-end fw-bold"
+                    >Service Request Line Items:</span
+                  >
+
+                  <!-- Service Request Line Items List -->
+                  <ul class="list-unstyled d-print-table-row">
+                    <li
+                      class="row ms-3 mt-2"
+                      *ngFor="let item of invoiceDetails.lineItems"
+                    >
+                      <span class="col-8 text-end">{{ item.name }}:</span>
+                      <span class="col-4">{{ item.price | currency }}</span>
+                    </li>
+
+                    <li class="row ms-3 mt-2">
+                      <span class="col-8 text-end">Line Item Total:</span>
+                      <span class="col-4">{{
+                        invoiceDetails.lineItemTotal | currency
+                      }}</span>
+                    </li>
+                    <li class="row ms-3 mt-2">
+                      <span class="col-8 text-end">Parts Amount:</span>
+                      <span class="col-4">{{
+                        invoiceDetails.partsAmount | currency
+                      }}</span>
+                    </li>
+                    <li class="row ms-3 mt-2">
+                      <span class="col-8 text-end">Labor Amount:</span>
+                      <span class="col-4">{{
+                        invoiceDetails.laborAmount | currency
+                      }}</span>
+                    </li>
+                  </ul>
+
+                  <p class="row ms-3 mt-2 fw-bold" style="color: #2a623d">
+                    <span class="col-8 text-end">Grand Total:</span>
+                    <span class="col-4" style="color: #2a623d">{{
+                      invoiceDetails.invoiceTotal | currency
+                    }}</span>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <ng-template #loading>
+      <p>Loading invoice details...</p>
+    </ng-template>
+  </div>
+</div>
