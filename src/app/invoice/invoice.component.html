@@ -1,5 +1,16 @@
+<!--
+ * Title: invoice.component.html
+ * Author: Michael Christman, Zahava Gopin & Jennifer Hoitenga
+ * Date: 12/05/2023
+ * Sources:
+ * BCRS Starter Project: https://github.com/buwebdev/web-450/tree/master/starter-projects/bcrs
+ * Bootstrap: https://getbootstrap.com/docs/5.3/getting-started/introduction/
+ * RxJs Behavior Subject: https://dev.to/dipteekhd/angular-behaviorsubject-p1
+-->
+
 <div class="container">
   <div class="row justify-content-center">
+    <!-- Show loading text-->
     <div *ngIf="invoiceDetails; else loading">
       <div class="card">
         <div class="card-body">
@@ -7,6 +18,7 @@
             <div class="row d-flex align-items-baseline"></div>
             <div class="container">
               <div class="col-md-12">
+                <!-- Logo and Title -->
                 <div class="text-center">
                   <img src="../../assets/logo2.png" alt="logo" width="80px" />
                   <h5 class="pt-2 fw-bold">Bob's Computer Repair Shop</h5>
@@ -16,6 +28,7 @@
 
               <div class="row">
                 <div class="col-xl-8">
+                  <!-- Customer Info -->
                   <ul class="list-unstyled">
                     <li>
                       <b>Name: </b>
@@ -30,6 +43,7 @@
                 <div class="col-xl-4">
                   <ul class="list-unstyled">
                     <li class="text">
+                      <!-- Order Date -->
                       <span class="fw-bold"> Date: </span
                       >{{ invoiceDetails?.orderDate }}
                     </li>
@@ -37,8 +51,9 @@
                       <span class="fw-bold"> Status: </span> Unpaid
                     </li>
                   </ul>
+                  <!-- Print Invoice Button -->
                   <button
-                    class="d-flex py-2 border-info d-print-none"
+                    class="d-flex py-2 border-info d-print-none btn btn-mod btn-border"
                     style="
                       border: 1px solid #2a623d !important;
                       border-radius: 8px;
@@ -56,8 +71,8 @@
                 <table class="table">
                   <thead>
                     <tr>
-                      <th scope="col">Service Name</th>
-                      <th scope="col">Price</th>
+                      <th>Service Name</th>
+                      <th>Price</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -75,12 +90,14 @@
                     </tr>
                     <tr>
                       <th class="indented">Labor Amount:</th>
-                      <td>{{ invoiceDetails.laborAmount | currency }}</td>
+                      <td>{{ invoiceDetails.laborAmount * 50 | currency }}</td>
                     </tr>
 
                     <tr>
-                      <th class="indented fw-bold">Grand Total:</th>
-                      <td>{{ invoiceDetails.invoiceTotal | currency }}</td>
+                      <th class="indented total">Grand Total:</th>
+                      <td class="fw-bold total">
+                        {{ invoiceDetails.invoiceTotal | currency }}
+                      </td>
                     </tr>
                   </tbody>
                 </table>
@@ -90,14 +107,15 @@
                 <!-- Address and Payable Info -->
                 <div class="col-xl-8">
                   <address>
-                    Please make all checks payable to:<br />
+                    Please make checks payable to:<br />
                     <strong>Bob's Computer Repair Shop</strong><br />
                     1000 Galvin Rd S<br />
                     Bellevue, NE 68005<br />
                   </address>
                   <br />
                 </div>
-                <div class="col-xl-12 text-center">
+                <!-- Thank you message -->
+                <div class="col-xl-12 text-center fw-bold">
                   <h6>We thank you for your business!</h6>
                 </div>
               </div>

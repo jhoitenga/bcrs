@@ -30,6 +30,7 @@ export class ServiceComponent {
   errorMessage: string = '';
   successMessage: string = '';
   invoiceForm: FormGroup;
+
   // List of available services with their prices and selected state
   services: { name: string; price: number; selected: FormControl }[] = [
     { name: 'Password Reset', price: 39.99, selected: new FormControl(false) },
