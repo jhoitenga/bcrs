@@ -4,7 +4,7 @@
       <div class="card">
         <div class="card-body">
           <div class="container mb-5 mt-3">
-            <div class="row d-flex align-items-baseline d-print-grid"></div>
+            <div class="row d-flex align-items-baseline"></div>
             <div class="container">
               <div class="col-md-12">
                 <div class="text-center">
@@ -14,7 +14,6 @@
                 </div>
               </div>
 
-              <div class="row fw-bold d-print-flex">Customer Information:</div>
               <div class="row">
                 <div class="col-xl-8">
                   <ul class="list-unstyled">
@@ -34,11 +33,8 @@
                       <span class="fw-bold"> Date: </span
                       >{{ invoiceDetails?.orderDate }}
                     </li>
-                    <li class="fw-bold">
-                      <span class="me-1 fw-bold"> Status:</span
-                      ><span class="badge bg-warning text-black fw-bold">
-                        Unpaid</span
-                      >
+                    <li class="text">
+                      <span class="fw-bold"> Status: </span> Unpaid
                     </li>
                   </ul>
                   <button
@@ -55,8 +51,42 @@
                 </div>
               </div>
               <hr />
+              <!-- Service Request Line Items and Details -->
+              <div class="row">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th scope="col">Service Name</th>
+                      <th scope="col">Price</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let item of invoiceDetails.lineItems">
+                      <td>{{ item.name }}</td>
+                      <td>{{ item.price | currency }}</td>
+                    </tr>
+                    <tr>
+                      <th class="indented">Line Item Total:</th>
+                      <td>{{ invoiceDetails.lineItemTotal | currency }}</td>
+                    </tr>
+                    <tr>
+                      <th class="indented">Parts Amount:</th>
+                      <td>{{ invoiceDetails.partsAmount | currency }}</td>
+                    </tr>
+                    <tr>
+                      <th class="indented">Labor Amount:</th>
+                      <td>{{ invoiceDetails.laborAmount | currency }}</td>
+                    </tr>
 
-              <div class="row ms-3 mt-2">
+                    <tr>
+                      <th class="indented fw-bold">Grand Total:</th>
+                      <td>{{ invoiceDetails.invoiceTotal | currency }}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <div class="row mt-2">
                 <!-- Address and Payable Info -->
                 <div class="col-xl-8">
                   <address>
@@ -66,51 +96,9 @@
                     Bellevue, NE 68005<br />
                   </address>
                   <br />
-                  <h6>Thank you for your business!</h6>
                 </div>
-
-                <!-- Service Request Line Items and Details -->
-                <div class="col-xl-4">
-                  <span class="text-end fw-bold"
-                    >Service Request Line Items:</span
-                  >
-
-                  <!-- Service Request Line Items List -->
-                  <ul class="list-unstyled d-print-table-row">
-                    <li
-                      class="row ms-3 mt-2"
-                      *ngFor="let item of invoiceDetails.lineItems"
-                    >
-                      <span class="col-8 text-end">{{ item.name }}:</span>
-                      <span class="col-4">{{ item.price | currency }}</span>
-                    </li>
-
-                    <li class="row ms-3 mt-2">
-                      <span class="col-8 text-end">Line Item Total:</span>
-                      <span class="col-4">{{
-                        invoiceDetails.lineItemTotal | currency
-                      }}</span>
-                    </li>
-                    <li class="row ms-3 mt-2">
-                      <span class="col-8 text-end">Parts Amount:</span>
-                      <span class="col-4">{{
-                        invoiceDetails.partsAmount | currency
-                      }}</span>
-                    </li>
-                    <li class="row ms-3 mt-2">
-                      <span class="col-8 text-end">Labor Amount:</span>
-                      <span class="col-4">{{
-                        invoiceDetails.laborAmount | currency
-                      }}</span>
-                    </li>
-                  </ul>
-
-                  <p class="row ms-3 mt-2 fw-bold" style="color: #2a623d">
-                    <span class="col-8 text-end">Grand Total:</span>
-                    <span class="col-4" style="color: #2a623d">{{
-                      invoiceDetails.invoiceTotal | currency
-                    }}</span>
-                  </p>
+                <div class="col-xl-12 text-center">
+                  <h6>We thank you for your business!</h6>
                 </div>
               </div>
             </div>

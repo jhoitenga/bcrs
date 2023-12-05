@@ -1,5 +1,28 @@
+.indented {
+  text-indent: 400px;
+}
+
+@media (max-width: 820px) {
+  .indented {
+    text-indent: 0;
+  }
+}
+
+table,
+th,
+td {
+  border-color: transparent;
+}
+
+.card {
+  width: 80%;
+  height: 95%;
+  margin: auto;
+}
+
 @media print {
-  @page {
-    size: landscape;
+  .card {
+    width: 100% !important;
+    height: 100% !important;
   }
 }
