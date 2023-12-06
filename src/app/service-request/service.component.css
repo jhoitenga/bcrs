@@ -65,3 +65,9 @@ th {
 .align-left {
   text-align: left !important;
 }
+
+@media (max-width: 768px) {
+  span {
+    display: none;
+  }
+}

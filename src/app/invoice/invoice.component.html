@@ -65,9 +65,8 @@
                   </button>
                 </div>
               </div>
-              <hr />
               <!-- Service Request Line Items and Details -->
-              <div class="row">
+              <div class="row mt-3">
                 <table class="table">
                   <thead>
                     <tr>
@@ -81,20 +80,38 @@
                       <td>{{ item.price | currency }}</td>
                     </tr>
                     <tr>
-                      <th class="indented">Line Item Total:</th>
-                      <td>{{ invoiceDetails.lineItemTotal | currency }}</td>
+                      <th class="customRow" style="text-align: end">
+                        Service Total:
+                      </th>
+                      <td class="customRow">
+                        {{ invoiceDetails.lineItemTotal | currency }}
+                      </td>
                     </tr>
                     <tr>
-                      <th class="indented">Parts Amount:</th>
-                      <td>{{ invoiceDetails.partsAmount | currency }}</td>
+                      <th class="customRow" style="text-align: end">
+                        Parts Total:
+                      </th>
+                      <td class="customRow">
+                        {{ invoiceDetails.partsAmount | currency }}
+                      </td>
                     </tr>
                     <tr>
-                      <th class="indented">Labor Amount:</th>
-                      <td>{{ invoiceDetails.laborAmount * 50 | currency }}</td>
+                      <th class="customRow" style="text-align: end">
+                        Labor Total:
+                      </th>
+                      <td class="customRow">
+                        {{ invoiceDetails.laborAmount * 50 | currency }}
+                      </td>
                     </tr>
 
-                    <tr>
-                      <th class="indented total">Grand Total:</th>
+                    <tr class="customRow">
+                      <th
+                        class="customRow"
+                        style="text-align: end"
+                        class="total"
+                      >
+                        Invoice Total:
+                      </th>
                       <td class="fw-bold total">
                         {{ invoiceDetails.invoiceTotal | currency }}
                       </td>

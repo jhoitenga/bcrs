@@ -8,22 +8,6 @@
  * RxJs Behavior Subject: https://dev.to/dipteekhd/angular-behaviorsubject-p1
  */
 
-.indented {
-  text-indent: 400px;
-}
-
-@media (max-width: 820px) {
-  .indented {
-    text-indent: 200;
-  }
-}
-
-table,
-th,
-td {
-  border-color: transparent;
-}
-
 .card {
   width: 80%;
   height: 95%;
@@ -41,6 +25,10 @@ td {
   font-weight: bold;
   font-size: larger;
   color: #2a623d;
+}
+
+.customRow {
+  border: none !important;
 }
 
 .btn-mod.btn-large {
