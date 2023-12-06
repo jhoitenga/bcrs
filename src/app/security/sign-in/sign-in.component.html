@@ -26,13 +26,16 @@
         <i class="fas fa-user fa-3x"></i>
       </div>
       <!-- Title for the login card. -->
-      <h1 class="login-title">Sign In to BCRS</h1>
+      <h1 class="login-title">Sign-In to BCRS</h1>
 
       <!-- Form for user sign-in -->
       <form
         [formGroup]="signInForm"
         (ngSubmit)="onSubmit(); signInForm.reset()"
       >
+        <div class="alert alert-danger" *ngIf="errorMessage">
+          {{ errorMessage }}
+        </div>
         <!-- Email Field -->
         <div class="form-floating mb-3">
           <input
@@ -41,29 +44,32 @@
             id="email"
             placeholder="Email Address"
             formControlName="email"
+            [class.is-invalid]="
+              signInForm.controls['email'].invalid &&
+              signInForm.controls['email'].touched
+            "
           />
           <label for="email">Email Address</label>
-        </div>
-
-        <!-- Validation Error Messages for outside of range -->
-        <div class="alert alert-danger" *ngIf="errorMessage">
-          {{ errorMessage }}
-        </div>
-
-        <!-- Validation Error Message for empty input. -->
-        <div
-          *ngIf="form['email'].errors && form['email'].touched"
-          class="alert alert-danger"
-        >
-          <div *ngIf="form['email'].errors?.['required']">
+          <div
+            class="invalid-feedback"
+            *ngIf="
+              signInForm.controls['email'].hasError('required') &&
+              signInForm.controls['email'].touched
+            "
+          >
             Email address is required.
           </div>
-
-          <!-- Validation Error Message for non-numeric input. -->
-          <div *ngIf="form['email'].errors?.['email']">
+          <div
+            class="invalid-feedback"
+            *ngIf="
+              signInForm.controls['email'].hasError('email') &&
+              signInForm.controls['email'].touched
+            "
+          >
             Enter a valid email address.
           </div>
         </div>
+
         <div class="forgot">
           <a routerLink="/security/forgot-password">Forgot Your Password?</a>
         </div>
@@ -76,22 +82,23 @@
             id="password"
             placeholder="Password"
             formControlName="password"
+            [class.is-invalid]="
+              signInForm.controls['password'].invalid &&
+              signInForm.controls['password'].touched
+            "
           />
           <label for="password">Password</label>
-        </div>
-
-        <!-- Validation Error Message for empty input. -->
-        <div
-          *ngIf="form['password'].errors && form['password'].touched"
-          class="alert alert-danger"
-        >
-          <div *ngIf="form['password'].errors?.['required']">
-            The password is required.
-          </div>
-
-          <!-- Validation Error Message for password pattern. -->
           <div
-            class="error-message"
+            class="invalid-feedback"
+            *ngIf="
+              signInForm.controls['password'].hasError('required') &&
+              signInForm.controls['password'].touched
+            "
+          >
+            Password is required.
+          </div>
+          <div
+            class="invalid-feedback"
             *ngIf="
               signInForm.controls['password'].hasError('pattern') &&
               signInForm.controls['password'].touched
