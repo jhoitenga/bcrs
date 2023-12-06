@@ -44,7 +44,7 @@
       <h3 class="fs-subtitle">Step 1</h3>
 
       <!-- First Name -->
-      <div class="mb-3">
+      <div class="mb-3 form-floating">
         <input
           type="text"
           placeholder="First Name"
@@ -56,6 +56,7 @@
             form.controls['firstName'].touched
           "
         />
+        <label for="firstName" class="form-label">First Name</label>
         <div
           class="invalid-feedback"
           *ngIf="
@@ -68,7 +69,7 @@
       </div>
 
       <!-- Last Name -->
-      <div class="mb-3">
+      <div class="mb-3 form-floating">
         <input
           type="text"
           placeholder="Last Name"
@@ -80,6 +81,7 @@
             form.controls['lastName'].touched
           "
         />
+        <label for="lastName" class="form-label">Last Name</label>
         <div
           class="invalid-feedback"
           *ngIf="
@@ -92,7 +94,7 @@
       </div>
 
       <!-- Phone Number -->
-      <div class="mb-3">
+      <div class="mb-3 form-floating">
         <input
           type="text"
           placeholder="Phone Number"
@@ -104,6 +106,7 @@
             form.controls['phoneNumber'].touched
           "
         />
+        <label for="phoneNumber" class="form-label">Phone Number</label>
         <div
           class="invalid-feedback"
           *ngIf="
@@ -113,10 +116,20 @@
         >
           Phone number is required.
         </div>
+        <div
+          class="invalid-feedback"
+          *ngIf="
+            (form.controls['phoneNumber'].hasError('pattern') &&
+              form.controls['phoneNumber'].touched) ||
+            form.controls['phoneNumber'].dirty
+          "
+        >
+          Enter a valid US phone number with area code.
+        </div>
       </div>
 
       <!-- Address -->
-      <div class="mb-3">
+      <div class="mb-3 form-floating">
         <textarea
           class="form-control"
           id="address"
@@ -125,7 +138,10 @@
           [class.is-invalid]="
             form.controls['address'].invalid && form.controls['address'].touched
           "
-        ></textarea>
+        >
+        </textarea>
+
+        <label for="address" class="form-label">Address</label>
         <div
           class="invalid-feedback"
           *ngIf="
@@ -149,7 +165,7 @@
       <h2 class="fs-title">Account Information</h2>
       <h3 class="fs-subtitle">Step 2</h3>
       <!-- Email Address -->
-      <div class="mb-3">
+      <div class="mb-3 form-floating">
         <input
           type="email"
           class="form-control"
@@ -160,6 +176,7 @@
             form.controls['email'].invalid && form.controls['email'].touched
           "
         />
+        <label for="email" class="form-label">Email</label>
         <div
           class="invalid-feedback"
           *ngIf="
@@ -167,6 +184,7 @@
             form.controls['email'].touched
           "
         >
+          <label for="email" class="form-label">Email</label>
           Email address is required.
         </div>
         <div
@@ -181,7 +199,7 @@
       </div>
 
       <!-- Password -->
-      <div class="mb-3">
+      <div class="mb-3 form-floating">
         <input
           type="password"
           class="form-control"
@@ -193,6 +211,7 @@
             form.controls['password'].touched
           "
         />
+        <label for="password" class="form-label">Password</label>
         <div
           class="invalid-feedback"
           *ngIf="
@@ -214,7 +233,7 @@
         </div>
       </div>
       <!-- Password -->
-      <div class="mb-3">
+      <div class="mb-3 form-floating">
         <input
           type="password"
           class="form-control"
@@ -226,6 +245,7 @@
             form.controls['confirmPassword'].touched
           "
         />
+        <label for="confirmPassword" class="form-label">Confirm Password</label>
         <div
           class="invalid-feedback"
           *ngIf="
@@ -269,7 +289,7 @@
       <!-- Security Question 1 Dropdown -->
       <div class="mb-3">
         <select
-          class="form-control"
+          class="form-control form-select"
           id="securityQuestion1"
           formControlName="securityQuestion1"
           [class.is-invalid]="
@@ -277,7 +297,7 @@
             form.controls['securityQuestion1'].touched
           "
         >
-          <option value="" disabled selected hidden>Question 1 *</option>
+          <option value="" disabled selected hidden>Select Question 1 *</option>
 
           <option
             *ngFor="
@@ -301,7 +321,7 @@
         </div>
       </div>
       <!-- Answer Input for Question 1 -->
-      <div class="mb-3">
+      <div class="mb-3 form-floating">
         <input
           type="text"
           class="form-control"
@@ -312,6 +332,7 @@
             form.controls['securityAnswer1'].touched
           "
         />
+        <label for="securityAnswer1" class="form-label">Answer</label>
         <div
           class="invalid-feedback"
           *ngIf="
@@ -326,7 +347,7 @@
       <!-- Security Question 2 Dropdown -->
       <div class="mb-3">
         <select
-          class="form-control"
+          class="form-control form-select"
           id="securityQuestion2"
           formControlName="securityQuestion2"
           [class.is-invalid]="
@@ -334,7 +355,7 @@
             form.controls['securityQuestion2'].touched
           "
         >
-          <option value="" disabled selected hidden>Question 2 *</option>
+          <option value="" disabled selected hidden>Select Question 2 *</option>
           <option
             *ngFor="
               let q of getFilteredQuestions([
@@ -357,7 +378,7 @@
         </div>
       </div>
       <!-- Answer Input for Question 2 -->
-      <div class="mb-3">
+      <div class="mb-3 form-floating">
         <input
           type="text"
           class="form-control"
@@ -368,6 +389,7 @@
             form.controls['securityAnswer2'].touched
           "
         />
+        <label for="securityAnswer2" class="form-label">Answer</label>
         <div
           class="invalid-feedback"
           *ngIf="
@@ -382,7 +404,7 @@
       <!-- Security Question 3 Dropdown -->
       <div class="mb-3">
         <select
-          class="form-control"
+          class="form-control form-select"
           id="securityQuestion3"
           formControlName="securityQuestion3"
           [class.is-invalid]="
@@ -390,7 +412,7 @@
             form.controls['securityQuestion3'].touched
           "
         >
-          <option value="" disabled selected hidden>Question 3 *</option>
+          <option value="" disabled selected hidden>Select Question 3 *</option>
           <option
             *ngFor="
               let q of getFilteredQuestions([
@@ -413,7 +435,7 @@
         </div>
       </div>
       <!-- Answer Input for Question 3 -->
-      <div class="mb-3">
+      <div class="mb-3 form-floating">
         <input
           type="text"
           class="form-control"
@@ -424,6 +446,7 @@
             form.controls['securityAnswer3'].touched
           "
         />
+        <label for="securityAnswer3" class="form-label">Answer</label>
         <div
           class="invalid-feedback"
           *ngIf="
