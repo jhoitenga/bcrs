@@ -11,16 +11,6 @@
 <div class="form-container">
   <div class="container">
     <h3 class="text-center">Reset Password</h3>
-
-    <!-- Display error message -->
-    <div *ngIf="errorMessage" class="alert alert-danger">
-      {{ errorMessage }}
-    </div>
-
-    <!-- Success Message -->
-    <div *ngIf="successMessage" class="alert alert-success">
-      {{ successMessage }}
-    </div>
   </div>
 
   <form
@@ -36,7 +26,7 @@
       <h3 class="fs-subtitle">Step 1</h3>
 
       <!-- Email Address -->
-      <div class="mb-3">
+      <div class="mb-3 form-floating">
         <input
           type="email"
           class="form-control"
@@ -47,6 +37,7 @@
             form.controls['email'].invalid && form.controls['email'].touched
           "
         />
+        <label for="email">Email Address</label>
         <div
           class="invalid-feedback"
           *ngIf="
@@ -64,6 +55,16 @@
           "
         >
           Enter a valid email address.
+        </div>
+
+        <!-- Display error message -->
+        <div *ngIf="errorMessage" class="alert alert-danger">
+          {{ errorMessage }}
+        </div>
+
+        <!-- Success Message -->
+        <div *ngIf="successMessage" class="alert alert-success">
+          {{ successMessage }}
         </div>
       </div>
       <!-- Submit button for the form -->

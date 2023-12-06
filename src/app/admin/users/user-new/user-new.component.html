@@ -23,23 +23,25 @@
 
   <form
     class="formStyle mb-5"
+    id="msform"
     [formGroup]="form"
     (ngSubmit)="createUser()"
     (keydown.enter)="$event.preventDefault()"
   >
     <!-- First Name -->
-    <div class="mb-3 mt-2">
-      <label for="firstName" class="form-label">First Name *</label>
+    <div class="mb-3 mt-2 form-floating">
       <input
         type="text"
         class="form-control"
         id="firstName"
+        placeholder="First Name"
         formControlName="firstName"
         [class.is-invalid]="
           form.controls['firstName'].invalid &&
           form.controls['firstName'].touched
         "
       />
+      <label for="firstName" class="form-label">First Name *</label>
       <div
         class="invalid-feedback"
         *ngIf="
@@ -52,17 +54,18 @@
     </div>
 
     <!-- Last Name -->
-    <div class="mb-3">
-      <label for="lastName" class="form-label">Last Name *</label>
+    <div class="mb-3 form-floating">
       <input
         type="text"
         class="form-control"
         id="lastName"
+        placeholder="Last Name"
         formControlName="lastName"
         [class.is-invalid]="
           form.controls['lastName'].invalid && form.controls['lastName'].touched
         "
       />
+      <label for="lastName" class="form-label">Last Name *</label>
       <div
         class="invalid-feedback"
         *ngIf="
@@ -75,18 +78,21 @@
     </div>
 
     <!-- Phone Number -->
-    <div class="mb-3">
-      <label for="phoneNumber" class="form-label">Phone Number *</label>
+    <div class="mb-3 form-floating">
       <input
         type="text"
         class="form-control"
         id="phoneNumber"
+        placeholder="Phone Number"
         formControlName="phoneNumber"
         [class.is-invalid]="
           form.controls['phoneNumber'].invalid &&
           form.controls['phoneNumber'].touched
         "
       />
+      <label for="phoneNumber" class="form-label"
+        >Phone Number * <span>(ex. xxx-xxx-xxxx)</span>
+      </label>
       <div
         class="invalid-feedback"
         *ngIf="
@@ -96,19 +102,30 @@
       >
         Phone number is required.
       </div>
+      <div
+        class="invalid-feedback"
+        *ngIf="
+          (form.controls['phoneNumber'].hasError('pattern') &&
+            form.controls['phoneNumber'].touched) ||
+          form.controls['phoneNumber'].dirty
+        "
+      >
+        Phone number must be in the following format: xxx-xxx-xxxx
+      </div>
     </div>
 
     <!-- Address -->
-    <div class="mb-3">
-      <label for="address" class="form-label">Address *</label>
+    <div class="mb-3 form-floating">
       <textarea
         class="form-control"
         id="address"
+        placeholder="Address"
         formControlName="address"
         [class.is-invalid]="
           form.controls['address'].invalid && form.controls['address'].touched
         "
       ></textarea>
+      <label for="address" class="form-label">Address *</label>
       <div
         class="invalid-feedback"
         *ngIf="
@@ -121,17 +138,18 @@
     </div>
 
     <!-- Email Address -->
-    <div class="mb-3">
-      <label for="email" class="form-label">Email Address *</label>
+    <div class="mb-3 form-floating">
       <input
         type="email"
         class="form-control"
         id="email"
+        placeholder="Email Address"
         formControlName="email"
         [class.is-invalid]="
           form.controls['email'].invalid && form.controls['email'].touched
         "
       />
+      <label for="email" class="form-label">Email Address *</label>
       <div
         class="invalid-feedback"
         *ngIf="
@@ -153,17 +171,18 @@
     </div>
 
     <!-- Password -->
-    <div class="mb-3">
-      <label for="password" class="form-label">Password *</label>
+    <div class="mb-3 form-floating">
       <input
         type="password"
         class="form-control"
         id="password"
+        placeholder="Password"
         formControlName="password"
         [class.is-invalid]="
           form.controls['password'].invalid && form.controls['password'].touched
         "
       />
+      <label for="password" class="form-label">Password *</label>
       <div
         class="invalid-feedback"
         *ngIf="
@@ -185,10 +204,17 @@
       </div>
     </div>
     <!-- Role Selection Field -->
+
     <div class="d-md-flex gap-3">
       <div class="mb-3">
         <label for="role" class="form-label">Role *</label>
-        <select class="form-control" id="role" formControlName="role" required>
+        <select
+          class="form-control form-select"
+          id="role"
+          formControlName="role"
+          required
+        >
+          <option value="" disabled selected>-- Select --</option>
           <option value="standard">Standard</option>
           <option value="admin">Admin</option>
         </select>
@@ -208,11 +234,12 @@
       <div class="mb-3">
         <label for="status" class="form-label">Status *</label>
         <select
-          class="form-control"
+          class="form-control form-select"
           id="isDisabled"
           formControlName="isDisabled"
           required
         >
+          <option value="" disabled selected>-- Select --</option>
           <option value="false">Active</option>
           <option value="true">Inactive</option>
         </select>

@@ -61,3 +61,12 @@ a.btn-mod {
   border-color: #aaaaaa;
   background: #1a472a;
 }
+
+@media screen and (max-width: 770px) {
+  #msform {
+    width: 100%;
+    margin: 50px auto;
+    text-align: center;
+    position: relative;
+  }
+}

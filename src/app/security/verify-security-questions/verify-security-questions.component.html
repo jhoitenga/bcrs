@@ -11,16 +11,6 @@
 <div class="form-container">
   <div class="container">
     <h3 class="text-center">Reset Password</h3>
-
-    <!-- Display error message -->
-    <div *ngIf="errorMessage" class="alert alert-danger">
-      {{ errorMessage }}
-    </div>
-
-    <!-- Success Message -->
-    <div *ngIf="successMessage" class="alert alert-success">
-      {{ successMessage }}
-    </div>
   </div>
 
   <form
@@ -36,7 +26,7 @@
       <h3 class="fs-subtitle">Step 2</h3>
 
       <!-- Security Question 1 -->
-      <div class="mb-3">
+      <div class="mb-3 form-floating">
         <input
           type="text"
           [placeholder]="verifySecurityQuestionsModel.questionText1"
@@ -47,6 +37,9 @@
             form.controls['answerText1'].touched
           "
         />
+        <label for="answerText1">{{
+          verifySecurityQuestionsModel.questionText1
+        }}</label>
 
         <!-- Display error message for required field -->
         <div
@@ -56,11 +49,11 @@
             form.controls['answerText1'].touched
           "
         >
-          Answer is required.
+          Please answer the security question.
         </div>
       </div>
       <!-- Security Question 2 -->
-      <div class="mb-3">
+      <div class="mb-3 form-floating">
         <input
           type="text"
           [placeholder]="verifySecurityQuestionsModel.questionText2"
@@ -71,6 +64,9 @@
             form.controls['answerText2'].touched
           "
         />
+        <label for="answerText1">{{
+          verifySecurityQuestionsModel.questionText2
+        }}</label>
         <!-- Display error message for required field -->
         <div
           class="invalid-feedback"
@@ -79,11 +75,11 @@
             form.controls['answerText2'].touched
           "
         >
-          Answer is required.
+          Please answer the security question.
         </div>
       </div>
       <!-- Security Question 3 -->
-      <div class="mb-3">
+      <div class="mb-3 form-floating">
         <input
           type="text"
           [placeholder]="verifySecurityQuestionsModel.questionText3"
@@ -94,6 +90,9 @@
             form.controls['answerText3'].touched
           "
         />
+        <label for="answerText1">{{
+          verifySecurityQuestionsModel.questionText3
+        }}</label>
         <!-- Display error message for required field -->
         <div
           class="invalid-feedback"
@@ -102,7 +101,16 @@
             form.controls['answerText3'].touched
           "
         >
-          Answer is required.
+          Please answer the security question.
+        </div>
+        <!-- Display error message -->
+        <div *ngIf="errorMessage" class="alert alert-danger">
+          {{ errorMessage }}
+        </div>
+
+        <!-- Success Message -->
+        <div *ngIf="successMessage" class="alert alert-success">
+          {{ successMessage }}
         </div>
       </div>
       <!-- Submit button for the form -->

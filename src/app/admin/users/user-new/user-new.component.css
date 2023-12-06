@@ -15,6 +15,39 @@
   padding: 15px;
 }
 
+#msform {
+  text-align: center;
+}
+
+#msform input,
+#msform textarea {
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  margin-bottom: 10px;
+  width: 100%;
+  box-sizing: border-box;
+  color: black;
+  font-size: 15px;
+}
+
+#msform .action-button {
+  width: 100px;
+  background: #2a623d;
+  font-weight: bold;
+  color: white;
+  border: 0 none;
+  border-radius: 1px;
+  cursor: pointer;
+  padding: 10px;
+  margin: 10px 5px;
+  text-decoration: none;
+  font-size: 14px;
+}
+#msform .action-button:hover,
+#msform .action-button:focus {
+  box-shadow: 0 0 0 2px white, 0 0 0 3px #2a623d;
+}
+
 .btn-mod.btn-large {
   height: auto;
   padding: 13px 52px;
@@ -60,4 +93,13 @@ a.btn-mod {
   color: white;
   border-color: #aaaaaa;
   background: #1a472a;
+}
+
+@media screen and (max-width: 770px) {
+  #msform {
+    width: 100%;
+    margin: 50px auto;
+    text-align: center;
+    position: relative;
+  }
 }

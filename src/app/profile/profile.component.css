@@ -8,12 +8,19 @@
  */
 
 .card-img-top {
-  width: 200px;
-  height: 200px;
+  width: 250px;
+  height: 250px;
   border-radius: 50%;
   margin: 0 auto;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   border: 3px solid #2a623d;
+}
+
+@media screen and (max-width: 770px) {
+  .card-img-top {
+    width: 200px;
+    height: 200px;
+  }
 }
 
 .card {

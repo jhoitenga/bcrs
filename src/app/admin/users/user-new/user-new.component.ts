@@ -24,7 +24,13 @@ export class UserNewComponent implements OnInit {
   form: FormGroup = this.fb.group({
     firstName: [null, Validators.compose([Validators.required])],
     lastName: [null, Validators.compose([Validators.required])],
-    phoneNumber: [null, Validators.compose([Validators.required])],
+    phoneNumber: [
+      null,
+      Validators.compose([
+        Validators.required,
+        Validators.pattern('[0-9]{3}-[0-9]{3}-[0-9]{4}'),
+      ]),
+    ],
     address: [null, Validators.compose([Validators.required])],
     email: [null, Validators.compose([Validators.required, Validators.email])],
     password: [
@@ -36,8 +42,8 @@ export class UserNewComponent implements OnInit {
         ),
       ]),
     ],
-    role: [null, Validators.compose([Validators.required])],
-    isDisabled: [null, Validators.compose([Validators.required])],
+    role: ['', Validators.compose([Validators.required])],
+    isDisabled: ['', Validators.compose([Validators.required])],
   });
 
   // Initialize user, userId, and errorMessages variables

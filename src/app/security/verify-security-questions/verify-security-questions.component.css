@@ -9,7 +9,7 @@
 */
 
 #msform {
-  width: 500px;
+  width: 700px;
   margin: 50px auto;
   text-align: center;
   position: relative;
@@ -42,14 +42,13 @@
 
 #msform input,
 #msform textarea {
-  padding: 15px;
   border: 1px solid #ccc;
   border-radius: 3px;
   margin-bottom: 10px;
   width: 100%;
   box-sizing: border-box;
   color: black;
-  font-size: 13px;
+  font-size: 15px;
 }
 
 #msform .action-button {

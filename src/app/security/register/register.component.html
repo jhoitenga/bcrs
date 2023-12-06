@@ -106,7 +106,9 @@
             form.controls['phoneNumber'].touched
           "
         />
-        <label for="phoneNumber" class="form-label">Phone Number</label>
+        <label for="phoneNumber" class="form-label"
+          >Phone Number (ex. xxx-xxx-xxxx)</label
+        >
         <div
           class="invalid-feedback"
           *ngIf="
@@ -124,7 +126,7 @@
             form.controls['phoneNumber'].dirty
           "
         >
-          Enter a valid US phone number with area code.
+          Phone number must be in the following format: xxx-xxx-xxxx
         </div>
       </div>
 

@@ -27,7 +27,7 @@
                 <!-- Random image from unsplash -->
                 <img
                   [src]="
-                    'https://source.unsplash.com/random/280x380?people&sig'
+                    'https://source.unsplash.com/random/380x480?people&sig'
                   "
                   class="card-img-top"
                   alt="{{ user.firstName }}"
@@ -47,7 +47,7 @@
               <li><b>Address:</b> {{ user.address }}</li>
             </ul>
 
-            <div class="col col-md-3 mb-5">
+            <div class="col col-md-3 mb-3">
               <!-- Edit Profile button -->
               <button
                 class="btn btn-mod btn-border btn-large"
@@ -128,23 +128,21 @@
                 <br />
 
                 <!-- Submit Edits -->
-                <div>
-                  <div class="button-group-container">
-                    <input
-                      type="submit"
-                      id="submit"
-                      value="Save Changes"
-                      [disabled]="!isFormDirty()"
-                      class="btn btn-mod btn-border btn-large mr-5"
-                    />
+                <div class="d-grid gap-2 d-md-flex mb-3">
+                  <input
+                    type="submit"
+                    id="submit"
+                    value="Save Changes"
+                    [disabled]="!isFormDirty()"
+                    class="btn btn-mod btn-border btn-large mr-5"
+                  />
 
-                    <button
-                      class="ml-5 btn btn-mod btn-border btn-large"
-                      (click)="toggleEditMode()"
-                    >
-                      Cancel
-                    </button>
-                  </div>
+                  <button
+                    class="ml-5 btn btn-mod btn-border btn-large"
+                    (click)="toggleEditMode()"
+                  >
+                    Cancel
+                  </button>
                 </div>
               </fieldset>
             </form>

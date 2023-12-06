@@ -71,9 +71,7 @@ export class RegisterComponent implements OnInit {
         null,
         Validators.compose([
           Validators.required,
-          Validators.pattern(
-            /^\+?\d{0,2}(\s?|[\.-]?)\(?(\d{3})\)?(\s?|[\.-]?)\d{3}(\s?|[\.-]?)\d{4}$/
-          ),
+          Validators.pattern('[0-9]{3}-[0-9]{3}-[0-9]{4}'),
         ]),
       ],
       address: [null, Validators.compose([Validators.required])],

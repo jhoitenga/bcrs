@@ -23,13 +23,13 @@
   <!-- User update form -->
   <form
     class="formStyle mb-5"
+    id="msform"
     [formGroup]="form"
     (ngSubmit)="saveUser(); form.reset()"
     (keydown.enter)="$event.preventDefault()"
   >
     <!-- First Name Field -->
-    <div class="mb-3 mt-2">
-      <label for="firstName" class="form-label">First Name *</label>
+    <div class="mb-3 mt-2 form-floating">
       <input
         type="text"
         class="form-control"
@@ -40,6 +40,7 @@
           form.controls['firstName'].touched
         "
       />
+      <label for="firstName" class="form-label">First Name *</label>
 
       <!-- Display validation error message for required field -->
       <div
@@ -54,8 +55,7 @@
     </div>
 
     <!-- Last Name Field -->
-    <div class="mb-3">
-      <label for="lastName" class="form-label">Last Name *</label>
+    <div class="mb-3 form-floating">
       <input
         type="text"
         class="form-control"
@@ -65,6 +65,7 @@
           form.controls['lastName'].invalid && form.controls['lastName'].touched
         "
       />
+      <label for="lastName" class="form-label">Last Name *</label>
 
       <!-- Display validation error message for required field -->
       <div
@@ -79,8 +80,7 @@
     </div>
 
     <!-- Phone Number Field -->
-    <div class="mb-3">
-      <label for="phoneNumber" class="form-label">Phone Number *</label>
+    <div class="mb-3 form-floating">
       <input
         type="text"
         class="form-control"
@@ -91,6 +91,7 @@
           form.controls['phoneNumber'].touched
         "
       />
+      <label for="phoneNumber" class="form-label">Phone Number *</label>
 
       <!-- Display validation error message for required field -->
       <div
@@ -102,11 +103,21 @@
       >
         Phone number is required.
       </div>
+
+      <div
+        class="invalid-feedback"
+        *ngIf="
+          (form.controls['phoneNumber'].hasError('pattern') &&
+            form.controls['phoneNumber'].touched) ||
+          form.controls['phoneNumber'].dirty
+        "
+      >
+        Phone number must be in the following format: xxx-xxx-xxxx
+      </div>
     </div>
 
     <!-- Address Field -->
-    <div class="mb-3">
-      <label for="address" class="form-label">Address *</label>
+    <div class="mb-3 form-floating">
       <textarea
         class="form-control"
         id="address"
@@ -114,7 +125,8 @@
         [class.is-invalid]="
           form.controls['address'].invalid && form.controls['address'].touched
         "
-      ></textarea>
+      ></textarea
+      ><label for="address" class="form-label">Address *</label>
 
       <div
         class="invalid-feedback"
@@ -128,8 +140,7 @@
     </div>
 
     <!-- Email Address Field -->
-    <div class="mb-3">
-      <label for="email" class="form-label">Email Address *</label>
+    <div class="mb-3 form-floating">
       <input
         type="email"
         class="form-control"
@@ -138,7 +149,7 @@
         [class.is-invalid]="
           form.controls['email'].invalid && form.controls['email'].touched
         "
-      />
+      /><label for="email" class="form-label">Email Address *</label>
 
       <!-- Display validation error message for required field -->
       <div
@@ -166,7 +177,13 @@
     <div class="d-md-flex gap-3">
       <div class="mb-3">
         <label for="role" class="form-label">Role *</label>
-        <select class="form-control" id="role" formControlName="role" required>
+
+        <select
+          class="form-control form-select"
+          id="role"
+          formControlName="role"
+          required
+        >
           <option value="standard">Standard</option>
           <option value="admin">Admin</option>
         </select>
@@ -186,7 +203,7 @@
       <div class="mb-3">
         <label for="status" class="form-label">Status *</label>
         <select
-          class="form-control"
+          class="form-control form-select"
           id="isDisabled"
           formControlName="isDisabled"
           required
