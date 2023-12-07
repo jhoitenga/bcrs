@@ -31,7 +31,7 @@
               <div class="mb-3 fw-bold">
                 <!-- Input field for order date -->
                 <label for="txtOrderDate" class="form-label fw-bold"
-                  >Order Date:
+                  >Date:
                 </label>
                 <input
                   type="date"
@@ -66,7 +66,7 @@
               </div>
             </div>
 
-            <div class="col-md-5 fw-bold align-left">
+            <div class="col-md-5 mb-3 fw-bold align-left">
               <!-- Input field for customer full name -->
               <label for="txtCustomerFullName" class="form-label fw-bold"
                 >Customer's Full Name:</label
@@ -94,7 +94,7 @@
                 Customer's full name is required.
               </div>
             </div>
-            <div class="col-md-5 fw-bold align-left">
+            <div class="col-md-5 mb-3 fw-bold align-left">
               <!-- Input field for customer email -->
               <label for="txtCustomerEmail" class="form-label fw-bold"
                 >Customer's Email Address:
@@ -163,7 +163,7 @@
             </div>
           </div>
           <div class="row mt-5">
-            <div class="col-md-2 align-left">
+            <div class="col-md-3 align-left">
               <div class="d-flex">
                 <div class="mb-3">
                   <!-- Input field for parts amount -->
@@ -182,12 +182,12 @@
                 </div>
               </div>
             </div>
-            <div class="col-md-2 align-left">
+            <div class="col-md-3 align-left">
               <div class="d-flex">
                 <div class="mb-3">
                   <!-- Input field for labor amount -->
                   <label for="txtLaborAmount" class="form-label fw-bold"
-                    >Labor Amount: <span>($50/hr)</span>
+                    >Labor Amount: <span id="hourRate">($50/hr)</span>
                   </label>
                   <input
                     type="number"
@@ -202,7 +202,7 @@
               </div>
             </div>
 
-            <div class="col-md-8">
+            <div class="col-md-6">
               <div class="d-flex justify-content-end">
                 <!-- Display the calculated total price -->
                 <div class="d-md-block">
